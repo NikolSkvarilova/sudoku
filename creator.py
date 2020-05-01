@@ -66,11 +66,11 @@ class Creator(Solver):
         self.board[i] = self.shift(self.board[i], 3)
 
       # Checks if the sudoku is valid
-      if self.checkIfValid():
-        return True
+    if self.checkIfValid():
+      return True
 
-      else:
-        self.generate()
+    else:
+      self.generate()
 
   # With change 50% to 50% for each number removes numbers in the board 
   def removeCharacters(self):
