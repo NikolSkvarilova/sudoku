@@ -1,9 +1,6 @@
 
 
 import json
-import random
-
-import leveler
 
 class App:
   def __init__(self):
