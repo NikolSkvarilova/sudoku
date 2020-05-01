@@ -1,3 +1,5 @@
+
+
 class Leveler:
   def __init__(self):
     # self.possibleValues = self.fillPosibleValuesMap()
