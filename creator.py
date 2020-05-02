@@ -99,12 +99,6 @@ class Creator(Solver):
       return json.load(f)
 
 
-  def generateRemoveSet(self):
-    self.generate()
-    self.removeCharacters()
-    self.leveler.setBoard(self.board)
-
-
   def generateSeed(self, lvl=1, howMany=2):
     data = Creator.readJSONFile()
 
