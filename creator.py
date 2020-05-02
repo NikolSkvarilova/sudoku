@@ -1,7 +1,5 @@
 
 
-# WHAT TO DO WITH BLANK SPOTS
-
 from solver import Solver
 from leveler import Leveler
 
