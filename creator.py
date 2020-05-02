@@ -5,23 +5,21 @@
 from solver import Solver
 from leveler import Leveler
 
-from random import choice
+import random
 import json
 import copy
 
-
-
 class Creator(Solver):
-  # Param: self.size = size of the sudoku (usually 9x9, so size = 9)
-  # Param: self.base = size of the little square (usually 3x3)creating seed puzzles
   def __init__(self, size=9):
     self.size = size
     self.base = int(self.size ** (1 / 2))
     self.emptySpace = 0
     self.leveler = Leveler()
     
+
   def generateBlankArr(self):
     self.board = [[self.emptySpace for i in range(self.size)] for j in range(self.size)]
+
 
   # Shifts elements of an array (parram: arr) by specific value (param: n)
   def shift(self, arr, n):
@@ -31,9 +29,8 @@ class Creator(Solver):
 
     return arr
 
+
   # Checks if all numbers in the sudoku are valid
-  # Checks if the sudoku is solved correctly
-  # We could do this with checking the pattern, but some sudokus can have more solutions
   def checkIfValid(self):
     for i in range(self.size):
       for j in range(self.size):
@@ -41,7 +38,8 @@ class Creator(Solver):
           return False
                 
     return True
-                    
+        
+                   
   # Generates 2D array with numbers
   # (1) It gives the first row random numbers 1-9
   # (2) Shifts the second and third row's elements by 3
@@ -49,35 +47,36 @@ class Creator(Solver):
   def generate(self):
     self.generateBlankArr()
 
-    # Generate the first row
-    nums = list(range(self.size))
-
+    nums = list(range(1, self.size + 1))
+    
     for i in range(self.size):
-      self.board[0][i] = nums.pop(choice(range(len(nums))))
+      self.board[0][i] = nums.pop(nums.index(random.choice(nums)))
 
-    # Shifting (1, 3, 3)
+    # Shifting (by: 1, 3, 3)
     for i in range(1, self.size):
       self.board[i] = self.board[i - 1].copy()
-      # If we are on the first row in the square
+      # If we are on the first row in the little square
       if i % self.base == 0:
         self.board[i] = self.shift(self.board[i], 1)
       # If we are somewhere else
       else:
         self.board[i] = self.shift(self.board[i], 3)
 
-      # Checks if the sudoku is valid
+    # Checks if the sudoku is valid
     if self.checkIfValid():
       return True
 
     else:
       self.generate()
 
-  # With change 50% to 50% for each number removes numbers in the board 
-  def removeCharacters(self):
+
+  # Removes some numbers from the board 
+  def removeCharacters(self, percentage_chance=0.3):
     for i in range(self.size):
       for j in range(self.size):
-        if choice(range(6)) == 0:
+        if random.random() < percentage_chance:
           self.board[i][j] = self.emptySpace
+
 
   @staticmethod
   def setupJSONfile(numberOfLevels=1):
@@ -86,7 +85,7 @@ class Creator(Solver):
       data["level" + str(i)] = []
 
     Creator.writeToJSONFile(data=data)
-    return data
+
 
   @staticmethod
   def writeToJSONFile(path="./", fileName="data", data={}):
@@ -94,11 +93,13 @@ class Creator(Solver):
     with open(filePathNameWExt, 'w') as f:
       json.dump(data, f)
 
+
   @staticmethod
   def readJSONFile(path="./", fileName="data"):
     filePathNameWExt = './' + path + '/' + fileName + '.json'
     with open(filePathNameWExt, 'r') as f:
       return json.load(f)
+
 
   def generateRemoveSet(self):
     self.generate()
