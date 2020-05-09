@@ -1,0 +1,25 @@
+
+
+@import '../color_scheme_dark';
+@import '../variables';
+
+.landing_page_container {
+  background-image: url('../../images/background_landing_page.png');
+  height: 100vh;
+  font-family: Montserrat;
+
+  .main_title {
+    margin: 0;
+    color: $text-primary;
+    font-size: map-get($font-sizes, title);
+    font-weight: map-get($font-weights, bold);
+  }
+
+  .scroll-down_container {
+    .sub_text {
+      color: $text-secondary;
+      font-size: map-get($font-sizes, sub-text);
+      font-weight: map-get($font-weights, regular);
+    } 
+  }
+}
