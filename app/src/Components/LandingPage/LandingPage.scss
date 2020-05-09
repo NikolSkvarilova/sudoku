@@ -1,7 +1,6 @@
-
-
 @import '../color_scheme_dark';
 @import '../variables';
+@import '../mixins';
 
 .landing_page_container {
   background-image: url('../../images/background_landing_page.png');
@@ -9,17 +8,31 @@
   font-family: Montserrat;
 
   .main_title {
-    margin: 0;
+    @include clean-element;
+    position: absolute;
+    top: 35%;
+    left: 10%;
     color: $text-primary;
     font-size: map-get($font-sizes, title);
     font-weight: map-get($font-weights, bold);
   }
 
+  // Custom selection stuffs etc. hahaha fancy
+  .main_title::selection {
+    color: $fancy-color-2;
+  }
+
   .scroll-down_container {
+    position: relative;
+    top: 90%;
+
     .sub_text {
+      @include clean-element;
+
       color: $text-secondary;
       font-size: map-get($font-sizes, sub-text);
       font-weight: map-get($font-weights, regular);
+      text-align: center;
     } 
   }
 }

@@ -1,0 +1,40 @@
+@import '../color_scheme_dark';
+@import '../variables';
+@import '../mixins';
+
+.quote-container {
+  @include clean-element;
+  position: absolute;
+  background-color: $background;
+  width: 100%;
+
+  .figure-container {
+    font-family: Montserrat;
+    font-weight: map-get($font-weights, bold);
+    text-align: center;
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+
+
+    .quote-text {
+      @include clean-element;
+      font-style: italic;
+      color: $text-primary;
+      font-size: map-get($font-sizes, quote);
+    }
+
+    .quote-author {
+      margin-top: 2vh;
+      color: $fancy-color-1;
+      font-size: map-get($font-sizes, quote-author);
+    }
+  }
+
+  .rectangle {
+    margin: 2vh auto;
+    height: 14px;
+    width: 40vh;
+    background: linear-gradient(90deg, $fancy-color-1 0%, $fancy-color-2 100%);
+  }
+}

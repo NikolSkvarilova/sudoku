@@ -1,8 +1,9 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import './App.scss'
 
 // my components
 import LandingPage from './Components/LandingPage/LandingPage.jsx'
+import Quote from './Components/Quote/Quote.jsx'
 
 function App() {
 
@@ -19,7 +20,17 @@ function App() {
 
   return (
     <div>
-      <LandingPage />
+      <section className="dark-container">
+        <LandingPage 
+          main_title={["It's not just", <br />, "sudoku."]}
+          sub_text="We have taken sudoku to a new level."
+        />
+
+        <Quote 
+          text="If you are curious, you'll find the puzzles around you. If you are determined, you will solve them."
+          author="Erno Rubik"
+        />
+      </section>
     </div>
   )
 }
