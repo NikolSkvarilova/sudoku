@@ -6,6 +6,10 @@
   background-image: url('../../images/background_landing_page.png');
   height: 100vh;
   font-family: Montserrat;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $background;
 
   .main_title {
     @include clean-element;
@@ -13,7 +17,7 @@
     top: 35%;
     left: 10%;
     color: $text-primary;
-    font-size: map-get($font-sizes, title);
+    font-size: map-get($font-sizes-desktop, title);
     font-weight: map-get($font-weights, bold);
   }
 
@@ -30,9 +34,41 @@
       @include clean-element;
 
       color: $text-secondary;
-      font-size: map-get($font-sizes, sub-text);
+      font-size: map-get($font-sizes-desktop, sub-text);
       font-weight: map-get($font-weights, regular);
       text-align: center;
     } 
+  }
+}
+
+// tablet
+@media only screen and (max-width: 1024px) {
+  .landing_page_container {
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    .main_title {
+      right: 10%;
+      text-align: center;
+    }
+  }
+}
+
+// tablet - mobile
+@media only screen and (max-width: 790px) {
+  .landing_page_container {
+    .main_title {
+      top: 35%;
+      font-size: map-get($font-sizes-tablet, title);
+    }
+  }
+}
+
+// mobile
+@media only screen and (max-width: 530px) {
+  .landing_page_container {
+    .main_title {
+      top: 40%;
+      font-size: map-get($font-sizes-mobile, title);
+    }
   }
 }
