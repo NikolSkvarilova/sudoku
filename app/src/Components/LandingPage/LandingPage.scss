@@ -34,7 +34,7 @@
       @include clean-element;
 
       color: $text-secondary;
-      font-size: map-get($font-sizes-desktop, sub-text);
+      font-size: map-get($font-sizes, sub-text);
       font-weight: map-get($font-weights, regular);
       text-align: center;
     } 
