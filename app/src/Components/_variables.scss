@@ -8,10 +8,21 @@ $font-weights: (
 );
 
 $font-sizes: (
+  "normal": 1.2em,
+  "sub-text": 0.8em
+);
+
+$font-sizes-desktop: (
   "title": 6em,
   "quote": 2.5em,
   "quote-author": 2em,
-  "heading1": 2em,
-  "normal": 1.2em,
-  "sub-text": 0.8em
+  "heading1": 2em
+);
+
+$font-sizes-tablet: (
+  "title": 5.5em
+);
+
+$font-sizes-mobile: (
+  "title": 4em
 );
