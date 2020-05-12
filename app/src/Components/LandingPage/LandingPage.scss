@@ -4,11 +4,12 @@
 
 .landing_page_container {
   background-image: url('../../images/background_landing_page.png');
-  height: 100vh;
+  height: 100vh; // Height of the screen
   font-family: Montserrat;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  // If the image has not been loaded
   background-color: $background;
 
   .main_title {
@@ -23,7 +24,7 @@
 
   // Custom selection stuffs etc. hahaha fancy
   .main_title::selection {
-    color: $fancy-color-2;
+    background-color: $fancy-color-1;
   }
 
   .scroll-down_container {
@@ -32,7 +33,6 @@
 
     .sub_text {
       @include clean-element;
-
       color: $text-secondary;
       font-size: map-get($font-sizes, sub-text);
       font-weight: map-get($font-weights, regular);
@@ -44,8 +44,6 @@
 // tablet
 @media only screen and (max-width: 1024px) {
   .landing_page_container {
-    // background-size: contain;
-    // background-repeat: no-repeat;
     .main_title {
       right: 10%;
       text-align: center;
@@ -53,7 +51,7 @@
   }
 }
 
-// tablet - mobile
+// tablet -> mobile
 @media only screen and (max-width: 790px) {
   .landing_page_container {
     .main_title {
