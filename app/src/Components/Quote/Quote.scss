@@ -11,8 +11,9 @@
   .figure-container {
     font-family: Montserrat;
     font-weight: map-get($font-weights, bold);
+    font-size: map-get($font-sizes-desktop, quote);
     text-align: center;
-    width: 80%;
+    width: 70%;
     display: block;
     margin: 0 auto;
 
@@ -27,7 +28,7 @@
     .quote-author {
       margin-top: 2vh;
       color: $fancy-color-1;
-      font-size: map-get($font-sizes, quote-author);
+      font-size: map-get($font-sizes-desktop, quote-author);
     }
   }
 
