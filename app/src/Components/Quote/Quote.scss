@@ -4,7 +4,6 @@
 
 .quote-container {
   @include clean-element;
-  position: absolute;
   background-color: $background;
   width: 100%;
 
