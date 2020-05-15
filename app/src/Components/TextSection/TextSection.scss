@@ -8,16 +8,16 @@ $image_height: 500px;
   margin-top: 10vh;
   margin-bottom: 10vh;
   height: 60vh;
+  padding: 0 20vh;
 
   .text_section_wrapper {
     display: flex;
-    padding: 20px;
+    justify-content: center; 
 
     .rectangle {
-      margin-left: 25vh;
       margin-right: 8vh;
       height: $image_height;
-      width: 25px;
+      width: $line-size;
       background: linear-gradient(to top, $fancy-color-1 0%, $fancy-color-2 100%);
     }
   
@@ -27,7 +27,8 @@ $image_height: 500px;
       display: flex;
       justify-content: center; 
       flex-direction: column;
-      width: 60%;
+      width: 50%;
+      padding-right: 10vh;
       
       .text_section_title {
         @include clean-element;
@@ -41,16 +42,13 @@ $image_height: 500px;
     }
 
     .img_half {
-      width: 100%;
-      
+      width: 50%;
       img {
-        position: relative;
         height: $image_height;
         width: auto;
         display: flex;
         justify-content: center; 
         flex-direction: column;
-        padding-left: 15vh;
       }
     }
   }
