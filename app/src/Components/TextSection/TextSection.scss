@@ -1,0 +1,57 @@
+@import '../color_scheme_dark';
+@import '../variables';
+@import '../mixins';
+
+$image_height: 500px;
+
+.text_section_container {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  height: 60vh;
+
+  .text_section_wrapper {
+    display: flex;
+    padding: 20px;
+
+    .rectangle {
+      margin-left: 25vh;
+      margin-right: 8vh;
+      height: $image_height;
+      width: 25px;
+      background: linear-gradient(to top, $fancy-color-1 0%, $fancy-color-2 100%);
+    }
+  
+    .text_half {
+      color: $text-primary;
+      font-family: Montserrat;
+      display: flex;
+      justify-content: center; 
+      flex-direction: column;
+      width: 60%;
+      
+      .text_section_title {
+        @include clean-element;
+        font-size: map-get($font-sizes-desktop, section-title);
+      }
+  
+      .text_section_subtitle {
+        color: $text-secondary;
+        font-weight: map-get($font-weights, regular);
+      }
+    }
+
+    .img_half {
+      width: 100%;
+      
+      img {
+        position: relative;
+        height: $image_height;
+        width: auto;
+        display: flex;
+        justify-content: center; 
+        flex-direction: column;
+        padding-left: 15vh;
+      }
+    }
+  }
+}
