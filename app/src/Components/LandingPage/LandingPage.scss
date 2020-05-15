@@ -3,6 +3,7 @@
 @import '../mixins';
 
 .landing_page_container {
+  position: relative;
   background-image: url('../../images/background_landing_page.png');
   height: 100vh; // Height of the screen
   font-family: Montserrat;
