@@ -32,7 +32,7 @@
 
   .rectangle {
     margin: 2vh auto;
-    height: 14px;
+    height: $line-size;
     width: 40vh;
     background: linear-gradient(90deg, $fancy-color-1 0%, $fancy-color-2 100%);
   }
