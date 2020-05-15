@@ -12,6 +12,7 @@
   background-size: cover;
   // If the image has not been loaded
   background-color: $background;
+  z-index: 5;
 
   .main_title {
     @include clean-element;
