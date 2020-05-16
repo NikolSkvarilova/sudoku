@@ -4,6 +4,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
 
 // Font stuffs
+$font-families: (
+  "title": Montserrat,
+  "sub-title": Montserrat,
+  "regular-text": Montserrat,
+  "quote": Montserrat,
+  "quote-author": Montserrat,
+  "heading1": Montserrat,
+  "section-title": Montserrat
+);
+
+
 $font-weights: (
   "regular": 400,
   "bold": 700
