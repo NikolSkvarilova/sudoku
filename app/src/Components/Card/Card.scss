@@ -2,61 +2,46 @@
 @import '../variables';
 @import '../mixins';
 
-.card-container {
-  @include clean-element;
-  float: left;
-  max-width: 250px;
-  margin: 20px;
-  border-radius: 20px;
-  background-color: $background-card;
-  padding-top: 50px;
-  padding-bottom: 20px;
-  // box-shadow;
-    
-  .card-img-section {
-    @include clean-element;
-    width: 100%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 
-    .img {
-      @include clean-element;
-      width: 180px;
-      height: 180px;
-      margin: 0 auto;
-      border-radius: 50%;
-      background-image: linear-gradient(to right bottom, $fancy-color-1, $fancy-color-2);
-    }
+.card-container {
+  // position: relative;
+  margin-bottom: $component_margin_bottom;
+  width: 16vw;
+  height: auto;
+  background-color: $background-card;
+  border: none;
+  border-radius: 20px;
+  margin: 0 auto;
+
+  .card-img-section {
+    background-image: linear-gradient(to right bottom, $fancy-color-1, $fancy-color-2);
+    width: 12vw;
+    height: 12vw;
+    border: none;
+    border-radius: 50%;
+    margin: 2vw auto;
   }
-  
+
   .card-text-section {
-    @include clean-element;
-    height: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: Montserrat;
-    color: $text-primary;
+    text-align: center;
 
     .card-heading {
-      @include clean-element;
-      margin: 30px 0;
-      font-weight: map-get($font-weights, regular);
       font-size: map-get($font-sizes-desktop, heading1);
+      color: $text-primary;
+      font-weight: map-get($font-weights, regular);
     }
+
     .card-text {
-      @include clean-element;
-      width: 70%;
-      text-align: center;
+      font-size: map-get($font-sizes, regular);
+      color: $text-primary;
+      font-weight: map-get($font-weights, regular);
+      margin-top: 40px;
+      width: 80%;
+      margin: 25px auto;
     }
   }
-  
+
   .card-btn {
-    @include clean-element;
     position: relative;
     display: block;
     cursor: pointer;
@@ -65,9 +50,6 @@
     border: none;
     border-radius: 50px;
     background-image: linear-gradient(to right, $fancy-color-1, $fancy-color-2);
-    margin-top: 35px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 2vh auto;
   }
-  
 }

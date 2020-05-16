@@ -6,9 +6,7 @@ export class Card extends Component {
   render() {
     return (
       <div className="card-container">
-        <div className="card-img-section">
-          <div className="img"></div>
-        </div>
+        <div className="card-img-section"></div>
 
         <div className="card-text-section">
           <h2 className="card-heading">{this.props.heading}</h2>
