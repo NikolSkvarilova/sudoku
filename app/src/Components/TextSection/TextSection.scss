@@ -5,17 +5,18 @@
 $image_height: 500px;
 
 .text_section_container {
-  margin-top: 10vh;
-  margin-bottom: 10vh;
-  height: 60vh;
-  padding: 0 20vh;
+  margin-bottom: $component_margin_bottom;
 
   .text_section_wrapper {
+    margin: 0 13vw;
     display: flex;
-    justify-content: center; 
+    flex-direction: row;
+    justify-content: center; // Horizontally
+    align-items: center; // Vertically
 
     .rectangle {
       margin-right: 8vh;
+      flex-shrink: 0; // Size of the rectangle will not change
       height: $image_height;
       width: $line-size;
       background: linear-gradient(to top, $fancy-color-1 0%, $fancy-color-2 100%);
@@ -24,11 +25,7 @@ $image_height: 500px;
     .text_half {
       color: $text-primary;
       font-family: Montserrat;
-      display: flex;
-      justify-content: center; 
-      flex-direction: column;
       width: 50%;
-      padding-right: 10vh;
       
       .text_section_title {
         @include clean-element;
@@ -41,14 +38,62 @@ $image_height: 500px;
       }
     }
 
-    .img_half {
-      width: 50%;
-      img {
-        height: $image_height;
-        width: auto;
-        display: flex;
-        justify-content: center; 
-        flex-direction: column;
+    img {
+      margin-left: 5vw;
+      height: auto;
+      width: 35vw;
+    }
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .text_section_container {
+    .text_section_wrapper {
+      flex-direction: column;
+      .rectangle {
+        display: none;
+      }
+
+      .text_half {
+        order: 1;
+        width: 70vw;
+        text-align: center;
+
+        .text_section_title {
+          font-size: map-get($font-sizes-mobile, title);
+        }
+      }
+
+      .img_half {
+        @include clean-element;
+        order: 0;
+        width: 40vw;
+        height: auto;
+        margin-bottom: 5vw;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
+  .text_section_container {
+    .text_section_wrapper {
+      .text_half {
+        .text_section_title {
+          font-size: map-get($font-sizes-tablet, title);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: map-get($breakpoints, mobile)) {
+  .text_section_container {
+    .text_section_wrapper {
+      .text_half {
+        .text_section_title {
+          font-size: map-get($font-sizes-mobile, title);
+        }
       }
     }
   }

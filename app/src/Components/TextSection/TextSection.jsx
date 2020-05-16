@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import './TextSection.scss';
 
 const TextSection = (props) => {
-  let title = <h1 className="text_section_title">{props.title}</h1>;
-  if (props.sub_title) {
-    title += <h2 className="text_section_subtitle">{props.sub_title}</h2>;
-  }
-
   return (
     <div className="text_section_container">
       <div className="text_section_wrapper">
@@ -19,9 +14,7 @@ const TextSection = (props) => {
             {props.text}
           </article>
         </div>
-        <div className="img_half">
-          <img src={props.img}></img>
-        </div>
+        <img className="img_half" src={props.img} alt={props.alt}></img>
       </div>
     </div>
   )
@@ -33,7 +26,7 @@ TextSection.propTypes = {
   sub_title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   img: PropTypes.node,
-  line: PropTypes.bool
+  alt: PropTypes.string
 }
 
 export default TextSection;
