@@ -44,7 +44,7 @@
 }
 
 // tablet
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: map-get($breakpoints, tablet)) {
   .landing_page_container {
     .main_title {
       right: 10%;
@@ -54,7 +54,7 @@
 }
 
 // tablet -> mobile
-@media only screen and (max-width: 790px) {
+@media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
   .landing_page_container {
     .main_title {
       top: 35%;
@@ -64,7 +64,7 @@
 }
 
 // mobile
-@media only screen and (max-width: 530px) {
+@media only screen and (max-width: map-get($breakpoints, mobile)) {
   .landing_page_container {
     .main_title {
       top: 40%;
