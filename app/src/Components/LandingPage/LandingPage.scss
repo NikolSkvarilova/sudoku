@@ -9,7 +9,6 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  // If the image has not been loaded
   background-color: $background;
   z-index: 5;
 
@@ -23,7 +22,6 @@
     font-weight: map-get($font-weights, bold);
   }
 
-  // Custom selection stuffs etc. hahaha fancy
   .main_title::selection {
     background-color: $fancy-color-1;
   }
