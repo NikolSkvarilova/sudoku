@@ -1,7 +1,9 @@
 
 
+// Montserrat Font
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
 
+// Font stuffs
 $font-weights: (
   "regular": 400,
   "bold": 700
@@ -21,11 +23,26 @@ $font-sizes-desktop: (
 );
 
 $font-sizes-tablet: (
-  "title": 5.5em
+  "title": 5.5em,
+  "quote": 1.2em,
+  "quote-author": 0.8em
 );
 
 $font-sizes-mobile: (
-  "title": 4em
+  "title": 4em,
+  "quote": 1em,
+  "quote-author": 0.5em
 );
 
-$line-size: 20px;
+// Some sizes
+$line-size: 15px;
+
+// Positioning
+$component_margin_bottom: 10vh;
+
+// Breakpoints
+$breakpoints: (
+  "tablet": 1024px,
+  "tablet-mobile": 790px,
+  "mobile": 530px
+);
