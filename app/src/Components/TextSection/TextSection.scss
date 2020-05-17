@@ -24,17 +24,22 @@ $image_height: 500px;
   
     .text_half {
       color: $text-primary;
-      font-family: Montserrat;
       width: 50%;
       
       .text_section_title {
         @include clean-element;
+        font-family: map-get($font-families, section-title);
         font-size: map-get($font-sizes-desktop, section-title);
       }
   
       .text_section_subtitle {
         color: $text-secondary;
+        font-family: map-get($font-families, sub-title);
         font-weight: map-get($font-weights, regular);
+      }
+
+      .text {
+        font-family: map-get($font-families, regular-text);
       }
     }
 
