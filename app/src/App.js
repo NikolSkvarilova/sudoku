@@ -34,6 +34,23 @@ function App() {
           author="Erno Rubik"
         />
 
+        <section className="cards-container">
+          <Card 
+            heading="About"
+            sub_text="Read more about the project!"
+          />
+
+          <Card 
+            heading="Rules"
+            sub_text="Check out how to solve sudoku!"
+          />
+
+          <Card 
+            heading="Play"
+            sub_text="Do you wanna play a game?"
+          />
+        </section>
+
         <TextSection 
           title="About project"
           sub_title="A few words from the author."
