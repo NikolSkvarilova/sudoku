@@ -3,3 +3,14 @@
 .dark-container {
   background-color: $background;
 }
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  background-image: url('./images/bg_cards.png');
+  position: relative;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $background;
+}
