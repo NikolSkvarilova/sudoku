@@ -47,7 +47,7 @@ function App() {
 
           <Card 
             heading="Play"
-            sub_text="Do you wanna play a game?"
+            sub_text="Do you wanna play a game?!"
           />
         </section>
 
