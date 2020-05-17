@@ -6,17 +6,18 @@
 .card-container {
   // position: relative;
   margin-bottom: $component_margin_bottom;
-  width: 16vw;
+  width: 280px;
   height: auto;
   background-color: $background-card;
   border: none;
   border-radius: 20px;
   margin: 0 auto;
+  margin-bottom: $component_margin_bottom;
 
   .card-img-section {
     background-image: linear-gradient(to right bottom, $fancy-color-1, $fancy-color-2);
-    width: 12vw;
-    height: 12vw;
+    width: 10vw;
+    height: 10vw;
     border: none;
     border-radius: 50%;
     margin: 2vw auto;
