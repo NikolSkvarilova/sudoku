@@ -1,4 +1,6 @@
 @import './Components/color_scheme_dark';
+@import './Components/variables';
+@import './Components/mixins';
 
 .dark-container {
   background-color: $background;
@@ -6,11 +8,19 @@
 
 .cards-container {
   display: flex;
+  flex-wrap: wrap;
+  padding-left: 20vw;
+  padding-right: 20vw;
   justify-content: center;
   background-image: url('./images/bg_cards.png');
-  position: relative;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: $background;
+  margin-bottom: $component_margin_bottom;
+}
+@media only screen and (max-width: 1390px) {
+  .cards-container {
+    background-image: none;
+  }
 }
