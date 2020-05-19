@@ -59,6 +59,10 @@ function App() {
           alt="Designer Image"
         />
       </section>
+
+      <section className="light-container">
+        <img className="wavy-transition" src={require('./images/transition1.png')} alt="wavy thing"></img>
+      </section>
     </div>
   )
 }

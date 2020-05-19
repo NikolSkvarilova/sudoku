@@ -4,6 +4,7 @@
 
 .dark-container {
   background-color: $background;
+  margin-bottom: 0;
 }
 
 .cards-container {
@@ -23,4 +24,15 @@
   .cards-container {
     background-image: none;
   }
+}
+
+.light-container {
+  .wavy-transition {
+    width: 100%;
+    margin-top: -1px;
+  }
+}
+
+section {
+  padding-bottom: $component_margin_bottom;
 }
