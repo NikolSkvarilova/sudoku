@@ -8,7 +8,6 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: $background;
   z-index: 5;
   margin-bottom: $component_margin_bottom;
 
@@ -17,14 +16,9 @@
     position: absolute;
     top: 35%;
     left: 10%;
-    color: $text-primary;
     font-family: map-get($font-families, title);
     font-size: map-get($font-sizes-desktop, title);
     font-weight: map-get($font-weights, bold);
-  }
-
-  .main_title::selection {
-    background-color: $fancy-color-1;
   }
 
   .scroll-down_container {
@@ -33,7 +27,6 @@
 
     .sub_text {
       @include clean-element;
-      color: $text-secondary;
       font-family: map-get($font-families, sub-text);
       font-size: map-get($font-sizes, sub-text);
       font-weight: map-get($font-weights, regular);
