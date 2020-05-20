@@ -35,6 +35,9 @@ function App() {
           main_title={["It's not just", <br />, "sudoku."]}
           sub_text="We have taken sudoku to a new level."
           bg_img={require('./images/background_landing_page.png')}
+          title_color="white"
+          sub_text_color="#9E9E9E"
+          bg_color="#1A1A1A"
         />
 
         <Quote 
