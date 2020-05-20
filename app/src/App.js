@@ -20,6 +20,14 @@ function App() {
   //   .then(text => console.log(text))
   //   .catch(error => console.log(error));
 
+  let cardStyles = {
+    bg_color: '#222',
+    txt_color: 'white',
+    img: 'linear-gradient(to right bottom, #24FFFF, #ED1DFF)',
+    btn_bg_color: 'linear-gradient(to right, #24FFFF, #ED1DFF)',
+    btn_txt_color: 'black'
+  }
+
   return (
     <div>
       <section className="dark-container">
@@ -38,16 +46,19 @@ function App() {
           <Card 
             heading="About"
             sub_text="Read more about the project!"
+            {...cardStyles}
           />
 
           <Card 
             heading="Rules"
             sub_text="Check out how to solve sudoku!"
+            {...cardStyles}
           />
 
           <Card 
             heading="Play"
             sub_text="Do you wanna play a game?"
+            {...cardStyles}
           />
         </section>
 
@@ -61,7 +72,11 @@ function App() {
       </section>
 
       <section className="light-container">
-        <img className="wavy-transition" src={require('./images/transition1.png')} alt="wavy thing"></img>
+        <img 
+          className="wavy-transition" 
+          src={require('./images/transition1.png')} 
+          alt="wavy thing"
+        />
       </section>
     </div>
   )

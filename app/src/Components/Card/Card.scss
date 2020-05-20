@@ -8,14 +8,14 @@
   margin-bottom: $component_margin_bottom;
   width: 250px;
   height: 600;
-  background-color: $background-card;
+  // background-color: $background-card;
   border: none;
   border-radius: 20px;
   margin: 30px;
   // margin-bottom: $component_margin_bottom;
 
   .card-img-section {
-    background-image: linear-gradient(to right bottom, $fancy-color-1, $fancy-color-2);
+    // background-image: linear-gradient(to right bottom, $fancy-color-1, $fancy-color-2);
     width: 180px;
     height: 180px;
     border: none;
@@ -29,13 +29,13 @@
 
     .card-heading {
       font-size: map-get($font-sizes-desktop, heading1);
-      color: $text-primary;
+      // color: $text-primary;
       font-weight: map-get($font-weights, regular);
     }
 
     .card-text {
       font-size: map-get($font-sizes, regular);
-      color: $text-primary;
+      // color: $text-primary;
       font-weight: map-get($font-weights, regular);
       margin-top: 40px;
       width: 80%;
@@ -51,7 +51,6 @@
     height: 40px;
     border: none;
     border-radius: 50px;
-    background-image: linear-gradient(to right, $fancy-color-1, $fancy-color-2);
     margin: 20px auto;
   }
 }
