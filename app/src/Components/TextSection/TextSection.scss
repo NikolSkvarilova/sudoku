@@ -22,7 +22,7 @@ $image_height: 500px;
     }
   
     .text_half {
-      width: 50%;
+      width: 45%;
       
       .text_section_title {
         @include clean-element;
@@ -43,7 +43,7 @@ $image_height: 500px;
     img {
       margin-left: 5vw;
       height: auto;
-      width: 35vw;
+      width: 30vw;
     }
   }
 }
