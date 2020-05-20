@@ -43,6 +43,10 @@ function App() {
         <Quote 
           text="If you are curious, you'll find the puzzles around you. If you are determined, you will solve them."
           author="Erno Rubik"
+          line="true"
+          line_color="linear-gradient(90deg, #24FFFF 0%, #ED1DFF 100%)"
+          text_color="white"
+          author_color="#24FFFF"
         />
 
         <section className="cards-container">
