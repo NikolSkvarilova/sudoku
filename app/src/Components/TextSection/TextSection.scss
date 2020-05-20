@@ -19,11 +19,9 @@ $image_height: 500px;
       flex-shrink: 0; // Size of the rectangle will not change
       height: $image_height;
       width: $line-size;
-      background: linear-gradient(to top, $fancy-color-1 0%, $fancy-color-2 100%);
     }
   
     .text_half {
-      color: $text-primary;
       width: 50%;
       
       .text_section_title {
@@ -33,7 +31,6 @@ $image_height: 500px;
       }
   
       .text_section_subtitle {
-        color: $text-secondary;
         font-family: map-get($font-families, sub-title);
         font-weight: map-get($font-weights, regular);
       }

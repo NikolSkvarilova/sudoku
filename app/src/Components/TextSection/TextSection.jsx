@@ -3,14 +3,29 @@ import PropTypes from 'prop-types';
 import './TextSection.scss';
 
 const TextSection = (props) => {
+  let titleStyles = {
+    'color': !! props.title_color ? props.title_color : 'black'
+  };
+  let subTitleStyles = {
+    'color': !! props.sub_title_color ? props.sub_title_color : 'gray'
+  };
+  let textStyles = {
+    'color': !! props.text_color ? props.text_color : 'black'
+  };
+  let lineStyles = {
+    'background': !! props.line_color ? props.line_color : "gray"
+  };
+
+
   return (
     <div className="text_section_container">
       <div className="text_section_wrapper">
-        <div className="rectangle"></div>
+        {props.line_color ? <div className="rectangle" style={lineStyles}></div> : ""}
+
         <div className="text_half">
-          <h1 className="text_section_title">{props.title}</h1>
-          <h2 className="text_section_subtitle">{props.sub_title}</h2>
-          <article className="text">
+          <h1 className="text_section_title" style={titleStyles}>{props.title}</h1>
+          <h2 className="text_section_subtitle" style={subTitleStyles}>{props.sub_title}</h2>
+          <article className="text" style={textStyles}>
             {props.text}
           </article>
         </div>
@@ -18,15 +33,18 @@ const TextSection = (props) => {
       </div>
     </div>
   )
-
 }
 
 TextSection.propTypes = {
-  title: PropTypes.string.isRequired,
-  sub_title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  img: PropTypes.node,
-  alt: PropTypes.string
+  title:            PropTypes.string.isRequired,
+  sub_title:        PropTypes.string,
+  text:             PropTypes.string.isRequired,
+  title_color:      PropTypes.string,
+  sub_title_color:  PropTypes.string,
+  text_color:       PropTypes.string,
+  img:              PropTypes.node,
+  alt:              PropTypes.string,
+  line_color:       PropTypes.string,
 }
 
 export default TextSection;
