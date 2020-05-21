@@ -31,7 +31,7 @@
     margin: 2vh auto;
     height: $line-size;
     flex-shrink: 0;
-    width: 40vh;
+    width: 380px;
   }
 }
 
@@ -59,6 +59,10 @@
       .quote-author {
         font-size: map-get($font-sizes-mobile, quote-author)
       }
+    }
+
+    .rectangle {
+      width: 70vw;
     }
   }
 }

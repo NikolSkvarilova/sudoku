@@ -22,7 +22,7 @@ $image_height: 500px;
     }
   
     .text_half {
-      width: 45%;
+      width: 50%;
       
       .text_section_title {
         @include clean-element;
@@ -43,7 +43,7 @@ $image_height: 500px;
     img {
       margin-left: 5vw;
       height: auto;
-      width: 30vw;
+      width: 35vw;
     }
   }
 }
@@ -59,7 +59,6 @@ $image_height: 500px;
       .text_half {
         order: 1;
         width: 70vw;
-        text-align: center;
 
         .text_section_title {
           font-size: map-get($font-sizes-mobile, title);
@@ -69,7 +68,7 @@ $image_height: 500px;
       .img_half {
         @include clean-element;
         order: 0;
-        width: 40vw;
+        width: 400px;
         height: auto;
         margin-bottom: 5vw;
       }
@@ -85,6 +84,10 @@ $image_height: 500px;
           font-size: map-get($font-sizes-tablet, title);
         }
       }
+
+      .img_half {
+        width: 400px;
+      }
     }
   }
 }
@@ -96,6 +99,10 @@ $image_height: 500px;
         .text_section_title {
           font-size: map-get($font-sizes-mobile, title);
         }
+      }
+
+      .img_half {
+        width: 250px;
       }
     }
   }
