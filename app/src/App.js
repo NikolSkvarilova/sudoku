@@ -50,23 +50,27 @@ function App() {
         />
 
         <section className="cards-container">
-          <Card 
-            heading="About"
-            sub_text="Read more about the project!"
-            {...cardStyles}
-          />
+          <div className="cards-wrapper">
+            <Card 
+              heading="About"
+              sub_text="Read more about the project!"
+              {...cardStyles}
+            />
 
-          <Card 
-            heading="Rules"
-            sub_text="Check out how to solve sudoku!"
-            {...cardStyles}
-          />
+            <Card 
+              heading="Rules"
+              sub_text="Check out how to solve sudoku!"
+              {...cardStyles}
+            />
 
-          <Card 
-            heading="Play"
-            sub_text="Do you wanna play a game?"
-            {...cardStyles}
-          />
+            <Card 
+              heading="Play"
+              sub_text="Do you wanna play a game?"
+              {...cardStyles}
+            />
+          </div>
+          
+          <p className="note">Or scroll down and see all the stuffs by yourself!</p>
         </section>
 
         <TextSection 
