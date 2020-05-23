@@ -14,7 +14,7 @@
   background-size: cover;
   background-color: $background;
   margin-bottom: $component_margin_bottom; 
-  
+
   .cards-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -25,7 +25,7 @@
 
   .note {
     text-align: center;
-    color: #555;
+    color: #999;
   }
 }
 @media only screen and (max-width: 1390px) {
