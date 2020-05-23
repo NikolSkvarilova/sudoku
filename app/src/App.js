@@ -6,6 +6,7 @@ import LandingPage from './Components/LandingPage/LandingPage.jsx'
 import Quote from './Components/Quote/Quote.jsx'
 import Card from './Components/Card/Card.jsx'
 import TextSection from './Components/TextSection/TextSection.jsx'
+import ButtonSection from './Components/ButtonSection/ButtonSection.jsx'
 
 function App() {
 
@@ -115,6 +116,13 @@ function App() {
           alt="Designer Image"
         />
       </section>
+
+      <ButtonSection
+        bg="linear-gradient(to left, #24FFFF 0%, #ED1DFF 100%)"
+        btn_bg_color="white"
+        btn_txt_color="black"
+        btn_txt="Play the game"
+      />
     </div>
   )
 }
