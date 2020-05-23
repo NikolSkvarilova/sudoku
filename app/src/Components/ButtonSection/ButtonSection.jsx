@@ -18,12 +18,10 @@ const ButtonSection = (props) => {
 }
 
 ButtonSection.propTypes = {
-  // main_title:     PropTypes.string.isRequired,
-  // sub_text:       PropTypes.string,
-  // bg_img:         PropTypes.node,
-  // title_color:    PropTypes.string,
-  // sub_text_color: PropTypes.string,
-  // bg_color:       PropTypes.string,
+  bg:             PropTypes.string,
+  btn_bg_color:   PropTypes.string,
+  btn_text_color: PropTypes.string,
+  btn_text:       PropTypes.string.isRequired
 }
 
 export default ButtonSection;
