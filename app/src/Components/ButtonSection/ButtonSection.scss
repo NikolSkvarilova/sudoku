@@ -19,5 +19,6 @@
     cursor: pointer;
     font-family: map-get($font-families, btn);
     font-weight: map-get($font-weights, regular);
+    box-shadow: 0px 0px 40px -8px rgba(0,0,0,0.6);
   }
 }
