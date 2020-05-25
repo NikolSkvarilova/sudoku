@@ -7,6 +7,7 @@ import Quote from './Components/Quote/Quote.jsx'
 import Card from './Components/Card/Card.jsx'
 import TextSection from './Components/TextSection/TextSection.jsx'
 import ButtonSection from './Components/ButtonSection/ButtonSection.jsx'
+import Footer from './Components/Footer/Footer.jsx'
 
 function App() {
 
@@ -80,10 +81,12 @@ function App() {
           text={[<p>Aliquam sollicitudin egestas pellentesque. Nulla porta sollicitudin lacus, ut finibus libero fermentum quis. Integer fermentum mattis ex, lacinia lobortis ex hendrerit in. Vivamus at ante imperdiet, lobortis felis vitae, efficitur massa.</p>, <p>Nam ex metus, venenatis id justo nec, tempus dictum mauris. Sed non nibh lorem. Phasellus et faucibus ligula, sit amet porttitor magna. Phasellus non volutpat dolor, nec lobortis ex.</p>]}
           title_color="white"
           sub_title_color="gray"
-          text_color="white"
+          txt_color="white"
           line_color="linear-gradient(to top, #24FFFF 0%, #ED1DFF 100%)"
           img={require('./images/about_img.png')}
           alt="Designer Image"
+          img_align="left"
+          img_align_mobile="top"
         />
       </section>
 
@@ -111,9 +114,11 @@ function App() {
           ]}
           title_color="black"
           sub_title_color="gray"
-          text_color="blacke"
+          txt_color="blacke"
           img={require('./images/sudoku.png')}
           alt="Designer Image"
+          img_align="left"
+          img_align_mobile="bot"
         />
       </section>
 
@@ -123,6 +128,22 @@ function App() {
         btn_txt_color="black"
         btn_txt="Play the game"
       />
+
+      {/* <Footer 
+      categories={
+        [
+          {text: "Explore", 
+          sub_categories: [
+            {text: "About", link: "/about"}, 
+            {text: "Rules", link: "/rules"}
+          ]}, 
+          {text: "Visit", 
+          sub_categories: [
+            {text: "Web1", link: "www.google.com"}, 
+            {text: "Web2", link: "www.facebook.com"}
+          ]}
+        ]}
+      /> */}
     </div>
   )
 }

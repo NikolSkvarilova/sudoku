@@ -44,7 +44,10 @@ $font-sizes-tablet: (
 $font-sizes-mobile: (
   "title": 4em,
   "quote": 0.9em,
-  "quote-author": 0.7em
+  "quote-author": 0.7em,
+  "section-title": 3em,
+  "subtitle": 1.5em,
+  "text": 1em
 );
 
 // Some sizes
@@ -55,6 +58,7 @@ $component_margin_bottom: 50px;
 
 // Breakpoints
 $breakpoints: (
+  "small-desktop": 1300px,
   "tablet": 1024px,
   "tablet-mobile": 790px,
   "mobile": 530px

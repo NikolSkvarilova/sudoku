@@ -1,109 +1,109 @@
-@import '../color_scheme_dark';
 @import '../variables';
 @import '../mixins';
-
-$image_height: 500px;
 
 .text_section_container {
   margin-bottom: $component_margin_bottom;
 
   .text_section_wrapper {
-    margin: 0 13vw;
+    margin: 0 12vw;
     display: flex;
-    flex-direction: row;
-    justify-content: center; // Horizontally
-    align-items: center; // Vertically
+    justify-content: center; 
+    align-items: center; 
 
-    .rectangle {
-      margin-right: 8vh;
-      flex-shrink: 0; // Size of the rectangle will not change
-      height: $image_height;
-      width: $line-size;
-    }
-  
-    .text_half {
+    .text_half_wrapper {
+      display: flex;
+      justify-content: center; 
+      align-items: center; 
       width: 50%;
-      
-      .text_section_title {
-        @include clean-element;
-        font-family: map-get($font-families, section-title);
-        font-size: map-get($font-sizes-desktop, section-title);
-      }
-  
-      .text_section_subtitle {
-        font-family: map-get($font-families, sub-title);
-        font-weight: map-get($font-weights, regular);
+
+      @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+        width: 100%;
       }
 
-      .text {
-        font-family: map-get($font-families, regular-text);
+      .rectangle {
+        margin-right: 60px;
+        flex-shrink: 0;
+        height: 100%;
+        height: 500px;
+        width: $line-size;
+        order: 0;
+
+        @media only screen and (max-width: map-get($breakpoints, mobile)) {
+          display: none;
+        }
+      }
+    
+      .text_half {
+        .text_section_title {
+          @include clean-element;
+          font-family: map-get($font-families, section-title);
+          font-size: map-get($font-sizes-desktop, section-title);
+
+          @media only screen and (max-width: map-get($breakpoints, mobile)) {
+            font-size: map-get($font-sizes-mobile, section-title);
+          }
+        }
+    
+        .text_section_subtitle {
+          font-family: map-get($font-families, sub-title);
+          font-weight: map-get($font-weights, regular);
+
+          @media only screen and (max-width: map-get($breakpoints, mobile)) {
+            font-size: map-get($font-sizes-mobile, subtitle);
+          }
+        }
+  
+        .text {
+          font-family: map-get($font-families, regular-text);
+
+          @media only screen and (max-width: map-get($breakpoints, mobile)) {
+            font-size: map-get($font-sizes-mobile, text);
+          }
+        }
       }
     }
 
     img {
-      margin-left: 5vw;
       height: auto;
-      width: 35vw;
-    }
-  }
-}
+      width: 500px;
 
-@media only screen and (max-width: 1400px) {
-  .text_section_container {
-    .text_section_wrapper {
-      flex-direction: column;
-      .rectangle {
-        display: none;
-      }
-
-      .text_half {
-        order: 1;
-        width: 70vw;
-
-        .text_section_title {
-          font-size: map-get($font-sizes-mobile, title);
-        }
-      }
-
-      .img_half {
-        @include clean-element;
-        order: 0;
-        width: 400px;
-        height: auto;
-        margin-bottom: 5vw;
+      @media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
+        width: 90%;
       }
     }
   }
 }
 
-@media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
-  .text_section_container {
-    .text_section_wrapper {
-      .text_half {
-        .text_section_title {
-          font-size: map-get($font-sizes-tablet, title);
-        }
-      }
+.right {
+  margin-left: 100px;
+  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+    margin: 0;
+  }
+}
 
-      .img_half {
-        width: 400px;
-      }
+.left {
+  margin-right: 150px;
+  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+    margin: 0;
+  }
+}
+
+.top {
+  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+    flex-direction: column-reverse;
+
+    img {
+      margin-top: 40px;
     }
   }
 }
 
-@media only screen and (max-width: map-get($breakpoints, mobile)) {
-  .text_section_container {
-    .text_section_wrapper {
-      .text_half {
-        .text_section_title {
-          font-size: map-get($font-sizes-mobile, title);
-        }
-      }
+.bot {
+  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+    flex-direction: column;
 
-      .img_half {
-        width: 250px;
-      }
+    img {
+      margin-bottom: 40px;
     }
   }
 }
