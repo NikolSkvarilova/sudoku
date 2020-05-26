@@ -78,6 +78,7 @@ const TextSection = (props) => {
         <div className={`img_half_container ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} style={imgPositionStyle} >
           <img 
             className={`img_half left ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} 
+            style={props.img_align_mobile === "top" ? {'marginBottom': '20px'} : {'marginTop': '20px'}}
             src={props.img} alt={props.alt}>
           </img>
         </div> 
@@ -109,6 +110,7 @@ const TextSection = (props) => {
         <div className={`img_half_container ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} style={imgPositionStyle} >
           <img 
             className={`img_half right ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} 
+            style={props.img_align_mobile === "top" ? {'marginBottom': '20px'} : {'marginTop': '20px'}}
             src={props.img} alt={props.alt}>
           </img>
         </div> 
