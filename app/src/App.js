@@ -9,6 +9,9 @@ import TextSection from './Components/TextSection/TextSection.jsx'
 import ButtonSection from './Components/ButtonSection/ButtonSection.jsx'
 import Footer from './Components/Footer/Footer.jsx'
 
+// Icons
+import { ReactComponent as ExploreIcon } from './images/explore.svg';
+
 function App() {
 
   // async function catchHello() {
@@ -85,8 +88,7 @@ function App() {
           line_color="linear-gradient(to top, #24FFFF 0%, #ED1DFF 100%)"
           img={require('./images/about_img.png')}
           alt="Designer Image"
-          img_align="left"
-          img_align_mobile="top"
+          img_align="right"
         />
       </section>
 
@@ -129,21 +131,34 @@ function App() {
         btn_txt="Play the game"
       />
 
-      {/* <Footer 
-      categories={
-        [
-          {text: "Explore", 
-          sub_categories: [
-            {text: "About", link: "/about"}, 
-            {text: "Rules", link: "/rules"}
-          ]}, 
-          {text: "Visit", 
-          sub_categories: [
-            {text: "Web1", link: "www.google.com"}, 
-            {text: "Web2", link: "www.facebook.com"}
+      <Footer 
+        categories={
+          [
+            {text: "Explore", 
+            icon: <ExploreIcon fill="#545454"/>,
+            sub_categories: [
+              {text: "About project", link: "/about"}, 
+              {text: "Rules", link: "/rules"},
+              {text: "Play game", link: "/play"}
+            ]}, 
+            {text: "Visit", 
+            sub_categories: [
+              {text: "Web1", link: "www.google.com"}, 
+              {text: "Web2", link: "www.facebook.com"}
+            ]},
+            {text: "Contact", 
+            note: "Lorem Ipsum dolor sit amet.",
+            sub_categories: [
+              {text: "E-mail", link: "www.google.com"}, 
+              {text: "GitHub", link: "www.facebook.com"}
+            ]}
           ]}
-        ]}
-      /> */}
+        bg="#222"
+        category_txt_color="#545454"
+        note_txt_color="#545454"
+        subcategory_txt_color="#545454"
+
+      />
     </div>
   )
 }
