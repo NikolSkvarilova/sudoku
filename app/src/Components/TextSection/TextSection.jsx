@@ -34,13 +34,11 @@ const TextSection = (props) => {
   const checkImgPositionStyle = (img_align, img_position) => {
     if (img_position == "to_edge" && img_align == "left") {
       return {
-        'marginLeft': '0',
-        'width': '100%'
+        'justifyContent': 'flex-end'
       };
     } else if (img_position == "to_edge" && img_align == "right") {
       return {
-        'marginRight': '0',
-        'width': '100%'
+        'justifyContent': 'flex-end'
       };
     }
   };
@@ -77,8 +75,11 @@ const TextSection = (props) => {
     <div className={`text_section_container ${imgAlignMobileClass}`}>  
       {/* Image on the left */}
       {props.img_align == "left" ? 
-        <div className={`img_half_container ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`}>
-          <img style={imgPositionStyle} className="img_half left" src={props.img} alt={props.alt}></img>
+        <div className={`img_half_container ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} style={imgPositionStyle} >
+          <img 
+            className="img_half left" 
+            src={props.img} alt={props.alt}>
+          </img>
         </div> 
         : ""
       }
@@ -105,8 +106,11 @@ const TextSection = (props) => {
       
       {/* Image on the right (default value) */}
       {props.img_align != "left" ? 
-        <div className={`img_half_container ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`}>
-          <img style={imgPositionStyle} className="img_half right" src={props.img} alt={props.alt}></img>
+        <div className={`img_half_container ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} style={imgPositionStyle} >
+          <img 
+            className={`img_half right ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} 
+            src={props.img} alt={props.alt}>
+          </img>
         </div> 
         : ""
       }
@@ -115,17 +119,19 @@ const TextSection = (props) => {
 }
 
 TextSection.propTypes = {
-  title:            PropTypes.string,
-  sub_title:        PropTypes.string,
-  text:             PropTypes.string.isRequired,
-  title_color:      PropTypes.string,
-  sub_title_color:  PropTypes.string,
-  txt_color:        PropTypes.string,
-  img:              PropTypes.node.isRequired,
-  alt:              PropTypes.string,
-  line_color:       PropTypes.string, // If the color is not entered, the line is not rendered!
-  img_align:        PropTypes.string, // The image is on the left/right from the text; values: 'left', 'right'; default: 'right'
-  img_align_mobile: PropTypes.string, // The image is on above/below the text; values: 'top', 'bot'; default: 'top'
+  title:                  PropTypes.string,
+  sub_title:              PropTypes.string,
+  text:                   PropTypes.string.isRequired,
+  title_color:            PropTypes.string,
+  sub_title_color:        PropTypes.string,
+  txt_color:              PropTypes.string,
+  img:                    PropTypes.node.isRequired,
+  alt:                    PropTypes.string,
+  line_color:             PropTypes.string, // If the color is not entered, the line is not rendered!
+  img_align:              PropTypes.string, // The image is on the left/right from the text; values: 'left', 'right'; default: 'right'
+  img_align_mobile:       PropTypes.string, // The image is on above/below the text; values: 'top', 'bot'; default: 'top'
+  img_position:           PropTypes.string, // Values: 'to_edge'
+  img_mobile_whole_size:  PropTypes.bool    // The Image is fullscrean on the mobile 
 }
 
 export default TextSection;

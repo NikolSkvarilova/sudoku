@@ -4,32 +4,32 @@
 
 .text_section_container {
   margin-bottom: $component_margin_bottom;
-  width: 100%;
   display: flex;
+  // justify-content: center;
 
   .text_half_container {
-    width: 50%;
-    margin: 30px 0;
-    // background: red;
+    max-width: 50%;
+
     @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-      width: 100%;
+      max-width: 100%;
     }
 
     .text_half_wrapper {
-      // background: green;
-      width: 75%;
-      margin: 0 auto;
       display: flex;
       height: 100%;
       align-items: center;
+      padding: 0 8vw;
 
+
+      @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+        padding: 0 10vw;
+      }
       
-
       .rectangle {
         width: $line-size;
         margin-right: 50px;
         flex-shrink: 0;
-        height: 500px;
+        height: 100%;
 
         @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
           display: none;
@@ -57,22 +57,21 @@
     }
   }
 
-  .img_half_container {
-    width: 50%;
+  .img_half_container {;
     display: flex;
     justify-content: center;
     align-items: center;
 
     @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-      width: 75%;
+      max-width: 100%;
     }
 
     .img_half {
-      width: 85%;
+      width: 80%;
       height: auto;
-      
+
       @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-        width: 75vw;
+        width: 70vw;
       }
       
     }
@@ -82,7 +81,7 @@
 
 .full_page_width {
   @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-    width: 100vw !important;
+    min-width: 100%;
   }
 }
 
