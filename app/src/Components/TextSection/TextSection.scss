@@ -1,109 +1,102 @@
 @import '../variables';
 @import '../mixins';
 
+
 .text_section_container {
   margin-bottom: $component_margin_bottom;
+  width: 100%;
+  display: flex;
 
-  .text_section_wrapper {
-    margin: 0 12vw;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
+  .text_half_container {
+    width: 50%;
+    margin: 30px 0;
+    // background: red;
+    @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+      width: 100%;
+    }
 
     .text_half_wrapper {
+      // background: green;
+      width: 75%;
+      margin: 0 auto;
       display: flex;
-      justify-content: center; 
-      align-items: center; 
-      width: 50%;
+      height: 100%;
+      align-items: center;
 
-      @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-        width: 100%;
-      }
+      
 
       .rectangle {
-        margin-right: 60px;
-        flex-shrink: 0;
-        height: 100%;
-        height: 500px;
         width: $line-size;
-        order: 0;
+        margin-right: 50px;
+        flex-shrink: 0;
+        height: 500px;
 
-        @media only screen and (max-width: map-get($breakpoints, mobile)) {
+        @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
           display: none;
         }
       }
-    
+      
       .text_half {
+
         .text_section_title {
           @include clean-element;
           font-family: map-get($font-families, section-title);
           font-size: map-get($font-sizes-desktop, section-title);
-
-          @media only screen and (max-width: map-get($breakpoints, mobile)) {
-            font-size: map-get($font-sizes-mobile, section-title);
-          }
         }
     
         .text_section_subtitle {
           font-family: map-get($font-families, sub-title);
           font-weight: map-get($font-weights, regular);
-
-          @media only screen and (max-width: map-get($breakpoints, mobile)) {
-            font-size: map-get($font-sizes-mobile, subtitle);
-          }
         }
   
         .text {
           font-family: map-get($font-families, regular-text);
-
-          @media only screen and (max-width: map-get($breakpoints, mobile)) {
-            font-size: map-get($font-sizes-mobile, text);
-          }
+          font-weight: map-get($font-weights, regular);
         }
       }
     }
+  }
 
-    img {
+  .img_half_container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+      width: 75%;
+    }
+
+    .img_half {
+      width: 85%;
       height: auto;
-      width: 500px;
-
-      @media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
-        width: 90%;
+      
+      @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+        width: 75vw;
       }
+      
     }
   }
 }
 
-.right {
-  margin-left: 100px;
+
+.full_page_width {
   @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-    margin: 0;
+    width: 100vw !important;
   }
 }
 
-.left {
-  margin-right: 150px;
-  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-    margin: 0;
-  }
-}
 
 .top {
   @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+    align-items: center;
     flex-direction: column-reverse;
-
-    img {
-      margin-top: 40px;
-    }
   }
 }
 
 .bot {
   @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+    align-items: center;
     flex-direction: column;
-
-    img {
-      margin-bottom: 40px;
-    }
   }
 }
