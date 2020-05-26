@@ -133,7 +133,7 @@ TextSection.propTypes = {
   img_align:              PropTypes.string, // The image is on the left/right from the text; values: 'left', 'right'; default: 'right'
   img_align_mobile:       PropTypes.string, // The image is on above/below the text; values: 'top', 'bot'; default: 'top'
   img_position:           PropTypes.string, // Values: 'to_edge'
-  img_mobile_whole_size:  PropTypes.bool    // The Image is fullscrean on the mobile 
+  img_mobile_whole_size:  PropTypes.bool    // The Image is fullscreen on the mobile 
 }
 
 export default TextSection;
