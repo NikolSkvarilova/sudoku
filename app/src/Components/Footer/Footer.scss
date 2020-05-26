@@ -1,2 +1,32 @@
 @import '../variables';
 @import '../mixins';
+
+.footer_container {
+  display: flex;
+  justify-content: center;
+  padding-top: 3vh;
+
+  .section {
+    margin: 0 3vw;
+    font-family: map-get($font-families, footer);
+
+    .icon {
+      width: 30px;
+      height: auto;
+      fill: red;
+    }
+
+    .section_title {}
+
+    .list_of_subcategories {
+      padding: 0;
+      list-style-type: none;
+
+      .subcategory {
+        cursor: pointer;
+        text-decoration: none;
+        
+      }
+    }
+  }
+}
