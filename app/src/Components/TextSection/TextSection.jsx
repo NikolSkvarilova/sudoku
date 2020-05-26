@@ -34,7 +34,7 @@ const TextSection = (props) => {
   const checkImgPositionStyle = (img_align, img_position) => {
     if (img_position == "to_edge" && img_align == "left") {
       return {
-        'justifyContent': 'flex-end'
+        'justifyContent': 'flex-start'
       };
     } else if (img_position == "to_edge" && img_align == "right") {
       return {
@@ -77,7 +77,7 @@ const TextSection = (props) => {
       {props.img_align == "left" ? 
         <div className={`img_half_container ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} style={imgPositionStyle} >
           <img 
-            className="img_half left" 
+            className={`img_half left ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} 
             src={props.img} alt={props.alt}>
           </img>
         </div> 
