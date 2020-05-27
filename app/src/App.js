@@ -89,6 +89,7 @@ function App() {
           img={require('./images/about_img.png')}
           alt="Designer Image"
           img_align="right"
+          img_align_mobile="top"
         />
       </section>
 

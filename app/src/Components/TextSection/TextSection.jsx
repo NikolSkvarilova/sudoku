@@ -16,8 +16,13 @@ const TextSection = (props) => {
     // If you switch the definitions in the .top and .bot class, you must 
     // optimize it for the case where the picture is on the right from the text.
 
-    if (!img_align_mobile) {
-      return "top";
+    if (img_align_mobile == null) {
+      console.log("UNDEFINED")
+      if (img_align === "left") {
+        return "top";
+      } else {
+        return "bot";
+      }
     }
 
     if (img_align === "left" && img_align_mobile === "top") {
