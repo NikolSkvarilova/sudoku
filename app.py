@@ -26,5 +26,42 @@ class App:
 
     return totemMap
 
+  def mapNumbers(self, sudoku, totemMap):
+    for i in range(len(sudoku)):
+      for j in range(len(sudoku[0])):
+        if sudoku[i][j] in totemMap.keys():
+          sudoku[i][j] = totemMap[sudoku[i][j]]
+
+    return sudoku
+
+  def reverseVertically(self, sudoku):
+    for row in sudoku:
+      row.reverse()
+
+    return sudoku
+
+  def reverseHorizontally(self, sudoku):
+    for i in range(len(sudoku)):
+      col = []
+      for j in range(len(sudoku)):
+        col.append(sudoku[j][i])
+
+      col.reverse()
+
+      for q in range(len(sudoku)):
+        sudoku[q][i] = col[q]
+
+    return sudoku 
+
+  def generateFromSeed(self):
+    sudoku = random.choice(self.sudokuFile["level1"])
+    totemMap = self.generateMap(len(sudoku))
+    sudoku = self.mapNumbers(sudoku, totemMap)
+
+    sudoku = self.reverseHorizontally(sudoku)
+    sudoku = self.reverseVertically(sudoku)
+    
+
 if __name__ == "__main__":
   app = App()
+  app.generateFromSeed()
