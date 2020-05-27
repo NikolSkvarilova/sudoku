@@ -27,10 +27,11 @@ class Leveler:
     for i in range(1, len(levelLimits) + 1):
       if numMissing < levelLimits[i-1]:
         lvl = i
-        break
-    
-    return lvl
+        return lvl
 
+    else:
+      return 6
+    
   # ----------------------------------------------------------------
   # [IMPORTANT] The code below is not ready to use!
   # ----------------------------------------------------------------
