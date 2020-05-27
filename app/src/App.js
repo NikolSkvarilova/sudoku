@@ -127,7 +127,7 @@ function App() {
 
       <ButtonSection
         bg="linear-gradient(to left, #24FFFF 0%, #ED1DFF 100%)"
-        btn_bg_color="white"
+        btn_bg_color="#fad419"
         btn_txt_color="black"
         btn_txt="Play the game"
       />
