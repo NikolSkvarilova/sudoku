@@ -53,14 +53,34 @@ class App:
 
     return sudoku 
 
+  def rotateSudoku(self, sudoku, lvl):
+    # lvl represents level of rotating the sudoku:
+    # lvl 1 = 90°
+    # lvl 2 = 180°
+    # lvl 3 = 270°
+
+    for _ in range(lvl):
+      # Zip return tuples - we want lists
+      sudoku = [list(x) for x in zip(*sudoku)]
+
+    return sudoku
+
   def generateFromSeed(self):
     sudoku = random.choice(self.sudokuFile["level1"])
     totemMap = self.generateMap(len(sudoku))
     sudoku = self.mapNumbers(sudoku, totemMap)
 
-    sudoku = self.reverseHorizontally(sudoku)
-    sudoku = self.reverseVertically(sudoku)
+    if random.random() < 0.5:
+      sudoku = self.reverseHorizontally(sudoku)
     
+    if random.random() < 0.5:
+      sudoku = self.reverseVertically(sudoku)
+
+    if random.random() < 0.5:
+      sudoku = self.rotateSudoku(sudoku, random.randrange(0, 4))   
+
+    return sudoku 
+
 
 if __name__ == "__main__":
   app = App()
