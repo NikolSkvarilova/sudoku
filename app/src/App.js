@@ -25,13 +25,26 @@ function App() {
   //   .then(text => console.log(text))
   //   .catch(error => console.log(error));
 
+  let colorPalette = {
+    txtPrimaryDark:   "#000000",
+    txtPrimaryLight:  "#FFFFFF",
+    txtSecondary:     "#9E9E9E",
+    fancy1:           "#24FFFF",
+    fancy2:           "#ED1DFF",
+    bgDark:           "#1A1A1A",
+    bgLight:          "#FFFFFF",
+    bgCard:           "#222222"
+  };
+
+  // ---------------------------
+
   let cardStyles = {
-    bg_color: '#222',
-    txt_color: 'white',
-    img: 'linear-gradient(to right bottom, #24FFFF, #ED1DFF)',
-    btn_bg_color: 'linear-gradient(to right, #24FFFF, #ED1DFF)',
-    btn_txt_color: 'black'
-  }
+    bg_color: colorPalette.bgCard,
+    txt_color: colorPalette.txtPrimaryLight,
+    img: `linear-gradient(to right bottom, ${colorPalette.fancy1}, ${colorPalette.fancy2}`,
+    btn_bg_color: `linear-gradient(to right, ${colorPalette.fancy1}, ${colorPalette.fancy2}`,
+    btn_txt_color: colorPalette.txtPrimaryDark
+  };
 
   return (
     <div>
@@ -40,18 +53,18 @@ function App() {
           main_title={["It's not just", <br />, "sudoku."]}
           sub_text="We have taken sudoku to a new level."
           bg_img={require('./images/background_landing_page.png')}
-          title_color="white"
-          sub_text_color="#9E9E9E"
-          bg_color="#1A1A1A"
+          title_color={colorPalette.txtPrimaryLight}
+          sub_text_color={colorPalette.txtSecondary}
+          bg_color={colorPalette.bgDark}
         />
 
         <Quote 
           text="If you are curious, you'll find the puzzles around you. If you are determined, you will solve them."
           author="Erno Rubik"
           line="true"
-          line_color="linear-gradient(90deg, #24FFFF 0%, #ED1DFF 100%)"
-          text_color="white"
-          author_color="#24FFFF"
+          line_color={`linear-gradient(to right, ${colorPalette.fancy1}, ${colorPalette.fancy2}`}
+          text_color={colorPalette.txtPrimaryLight}
+          author_color={colorPalette.fancy1}
         />
 
         <section className="cards-container">
@@ -82,10 +95,10 @@ function App() {
           title="About project"
           sub_title="A few words from the author."
           text={[<p>Aliquam sollicitudin egestas pellentesque. Nulla porta sollicitudin lacus, ut finibus libero fermentum quis. Integer fermentum mattis ex, lacinia lobortis ex hendrerit in. Vivamus at ante imperdiet, lobortis felis vitae, efficitur massa.</p>, <p>Nam ex metus, venenatis id justo nec, tempus dictum mauris. Sed non nibh lorem. Phasellus et faucibus ligula, sit amet porttitor magna. Phasellus non volutpat dolor, nec lobortis ex.</p>]}
-          title_color="white"
-          sub_title_color="gray"
-          txt_color="white"
-          line_color="linear-gradient(to top, #24FFFF 0%, #ED1DFF 100%)"
+          title_color={colorPalette.txtPrimaryLight}
+          sub_title_color={colorPalette.txtSecondary}
+          txt_color={colorPalette.txtPrimaryLight}
+          line_color={`linear-gradient(to top, ${colorPalette.fancy1}, ${colorPalette.fancy2}`}
           img={require('./images/about_img.png')}
           alt="Designer Image"
           img_align="right"
@@ -115,9 +128,9 @@ function App() {
             <p>And that’s it, ladies and gentlemans! You are ready to start solving some sudoku puzzles!</p>,
             <p><strong>Warning!</strong> Some sudokus are not solvable or have more solutions. But keep calm, our sudokus are solvable ane have only one solution!</p>
           ]}
-          title_color="black"
-          sub_title_color="gray"
-          txt_color="blacke"
+          title_color={colorPalette.txtPrimaryDark}
+          sub_title_color={colorPalette.txtSecondary}
+          txt_color={colorPalette.txtPrimaryDark}
           img={require('./images/sudoku.png')}
           alt="Designer Image"
           img_align="left"
@@ -126,9 +139,9 @@ function App() {
       </section>
 
       <ButtonSection
-        bg="linear-gradient(to left, #24FFFF 0%, #ED1DFF 100%)"
+        bg={`linear-gradient(to right, ${colorPalette.fancy1}, ${colorPalette.fancy2}`}
         btn_bg_color="#fad419"
-        btn_txt_color="black"
+        btn_txt_color={colorPalette.txtPrimaryDark}
         btn_txt="Play the game"
       />
 
@@ -136,7 +149,7 @@ function App() {
         categories={
           [
             {text: "Explore", 
-            icon: <ExploreIcon fill="#545454"/>,
+            icon: <ExploreIcon fill={colorPalette.txtSecondary}/>,
             sub_categories: [
               {text: "About project", link: "/about"}, 
               {text: "Rules", link: "/rules"},
@@ -155,9 +168,9 @@ function App() {
             ]}
           ]}
         bg="#222"
-        category_txt_color="#545454"
-        note_txt_color="#545454"
-        subcategory_txt_color="#545454"
+        category_txt_color={colorPalette.txtSecondary}
+        note_txt_color={colorPalette.txtSecondary}
+        subcategory_txt_color={colorPalette.txtSecondary}
 
       />
     </div>
