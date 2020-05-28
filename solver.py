@@ -120,7 +120,6 @@ if __name__ == "__main__":
 
   solver = Solver(grid3)
   solver.printBoard()
-  solver.getLevel(solver.countMissing())
   solver.solve()
   print("________________________")
   solver.printBoard()
