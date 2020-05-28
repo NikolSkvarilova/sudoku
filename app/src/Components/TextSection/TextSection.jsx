@@ -34,20 +34,6 @@ const TextSection = (props) => {
     return img_align_mobile;
   };
 
-
-  // const checkImgPositionStyle = (img_align, img_position) => {
-  //   if (img_position == "to_edge" && img_align == "left") {
-  //     // Image is to the edge on the left
-  //     return {
-  //       'justifyContent': 'flex-start',
-  //     };
-  //   } else if (img_position == "to_edge") {
-  //     // Image is to the edge on the right
-  //     return {
-  //       'justifyContent': 'flex-end',
-  //     };
-  //   }
-  // };
   
   // Styles of the main title
   let titleStyles = {
@@ -68,10 +54,6 @@ const TextSection = (props) => {
   let lineStyles = {
     'background': !! props.line_color ? props.line_color : ""
   };
-
-  // let imgMobileAlign = checkImgMobileAlignment(props.img_align, props.img_align_mobile)
-
-  // let imgPosition = checkImgPositionStyle(props.img_align, props.img_position)
 
   let imgPositionClass = "";
   if (props.img_position === "to_edge" &&  props.img_align === "left") {
@@ -115,7 +97,7 @@ const TextSection = (props) => {
 
             {/* Text */}
             <article className="text" style={textStyles}>
-              {props.text}
+            {props.children}
             </article>
           </div>
         </div>        

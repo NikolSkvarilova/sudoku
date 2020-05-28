@@ -98,7 +98,6 @@ function App() {
           title="About project"
           section_link="about"
           sub_title="A few words from the author."
-          text={[<p>Aliquam sollicitudin egestas pellentesque. Nulla porta sollicitudin lacus, ut finibus libero fermentum quis. Integer fermentum mattis ex, lacinia lobortis ex hendrerit in. Vivamus at ante imperdiet, lobortis felis vitae, efficitur massa.</p>, <p>Nam ex metus, venenatis id justo nec, tempus dictum mauris. Sed non nibh lorem. Phasellus et faucibus ligula, sit amet porttitor magna. Phasellus non volutpat dolor, nec lobortis ex.</p>]}
           title_color={colorPalette.txtPrimaryLight}
           sub_title_color={colorPalette.txtSecondary}
           txt_color={colorPalette.txtPrimaryLight}
@@ -108,8 +107,10 @@ function App() {
           img_align_mobile="top"
           img_align="right"
           // img_position="to_edge"
-          img_full_width_mobile
-        />
+          img_full_width_mobile>
+          
+          <p>Aliquam sollicitudin egestas pellentesque. Nulla porta sollicitudin lacus, ut finibus libero fermentum quis. Integer fermentum mattis ex, lacinia lobortis ex hendrerit in. Vivamus at ante imperdiet, lobortis felis vitae, efficitur massa.</p> <p>Nam ex metus, venenatis id justo nec, tempus dictum mauris. Sed non nibh lorem. Phasellus et faucibus ligula, sit amet porttitor magna. Phasellus non volutpat dolor, nec lobortis ex.</p>
+        </TextSection>
       </section>
 
       <section className="light-container">
@@ -123,26 +124,27 @@ function App() {
           title="Rules"
           sub_title="Learn the rules for solving sudoku!"
           section_link="rules"
-          text={[
-            <p>Sudoku is played over a <strong>9x9 grid</strong>, divided to <strong>3x3 sub</strong> grids called "regions".</p>,
-            <p>Sudoku begins with some of the grid cells already filled with numbers.</p>,
-            <p>The object of Sudoku is to fill the other empty cells with numbers between 1 and 9 (1 number only in each cell) according the following guidelines</p>,
-            <ol>
-              <li>Number can appear only once on each <strong>row</strong>.</li>
-              <li>Number can appear only once on each <strong>column</strong>.</li>
-              <li>Number can appear only once on each <strong>region</strong>.</li>
-            </ol>,
-            <p>And that’s it, ladies and gentlemans! You are ready to start solving some sudoku puzzles!</p>,
-            <p><strong>Warning!</strong> Some sudokus are not solvable or have more solutions. But keep calm, our sudokus are solvable ane have only one solution!</p>
-          ]}
           title_color={colorPalette.txtPrimaryDark}
           sub_title_color={colorPalette.txtSecondary}
           txt_color={colorPalette.txtPrimaryDark}
           img={require('./images/sudoku.png')}
           alt="Designer Image"
           img_align="left"
-          img_align_mobile="bot"
-        />
+          img_align_mobile="bot">
+
+          <p>Sudoku is played over a <strong>9x9 grid</strong>, divided to <strong>3x3 sub</strong> grids called "regions".</p>
+          <p>Sudoku begins with some of the grid cells already filled with numbers.</p>
+          <p>The object of Sudoku is to fill the other empty cells with numbers between 1 and 9 (1 number only in each cell) according the following guidelines</p>
+          <ol>
+            <li>Number can appear only once on each <strong>row</strong>.</li>
+            <li>Number can appear only once on each <strong>column</strong>.</li>
+            <li>Number can appear only once on each <strong>region</strong>.</li>
+          </ol>
+          <p>And that’s it, ladies and gentlemans! You are ready to start solving some sudoku puzzles!</p>
+          <p><strong>Warning!</strong> Some sudokus are not solvable or have more solutions. But keep calm, our sudokus are solvable ane have only one solution!</p>
+
+        </TextSection>
+          
       </section>
 
       <ButtonSection
