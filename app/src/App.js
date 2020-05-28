@@ -101,8 +101,10 @@ function App() {
           line_color={`linear-gradient(to top, ${colorPalette.fancy1}, ${colorPalette.fancy2}`}
           img={require('./images/about_img.png')}
           alt="Designer Image"
-          img_align="right"
           img_align_mobile="top"
+          img_align="right"
+          img_position="to_edge"
+          img_full_width_mobile
         />
       </section>
 

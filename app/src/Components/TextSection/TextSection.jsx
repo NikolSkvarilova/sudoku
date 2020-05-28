@@ -17,7 +17,6 @@ const TextSection = (props) => {
     // optimize it for the case where the picture is on the right from the text.
 
     if (img_align_mobile == null) {
-      console.log("UNDEFINED")
       if (img_align === "left") {
         return "top";
       } else {
@@ -36,17 +35,19 @@ const TextSection = (props) => {
   };
 
 
-  const checkImgPositionStyle = (img_align, img_position) => {
-    if (img_position == "to_edge" && img_align == "left") {
-      return {
-        'justifyContent': 'flex-start'
-      };
-    } else if (img_position == "to_edge" && img_align == "right") {
-      return {
-        'justifyContent': 'flex-end'
-      };
-    }
-  };
+  // const checkImgPositionStyle = (img_align, img_position) => {
+  //   if (img_position == "to_edge" && img_align == "left") {
+  //     // Image is to the edge on the left
+  //     return {
+  //       'justifyContent': 'flex-start',
+  //     };
+  //   } else if (img_position == "to_edge") {
+  //     // Image is to the edge on the right
+  //     return {
+  //       'justifyContent': 'flex-end',
+  //     };
+  //   }
+  // };
   
   // Styles of the main title
   let titleStyles = {
@@ -68,30 +69,37 @@ const TextSection = (props) => {
     'background': !! props.line_color ? props.line_color : ""
   };
 
-  // ---------------------------
+  // let imgMobileAlign = checkImgMobileAlignment(props.img_align, props.img_align_mobile)
 
-  // Styles for the main wrapper
-  let imgPositionStyle = checkImgPositionStyle(props.img_align, props.img_position);
+  // let imgPosition = checkImgPositionStyle(props.img_align, props.img_position)
 
-  // Class for aligning the image on the mobile screen
-  let imgAlignMobileClass = checkImgMobileAlignment(props.img_align, props.img_align_mobile);
+  let imgPositionClass = "";
+  if (props.img_position === "to_edge" &&  props.img_align === "left") {
+    imgPositionClass = "to_edge_left_full_screen_mobile"
+  } else if (props.img_position === "to_edge" &&  props.img_align != "left") {
+    imgPositionClass = "to_edge_right_full_screen_mobile"
+  } else {
+    imgPositionClass = "img_center"
+  }
+
+  let textPadding = "";
+  if (props.img_align === "left") {
+    textPadding = "img_on_the_left_from_text"
+  } else {
+    textPadding = "img_on_the_right_from_text"
+  }
+
+  let imgSizeMobile = "";
+  if (!! props.img_full_width_mobile) {
+    imgSizeMobile = "img_full_width_mobile"
+  } else {
+    imgSizeMobile = "img_regular_width_mobile"
+  }
 
   return (
-    <div className={`text_section_container ${imgAlignMobileClass}`}>  
-      {/* Image on the left */}
-      {props.img_align == "left" ? 
-        <div className={`img_half_container ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} style={imgPositionStyle} >
-          <img 
-            className={`img_half left ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} 
-            style={props.img_align_mobile === "top" ? {'marginBottom': '20px'} : {'marginTop': '20px'}}
-            src={props.img} alt={props.alt}>
-          </img>
-        </div> 
-        : ""
-      }
-      
+    <div className={`text_section_container ${props.img_align} ${checkImgMobileAlignment(props.img_align, props.img_align_mobile)}`}>  
       <div className="text_half_container">
-        <div className="text_half_wrapper">
+        <div className={`text_half_wrapper ${textPadding}`}>
           {/* Rectangle thingy */}
           {!! props.line_color ? <div className="rectangle" style={lineStyles}></div> : ""}
 
@@ -109,18 +117,14 @@ const TextSection = (props) => {
           </div>
         </div>        
       </div>
-      
-      {/* Image on the right (default value) */}
-      {props.img_align != "left" ? 
-        <div className={`img_half_container ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} style={imgPositionStyle} >
+    
+        <div className={`img_half_container ${imgPositionClass}`}>
           <img 
-            className={`img_half right ${!! props.img_mobile_whole_size ? "full_page_width" : ""}`} 
-            style={props.img_align_mobile === "top" ? {'marginBottom': '20px'} : {'marginTop': '20px'}}
-            src={props.img} alt={props.alt}>
+            className={`img_half ${imgSizeMobile}`}
+            src={props.img} 
+            alt={props.alt}>
           </img>
         </div> 
-        : ""
-      }
     </div>
   );
 }
@@ -137,8 +141,8 @@ TextSection.propTypes = {
   line_color:             PropTypes.string, // If the color is not entered, the line is not rendered!
   img_align:              PropTypes.string, // The image is on the left/right from the text; values: 'left', 'right'; default: 'right'
   img_align_mobile:       PropTypes.string, // The image is on above/below the text; values: 'top', 'bot'; default: 'top'
-  img_position:           PropTypes.string, // Values: 'to_edge'
-  img_mobile_whole_size:  PropTypes.bool    // The Image is fullscreen on the mobile 
+  img_position:           PropTypes.string, // Values: 'to_edge' 
+  img_full_width_mobile:  PropTypes.bool    // On the phone small-desktop screen and smaller, should the image be full-screen or not
 }
 
 export default TextSection;

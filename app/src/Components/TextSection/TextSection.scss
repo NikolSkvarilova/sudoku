@@ -3,31 +3,29 @@
 
 
 .text_section_container {
-  margin-bottom: $component_margin_bottom;
+  position: relative;
   display: flex;
-  justify-content: space-evenly;
+  margin-bottom: $component_margin_bottom;
 
   .text_half_container {
-    max-width: 40%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-      max-width: 100%;
+      width: 100%;
     }
 
     .text_half_wrapper {
       display: flex;
-      height: 100%;
       align-items: center;
 
-      @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-        padding: 0 10vw;
-      }
-      
       .rectangle {
         width: $line-size;
         margin-right: 50px;
         flex-shrink: 0;
-        height: 100%;
+        height: 500px;
 
         @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
           display: none;
@@ -35,7 +33,6 @@
       }
       
       .text_half {
-
         .text_section_title {
           @include clean-element;
           font-family: map-get($font-families, section-title);
@@ -46,53 +43,108 @@
           font-family: map-get($font-families, sub-title);
           font-weight: map-get($font-weights, regular);
         }
-  
+
         .text {
           font-family: map-get($font-families, regular-text);
           font-weight: map-get($font-weights, regular);
         }
       }
     }
+
+    
+
   }
 
   .img_half_container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 50%;
 
     @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-      max-width: 100%;
+      width: 100%;
     }
 
     .img_half {
-      width: 80%;
-      height: auto;
-
-      @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-        width: 70vw;
-      }
+      margin: 5vh 0;
     }
   }
 }
 
 
-.full_page_width {
-  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-    min-width: 100%;
-  }
+.left {
+  flex-direction: row-reverse;
 }
 
+.right {
+  flex-direction: row;
+}
 
 .top {
   @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-    align-items: center;
     flex-direction: column-reverse;
   }
 }
 
 .bot {
   @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-    align-items: center;
     flex-direction: column;
+  }
+}
+
+@mixin justify_content_small_desktop {
+  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+    justify-content: center;
+  }
+}
+
+
+.to_edge_right_full_screen_mobile {
+  justify-content: flex-end;
+  @include justify_content_small_desktop()
+}
+
+.to_edge_left_full_screen_mobile {
+  justify-content: flex-start;
+  @include justify_content_small_desktop()
+}
+
+.img_center {
+  justify-content: center;
+}
+
+.img_on_the_left_from_text {
+  padding-left: 3vw;
+  padding-right: 10vw;
+
+  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+    padding: 0 15vw;
+  }
+
+}
+
+.img_on_the_right_from_text {
+  padding-left: 10vw;
+  padding-right: 3vw;
+
+  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+    padding: 0 15vw;
+  }
+}
+
+.img_full_width_mobile {
+  max-width: 90%;
+  height: auto;
+
+  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+    min-width: 100%;
+  }
+}
+
+.img_regular_width_mobile {
+  max-width: 90%;
+  height: auto;
+
+  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+    max-width: 70%;
+    min-width: 65%;
   }
 }
