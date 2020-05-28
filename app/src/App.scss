@@ -47,3 +47,7 @@
 section {
   padding-bottom: $component_margin_bottom;
 }
+
+html {
+  scroll-behavior: smooth;
+}

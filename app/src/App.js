@@ -73,18 +73,21 @@ function App() {
               heading="About"
               sub_text="Read more about the project!"
               {...cardStyles}
+              btn_link="about"
             />
 
             <Card 
               heading="Rules"
               sub_text="Check out how to solve sudoku!"
               {...cardStyles}
+              btn_link="rules"
             />
 
             <Card 
               heading="Play"
               sub_text="Do you wanna play a game?"
               {...cardStyles}
+              btn_link="play"
             />
           </div>
           
@@ -93,6 +96,7 @@ function App() {
 
         <TextSection 
           title="About project"
+          section_link="about"
           sub_title="A few words from the author."
           text={[<p>Aliquam sollicitudin egestas pellentesque. Nulla porta sollicitudin lacus, ut finibus libero fermentum quis. Integer fermentum mattis ex, lacinia lobortis ex hendrerit in. Vivamus at ante imperdiet, lobortis felis vitae, efficitur massa.</p>, <p>Nam ex metus, venenatis id justo nec, tempus dictum mauris. Sed non nibh lorem. Phasellus et faucibus ligula, sit amet porttitor magna. Phasellus non volutpat dolor, nec lobortis ex.</p>]}
           title_color={colorPalette.txtPrimaryLight}
@@ -103,7 +107,7 @@ function App() {
           alt="Designer Image"
           img_align_mobile="top"
           img_align="right"
-          img_position="to_edge"
+          // img_position="to_edge"
           img_full_width_mobile
         />
       </section>
@@ -118,6 +122,7 @@ function App() {
         <TextSection 
           title="Rules"
           sub_title="Learn the rules for solving sudoku!"
+          section_link="rules"
           text={[
             <p>Sudoku is played over a <strong>9x9 grid</strong>, divided to <strong>3x3 sub</strong> grids called "regions".</p>,
             <p>Sudoku begins with some of the grid cells already filled with numbers.</p>,
@@ -173,7 +178,6 @@ function App() {
         category_txt_color={colorPalette.txtSecondary}
         note_txt_color={colorPalette.txtSecondary}
         subcategory_txt_color={colorPalette.txtSecondary}
-
       />
     </div>
   )

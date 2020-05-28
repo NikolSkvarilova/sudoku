@@ -25,7 +25,9 @@ const Card = (props) => {
         <h2 className="card-heading">{props.heading}</h2>
         <p className="card-text">{props.sub_text}</p>
       </div>
-      <button className="card-btn" style={btnStyles}>{props.btn_text ? props.btn_text : "Take me there!"}</button>
+      <a href={`#${props.btn_link}`}>
+        <button className="card-btn" style={btnStyles}>{props.btn_text ? props.btn_text : "Take me there!"}</button>
+      </a>
     </div>
   )
 }

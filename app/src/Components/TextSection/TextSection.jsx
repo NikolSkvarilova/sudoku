@@ -97,7 +97,10 @@ const TextSection = (props) => {
   }
 
   return (
-    <div className={`text_section_container ${props.img_align} ${checkImgMobileAlignment(props.img_align, props.img_align_mobile)}`}>  
+    <div 
+      id={props.section_link} 
+      className={`text_section_container ${props.img_align} ${checkImgMobileAlignment(props.img_align, props.img_align_mobile)}`}>
+
       <div className="text_half_container">
         <div className={`text_half_wrapper ${textPadding}`}>
           {/* Rectangle thingy */}
