@@ -105,9 +105,10 @@ function App() {
           img={require('./images/about_img.png')}
           alt="Designer Image"
           img_align_mobile="top"
-          img_align="right"
+          img_align="left"
           // img_position="to_edge"
-          img_full_width_mobile>
+          // img_full_width_mobile
+          >
           
           <p>Aliquam sollicitudin egestas pellentesque. Nulla porta sollicitudin lacus, ut finibus libero fermentum quis. Integer fermentum mattis ex, lacinia lobortis ex hendrerit in. Vivamus at ante imperdiet, lobortis felis vitae, efficitur massa.</p> <p>Nam ex metus, venenatis id justo nec, tempus dictum mauris. Sed non nibh lorem. Phasellus et faucibus ligula, sit amet porttitor magna. Phasellus non volutpat dolor, nec lobortis ex.</p>
         </TextSection>

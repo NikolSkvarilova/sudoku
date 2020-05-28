@@ -5,17 +5,6 @@ import './TextSection.scss';
 const TextSection = (props) => {
 
   const checkImgMobileAlignment = (img_align, img_align_mobile) => {
-    // If the image is aligned to the left and the user wants it 
-    // to be above the text on a mobile resolution, you must apply
-    // the "bot" class, because the image is before the text so when 
-    // 'flex-direction: column' is used, the img is automatically above the text.
-
-    // Same for the image on the left and on mobile resolution aligned 
-    // to the bottom, you must use 'flex-direction: column-reverse' - which is .top.
-
-    // If you switch the definitions in the .top and .bot class, you must 
-    // optimize it for the case where the picture is on the right from the text.
-
     if (img_align_mobile == null) {
       if (img_align === "left") {
         return "top";
@@ -23,13 +12,6 @@ const TextSection = (props) => {
         return "bot";
       }
     }
-
-    if (img_align === "left" && img_align_mobile === "top") {
-      return "bot";
-
-    } else if (img_align === "left" && img_align_mobile === "bot") {
-      return "top";
-    };
 
     return img_align_mobile;
   };
