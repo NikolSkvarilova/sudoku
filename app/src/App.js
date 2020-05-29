@@ -56,12 +56,15 @@ function App() {
           title_color={colorPalette.txtPrimaryLight}
           sub_text_color={colorPalette.txtSecondary}
           bg_color={colorPalette.bgDark}
+          btn_bg_color="#212121"
+          link="quote"
         />
 
         <Quote 
           text="If you are curious, you'll find the puzzles around you. If you are determined, you will solve them."
           author="Erno Rubik"
           line="true"
+          section_link="quote"
           line_color={`linear-gradient(to right, ${colorPalette.fancy1}, ${colorPalette.fancy2}`}
           text_color={colorPalette.txtPrimaryLight}
           author_color={colorPalette.fancy1}

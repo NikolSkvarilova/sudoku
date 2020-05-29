@@ -16,7 +16,7 @@ const Quote = (props) => {
   }
 
   return (
-    <div className="quote-container">
+    <div className="quote-container" id={props.section_link}>
       <figure className="figure-container">
         <blockquote className="quote-text" style={textStyles}>
           "{props.text}"

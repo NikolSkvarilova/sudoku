@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './LandingPage.scss';
 
+import { IconButton } from '@material-ui/core';
+import { KeyboardArrowDown } from '@material-ui/icons/';
+
 const LandingPage = (props) => {
   let bgStyles = {
     'backgroundColor': !! props.bg_color ? props.bg_color : 'white',
@@ -21,7 +24,9 @@ const LandingPage = (props) => {
       <h1 className="main_title" style={titleStyles}>{props.main_title}</h1>
       <div className="scroll-down_container">
         <p className="sub_text" style={subTextStyles}>{props.sub_text}</p>
-        {/* Scroll Button */}
+        <IconButton className="icon-tittle" style={{backgroundColor: props.btn_bg_color}} href={`#${props.link}`}>
+          <KeyboardArrowDown fontSize="large" style={{color: "#CFCFCF"}} href={`#${props.link}`} />
+        </IconButton>
       </div>
     </div>
   )
