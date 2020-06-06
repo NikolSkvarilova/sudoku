@@ -65,8 +65,11 @@ class App:
 
     return sudoku
 
-  def generateFromSeed(self):
-    sudoku = random.choice(self.sudokuFile["level1"])
+  def getSeed(self, category):
+    return random.choice(self.sudokuFile[category])
+
+  def generateFromSeed(self, category):
+    sudoku = self.getSeed(category)
     totemMap = self.generateMap(len(sudoku))
     sudoku = self.mapNumbers(sudoku, totemMap)
 
@@ -84,4 +87,4 @@ class App:
 
 if __name__ == "__main__":
   app = App()
-  app.generateFromSeed()
+  print(app.generateFromSeed("level1"))
