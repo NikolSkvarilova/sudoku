@@ -164,9 +164,9 @@ function App() {
             {text: "Explore", 
             icon: <ExploreIcon fill={colorPalette.txtSecondary}/>,
             sub_categories: [
-              {text: "About project", link: "/about"}, 
-              {text: "Rules", link: "/rules"},
-              {text: "Play game", link: "/play"}
+              {text: "About project", link: "about"}, 
+              {text: "Rules", link: "rules"},
+              {text: "Play game", link: "play"}
             ]}, 
             {text: "Visit", 
             sub_categories: [
