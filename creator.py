@@ -120,5 +120,6 @@ class Creator(Solver):
     
 if __name__ == "__main__":
   creator = Creator()
-  creator.setupJSONfile(1)
-  creator.generateSeed()
+  creator.setupJSONfile(5)
+  for i in range(5):
+    creator.generateSeed(i+1, 10)
