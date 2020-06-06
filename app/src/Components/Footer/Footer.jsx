@@ -36,7 +36,7 @@ const Footer = (props) => {
         {/* Sub-sections */}
         <ul className="list_of_subcategories">
           {category.sub_categories.map(sub_category => 
-            <li><a className="subcategory" style={subcategoryStyles} href={sub_category.link}>{sub_category.text}</a></li>
+            <li><a className="subcategory" style={subcategoryStyles} href={`#${sub_category.link}`}>{sub_category.text}</a></li>
           )}
         </ul>
       </section>
