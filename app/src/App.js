@@ -158,7 +158,7 @@ function App() {
         btn_txt="Play the game"
       />
 
-      <Footer 
+      {/* <Footer 
         categories={
           [
             {text: "Explore", 
@@ -184,7 +184,7 @@ function App() {
         category_txt_color={colorPalette.txtSecondary}
         note_txt_color={colorPalette.txtSecondary}
         subcategory_txt_color={colorPalette.txtSecondary}
-      />
+      /> */}
     </div>
   )
 }
