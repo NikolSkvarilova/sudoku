@@ -26,7 +26,7 @@ class App:
 
     return totemMap
 
-  def mapNumbers(self, sudoku, totemMap):
+  def mapSeed(self, sudoku, totemMap):
     for i in range(len(sudoku)):
       for j in range(len(sudoku[0])):
         if sudoku[i][j] in totemMap.keys():
@@ -71,7 +71,7 @@ class App:
   def generateFromSeed(self, category):
     sudoku = self.getSeed(category)
     totemMap = self.generateMap(len(sudoku))
-    sudoku = self.mapNumbers(sudoku, totemMap)
+    sudoku = self.mapSeed(sudoku, totemMap)
 
     if random.random() < 0.5:
       sudoku = self.reverseHorizontally(sudoku)
