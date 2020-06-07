@@ -2,12 +2,12 @@ import React from 'react'
 import './App.scss'
 
 // my components
-import LandingPage from './Components/LandingPage/LandingPage.jsx'
-import Quote from './Components/Quote/Quote.jsx'
-import Card from './Components/Card/Card.jsx'
-import TextSection from './Components/TextSection/TextSection.jsx'
-import ButtonSection from './Components/ButtonSection/ButtonSection.jsx'
-import Footer from './Components/Footer/Footer.jsx'
+import LandingPage from './Components/Sections/LandingPage/LandingPage.jsx'
+import Quote from './Components/Sections/Quote/Quote.jsx'
+import Card from './Components/Elements/Card/Card.jsx'
+import TextSection from './Components/Sections/TextSection/TextSection.jsx'
+import ButtonSection from './Components/Sections/ButtonSection/ButtonSection.jsx'
+import Footer from './Components/Sections/Footer/Footer.jsx'
 
 // Icons
 import { ReactComponent as ExploreIcon } from './images/explore.svg';
