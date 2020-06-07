@@ -13,25 +13,17 @@ import Footer from '../../Sections/Footer/Footer.jsx';
 // Icons
 import { ReactComponent as ExploreIcon } from '../../../images/explore.svg';
 
+// Color palette
+import colorPalette from '../../../color_palette.json'
+
 function Home() {
 
+  // Getting sudoku from backend
   fetch('/play/get_sudoku/5')
     .then(response => response.json())
     .then(data => console.log(data.sudoku))
     .catch(err => console.log(err))
 
-  let colorPalette = {
-    txtPrimaryDark:   "#000000",
-    txtPrimaryLight:  "#FFFFFF",
-    txtSecondary:     "#9E9E9E",
-    fancy1:           "#24FFFF",
-    fancy2:           "#ED1DFF",
-    bgDark:           "#1A1A1A",
-    bgLight:          "#FFFFFF",
-    bgCard:           "#222222"
-  };
-
-  // ---------------------------
 
   let cardStyles = {
     bg_color: colorPalette.bgCard,
@@ -41,13 +33,10 @@ function Home() {
     btn_txt_color: colorPalette.txtPrimaryDark
   };
 
-  let sectionStyles = {
-    'backgroundColor': colorPalette.bgDark
-  }
 
   return (
     <div>
-      <section className="dark-container"style={sectionStyles}>
+      <section className="dark-container"style={{'backgroundColor': colorPalette.bgDark}}>
         <LandingPage 
           main_title={["It's not just", <br />, "sudoku."]}
           sub_text="We have taken sudoku to a new level."
