@@ -1,0 +1,55 @@
+@import '../../variables';
+@import '../../mixins';
+
+.dark-container {
+  margin-bottom: 0;
+}
+
+.cards-container {
+  background: url("../../../images/bg_cards.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: auto;
+  margin-bottom: $component_margin_bottom; 
+
+  .cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    justify-content: center;   
+  }
+
+  .note {
+    text-align: center;
+    color: #999;
+    padding: 0 50px;
+  }
+}
+
+@media only screen and (max-width: 1390px) {
+  .cards-container {
+    background-image: none;
+  }
+}
+
+.light-container {
+  .wavy-transition {
+    width: 100%;
+    margin-top: -1px;
+    margin-bottom: 50px;
+  }
+}
+
+section {
+  padding-bottom: $component_margin_bottom;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
