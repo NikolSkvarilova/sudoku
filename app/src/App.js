@@ -14,16 +14,10 @@ import { ReactComponent as ExploreIcon } from './images/explore.svg';
 
 function App() {
 
-  // async function catchHello() {
-  //   const response = await fetch('/hello');
-  //   return await response.text();
-  // }
-
-  // let helloText = ''
-
-  // catchHello()
-  //   .then(text => console.log(text))
-  //   .catch(error => console.log(error));
+  fetch('/play/get_sudoku/5')
+    .then(response => response.json())
+    .then(data => console.log(data.sudoku))
+    .catch(err => console.log(err))
 
   let colorPalette = {
     txtPrimaryDark:   "#000000",
