@@ -9,6 +9,7 @@ import Card from '../../Elements/Card/Card.jsx';
 import TextSection from '../../Sections/TextSection/TextSection.jsx';
 import ButtonSection from '../../Sections/ButtonSection/ButtonSection.jsx';
 import Footer from '../../Sections/Footer/Footer.jsx';
+import ChooseLvlSection from '../../Sections/ChooseLvlSection/ChooseLvlSection.jsx';
 
 // Icons
 import { ReactComponent as ExploreIcon } from '../../../images/explore.svg';
@@ -137,6 +138,29 @@ function Home() {
         btn_bg_color="#fad419"
         btn_txt_color={colorPalette.txtPrimaryDark}
         btn_txt="Play the game"
+      />
+
+      <ChooseLvlSection
+        levels = {
+          [
+            {
+              name: "Level 1",
+              description: "This is level for begginers.",
+              linkValue: 1
+            },
+            {
+              name: "Level 2",
+              description: "This is level for advanced players.",
+              linkValue: 2
+            },
+            {
+              name: "Level 3",
+              description: "This is level for masters.",
+              linkValue: 3
+            }
+          ]
+        }
+        goTo="/play"
       />
 
       {/* <Footer 

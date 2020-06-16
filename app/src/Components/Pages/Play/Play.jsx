@@ -13,18 +13,21 @@ import './Play.scss';
 // Color palette
 // import colorPalette from '../../../color_palette.json'
 
-function Play() {
+
+
+
+
+const Play = ({match}) => {
 
   // Getting sudoku from backend
-  // fetch(`/play/get_sudoku/${props.lvl}.`)
-  fetch('/play/get_sudoku/5')
+  fetch(`/play/get_sudoku/${match.params.level}`)
     .then(response => response.json())
     .then(data => console.log(data.sudoku))
     .catch(err => console.log(err))
 
   return (
     <div>
-
+      {match.params.level}
     </div>
   )
 }
