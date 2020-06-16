@@ -18,13 +18,6 @@ import colorPalette from '../../../color_palette.json'
 
 function Home() {
 
-  // Getting sudoku from backend
-  fetch('/play/get_sudoku/5')
-    .then(response => response.json())
-    .then(data => console.log(data.sudoku))
-    .catch(err => console.log(err))
-
-
   let cardStyles = {
     bg_color: colorPalette.bgCard,
     txt_color: colorPalette.txtPrimaryLight,
