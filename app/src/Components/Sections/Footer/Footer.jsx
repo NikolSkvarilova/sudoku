@@ -26,10 +26,13 @@ const Footer = (props) => {
     categories.push(
       // One section
       <section className="section">
-        {/* Icon of the section */}
-        {category.icon ? category.icon : ""}
-        {/* Heading of the section */}
-        <h2 className="section_title" style={categoryStyles}>{category.text}</h2>
+        <div className="heading-container">
+          {/* Icon of the section */}
+          {category.icon ? category.icon : ""}
+          {/* Heading of the section */}
+          <h2 className="section_title" style={categoryStyles}>{category.text}</h2>
+        </div>
+        
         {/* Note for the section */}
         {category.note ? <p className="section_note" style={noteStyles}>{category.note}</p> : ""}
         

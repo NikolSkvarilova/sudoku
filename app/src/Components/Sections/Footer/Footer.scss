@@ -10,10 +10,14 @@
     margin: 0 3vw;
     font-family: map-get($font-families, footer);
 
-    .icon {
-      width: 30px;
-      height: auto;
-      fill: red;
+    .heading-container {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        margin-left: -50px;
+        margin-right: 20px;
+      }
     }
 
     .list_of_subcategories {
