@@ -15,21 +15,33 @@ import './Play.scss';
 
 
 
+class Play extends React.Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      sudoku: null
+    };
+  }
 
-const Play = ({match}) => {
+  componentDidMount() {
+    // Getting sudoku from backend
+    fetch(`/play/get_sudoku/${this.props.match.params.level}`)
+      .then(response => response.json())
+      .then(data => this.setState({ sudoku: data.sudoku }))
+      .catch(err => console.log(err));
 
-  // Getting sudoku from backend
-  fetch(`/play/get_sudoku/${match.params.level}`)
-    .then(response => response.json())
-    .then(data => console.log(data.sudoku))
-    .catch(err => console.log(err))
+  }
 
-  return (
-    <div>
-      {match.params.level}
-    </div>
-  )
+  render () {
+    console.log(this.state)
+    return (
+      <div className="play-container">
+        {this.state.sudoku}
+      </div>
+    );
+  }
 }
 
-export default Play
+
+export default Play;
