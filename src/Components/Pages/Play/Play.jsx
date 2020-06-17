@@ -20,7 +20,8 @@ class Play extends React.Component {
     super(props);
 
     this.state = {
-      sudoku: null
+      originalSudoku: null, // The fetched one (won't change)
+      currentSudoku: null // The one which can user change
     };
   }
 
@@ -28,16 +29,90 @@ class Play extends React.Component {
     // Getting sudoku from backend
     fetch(`/play/get_sudoku/${this.props.match.params.level}`)
       .then(response => response.json())
-      .then(data => this.setState({ sudoku: data.sudoku }))
+      .then(data => this.setState({ originalSudoku: data.sudoku }))
+      .then(() => this.createCellObjects())
       .catch(err => console.log(err));
 
   }
 
+  generateBlankBoard(height) {
+    let board = [];
+
+    for (let i = 0; i < height; i++) {
+      board.push([]);
+    }
+
+    return board;
+  }
+
+  createCellObjects() {
+
+    let height = this.state.originalSudoku.length;
+    let width = this.state.originalSudoku[0].length;
+
+    let sudoku = this.generateBlankBoard(height);
+
+    for (let i = 0; i < height; i++) {
+      for (let j = 0; j < width; j++) {
+        let value = this.state.originalSudoku[i][j];
+        let preffiled = false;
+
+        if (value !== 0) {
+          preffiled = true;
+        } else {
+          value = null;
+        }
+
+        let cell = {
+          value: value,
+          notes: null,
+          preffiled: preffiled,
+          row: i,
+          col: j
+        }
+
+        sudoku[i].push(cell);
+      }
+    }
+
+    this.setState({ currentSudoku: sudoku });
+  }
+
+
+  myFunc(row, col) {
+    // Click handling
+    console.log(row, col);
+  }
+
+  renderSudoku() {
+
+    return this.state.currentSudoku.map(row => {
+      let rowList = [];
+      row.forEach(cell => {
+        rowList.push(
+          <td 
+            className={ !! cell.preffiled ? "preffiled" : "notFilled" } 
+            onClick={ () => this.myFunc(cell.row, cell.col) }>{cell.value}
+          </td>
+        );
+      });
+
+      return (
+        <tr>
+          {rowList}
+        </tr>
+      );
+    });
+  }
+
   render () {
-    console.log(this.state)
     return (
       <div className="play-container">
-        {this.state.sudoku}
+        <table className="sudoku-table">
+          <tbody>
+            { this.state.currentSudoku !== null ? this.renderSudoku() : <tr><td>Hello</td></tr> }
+          </tbody>
+        </table>
       </div>
     );
   }
