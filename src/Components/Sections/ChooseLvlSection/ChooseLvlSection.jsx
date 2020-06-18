@@ -26,8 +26,11 @@ const ChooseLvlSection = (props) => {
   })
 
   return (
-    <div className="container" style={ bgStyles }>
-      {levels}
+    <div className="container" style={ bgStyles } id={props.section_link} >
+      <h1>Choose your level!</h1>
+      <div className="levels-container">
+        {levels}
+      </div>
     </div>
   )
 }
