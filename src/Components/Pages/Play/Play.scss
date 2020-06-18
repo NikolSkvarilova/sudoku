@@ -3,9 +3,11 @@
 
 .play-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+
   .sudoku-table {
     tbody, tr, td {
       border: 1px solid black;
@@ -24,6 +26,28 @@
 
     .notFilled:hover {
       background-color: #97fcff;
+    }
+
+    .selected {
+      background: #fff263;
+    }
+  }
+
+  .value-buttons {
+    display: flex;
+
+    .value-btn {
+      font-size: map-get($font-sizes, sudoku-nums);
+      margin: 10px 15px;
+      background-color: #97fcff;
+      border: none;
+      padding: 5px 10px;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    .value-btn:hover {
+      background-color: #ff7563;
     }
   }
 }
