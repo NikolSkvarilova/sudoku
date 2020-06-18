@@ -151,6 +151,21 @@ class Play extends React.Component {
   }
 
 
+  countHowManyLeft(value) {
+    let count = 0;
+    let size = this.state.currentSudoku.length;
+
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size; j++) {
+        if (this.state.currentSudoku[i][j].value === value) {
+          count++;
+        }
+      }
+    }
+    return size - count;
+  }
+
+
   getPossibleValuesElements() {
     // Display "buttons" with numbers (in 9x9 sudoku its 1-9) 
     // User can click on them and he will see all the cells with the value.
@@ -169,7 +184,8 @@ class Play extends React.Component {
           }
           
         }}>
-        { i + 1 }
+        <section className="value">{ i + 1 }</section>
+        <section className="howManyLeft">{ this.countHowManyLeft(i + 1) }</section>
       </section>
       )
     }

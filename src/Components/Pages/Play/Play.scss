@@ -51,6 +51,16 @@
       position: relative;
       overflow: hidden;
       color: #1A1A1A;
+
+      .value {
+        padding-bottom: 7px;
+      }
+      .howManyLeft {
+        font-size: 0.65em;
+        margin: 0;
+        padding: 0;
+        color: #585858;
+      }
     }
 
     .value-btn-selected {
