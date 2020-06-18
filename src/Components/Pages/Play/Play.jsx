@@ -89,7 +89,14 @@ class Play extends React.Component {
     // Click handling
     if (! this.state.currentSudoku[row][col].prefilled) {
       let currentSudoku = this.state.currentSudoku;
-      currentSudoku[row][col].value = this.state.selectedValue; 
+
+      if (!! this.state.currentSudoku[row][col].value) {
+        // Delete value
+        currentSudoku[row][col].value = null;
+      } else {
+        currentSudoku[row][col].value = this.state.selectedValue; 
+      }
+      
       this.setState({ currentSudoku: currentSudoku });
     }
   }
