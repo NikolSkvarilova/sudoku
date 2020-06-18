@@ -171,7 +171,6 @@ class Play extends React.Component {
   }
 
   checkSudoku() {
-    console.log("Checking...")
 
     const requestOptions = {
       method: 'POST',
@@ -181,7 +180,7 @@ class Play extends React.Component {
 
     fetch('/play/check_sudoku', requestOptions)
       .then(response => response.json())
-      .then(data => console.log(data.solved_correctly))
+      .then(data => this.solved(data.solved_correctly))
   }
 
   objectSudokuToArraySudoku() {
@@ -201,6 +200,15 @@ class Play extends React.Component {
     }
 
     return sudoku
+  }
+
+
+  solved(correctly) {
+    if (correctly) {
+      alert("Congratulation! You have solved the sudoku!")
+    } else {
+      alert("Whoop! You did not solved it correctly. :(")
+    }
   }
 
 
