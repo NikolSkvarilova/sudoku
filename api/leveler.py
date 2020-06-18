@@ -21,7 +21,7 @@ class Leveler:
   def getLevel(self):
     numMissing = self.countMissing()
 
-    levelLimits = [20, 25, 30, 40, 50]
+    levelLimits = [25, 35, 45, 55, 65]
     lvl = len(levelLimits)
 
     for i in range(1, len(levelLimits) + 1):

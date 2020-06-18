@@ -69,7 +69,7 @@ class Creator(Solver):
 
 
   # Removes some numbers from the board 
-  def removeCharacters(self, percentage_chance=0.3):
+  def removeCharacters(self, percentage_chance=0.4):
     for i in range(self.size):
       for j in range(self.size):
         if random.random() < percentage_chance:
@@ -87,14 +87,14 @@ class Creator(Solver):
 
   @staticmethod
   def writeToJSONFile(path="./", fileName="data", data={}):
-    filePathNameWExt = './' + path + '/' + fileName + '.json'
+    filePathNameWExt = './' + path + fileName + '.json'
     with open(filePathNameWExt, 'w') as f:
       json.dump(data, f)
 
 
   @staticmethod
   def readJSONFile(path="./", fileName="data"):
-    filePathNameWExt = './' + path + '/' + fileName + '.json'
+    filePathNameWExt = './' + path + fileName + '.json'
     with open(filePathNameWExt, 'r') as f:
       return json.load(f)
 
@@ -107,7 +107,7 @@ class Creator(Solver):
             
       while level != lvl:
         self.generate()
-        self.removeCharacters()
+        self.removeCharacters(percentage_chance=(lvl * 12) / 100)
         self.leveler.setBoard(self.board)
         level = self.leveler.getLevel()
 
