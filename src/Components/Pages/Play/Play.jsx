@@ -8,7 +8,7 @@ class Play extends React.Component {
     this.state = {
       originalSudoku: null, // The fetched one (won't change)
       currentSudoku: null, // The one which can user change
-      selectedValue: "roomba" // Value the user wants to see highlighted or which the user wants to insert into the sudoku.
+      selectedValue: "" // Value the user wants to see highlighted or which the user wants to insert into the sudoku.
     };
   }
 
@@ -180,7 +180,7 @@ class Play extends React.Component {
           if (this.state.selectedValue != i + 1) {
             this.setState({ selectedValue: i + 1 });
           } else {
-            this.setState({ selectedValue: "roomba" });
+            this.setState({ selectedValue: "" });
           }
           
         }}>
