@@ -7,7 +7,6 @@ import LandingPage from '../../Sections/LandingPage/LandingPage.jsx';
 import Quote from '../../Sections/Quote/Quote.jsx';
 import Card from '../../Elements/Card/Card.jsx';
 import TextSection from '../../Sections/TextSection/TextSection.jsx';
-import ButtonSection from '../../Sections/ButtonSection/ButtonSection.jsx';
 import Footer from '../../Sections/Footer/Footer.jsx';
 import ChooseLvlSection from '../../Sections/ChooseLvlSection/ChooseLvlSection.jsx';
 
@@ -133,13 +132,6 @@ function Home() {
           
       </section>
 
-      <ButtonSection
-        bg={`linear-gradient(to right, ${colorPalette.fancy1}, ${colorPalette.fancy2}`}
-        btn_bg_color="#fad419"
-        btn_txt_color={colorPalette.txtPrimaryDark}
-        btn_txt="Play the game"
-      />
-
       <ChooseLvlSection
         levels = {
           [
@@ -171,6 +163,8 @@ function Home() {
           ]
         }
         goTo="/play"
+        bg={`linear-gradient(to right, ${colorPalette.fancy1}, ${colorPalette.fancy2}`}
+        btn_bg="white"
       />
 
       {/* <Footer 
