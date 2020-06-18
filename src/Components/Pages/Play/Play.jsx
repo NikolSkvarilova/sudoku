@@ -14,6 +14,11 @@ class Play extends React.Component {
 
 
   componentDidMount() {
+    this.fetchSudoku()
+  }
+
+
+  fetchSudoku() {
     // Getting sudoku from backend
     fetch(`/play/get_sudoku/${this.props.match.params.level}`)
       .then(response => response.json())
@@ -41,7 +46,7 @@ class Play extends React.Component {
     // a list ob objects with these information:
     // cell = { value:      <int: value of the cell in the sudoku>, 
     //          notes:      <array: list of possible values entered by user>, 
-    //          preffiled:  <bool: is this spot empty in the original sudoku>,
+    //          prefilled:  <bool: is this spot empty in the original sudoku>,
     //          row:        <int: position>,
     //          col:        <int: posiiton>
     //        }  
@@ -56,10 +61,10 @@ class Play extends React.Component {
     for (let i = 0; i < height; i++) {
       for (let j = 0; j < width; j++) {
         let value = this.state.originalSudoku[i][j];
-        let preffiled = false;
+        let prefilled = false;
 
         if (value !== 0) {
-          preffiled = true;
+          prefilled = true;
         } else {
           value = null;
         }
@@ -67,7 +72,7 @@ class Play extends React.Component {
         let cell = {
           value:      value,
           notes:      null,
-          preffiled:  preffiled,
+          prefilled:  prefilled,
           row:        i,
           col:        j
         }
@@ -82,7 +87,7 @@ class Play extends React.Component {
 
   handleClickOnCell(row, col) {
     // Click handling
-    if (! this.state.currentSudoku[row][col].preffiled) {
+    if (! this.state.currentSudoku[row][col].prefilled) {
       let currentSudoku = this.state.currentSudoku;
       currentSudoku[row][col].value = this.state.selectedValue; 
       this.setState({ currentSudoku: currentSudoku });
@@ -92,14 +97,14 @@ class Play extends React.Component {
 
   getClassesForCell(cell) {
     // Just some ui classes for each cell
-    // Why? Because preffiled cells will have different color and so on
+    // Why? Because prefilled cells will have different color and so on
 
     let classes = "";
 
-    if (cell.preffiled) {
-      classes += " preffiled";
+    if (cell.prefilled) {
+      classes += " prefilled";
     } else {
-      classes += " notFfiled";
+      classes += " notFilled";
     }
 
     // This highlightes every cell with specific value (selected value)
@@ -148,7 +153,7 @@ class Play extends React.Component {
     for (let i = 0; i < this.state.currentSudoku.length; i++) {
       elements.push(
       <section 
-        className="value-btn" 
+        className={ this.state.selectedValue === i + 1 ? "value-btn value-btn-selected" : "value-btn" } 
         onClick={ () => {
           if (this.selectedValue != i + 1) {
             this.setState({ selectedValue: i + 1 });
@@ -213,9 +218,9 @@ class Play extends React.Component {
         </div>
 
         <div className="btn-section">
-          <button className="reset-btn" onClick={ () => { this.createSudokuFromOriginal() } }>Reset</button>
-          <button className="check-btn" onClick={ () => { this.checkSudoku() } }>Check</button>
-          <button className="new-btn">New</button>
+          <div className="button" onClick={ () => { this.createSudokuFromOriginal() } }>Reset Sudoku</div>
+          <div className="button" onClick={ () => { this.checkSudoku() } }>Check the Sudoku</div>
+          <div className="button" onClick={ () => { this.fetchSudoku() } }>Get New Sudoku</div>
         </div>
       </div>
     );
