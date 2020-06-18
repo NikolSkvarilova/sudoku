@@ -71,7 +71,7 @@ function Home() {
               heading="Play"
               sub_text="Do you wanna play a game?"
               {...cardStyles}
-              btn_link="play"
+              btn_link="levels"
             />
           </div>
           
@@ -136,28 +136,23 @@ function Home() {
         levels = {
           [
             {
-              name: "Level 1",
-              description: "This is level for begginers.",
+              name: "Beginner",
               linkValue: 1
             },
             {
-              name: "Level 2",
-              description: "This is level for advanced players.",
+              name: "Normal",
               linkValue: 2
             },
             {
-              name: "Level 3",
-              description: "This is level for masters.",
+              name: "Advanced",
               linkValue: 3
             },
             {
-              name: "Level 4",
-              description: "This is level for masters.",
+              name: "Hard",
               linkValue: 4
             },
             {
-              name: "Level 5",
-              description: "This is level for masters.",
+              name: "Extra Hard",
               linkValue: 5
             }
           ]
@@ -165,6 +160,7 @@ function Home() {
         goTo="/play"
         bg={`linear-gradient(to right, ${colorPalette.fancy1}, ${colorPalette.fancy2}`}
         btn_bg="white"
+        section_link="levels"
       />
 
       {/* <Footer 
