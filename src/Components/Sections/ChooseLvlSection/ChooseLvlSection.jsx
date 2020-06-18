@@ -1,22 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './ChooseLvlSection.scss'
+
 const ChooseLvlSection = (props) => {
+
+  let bgStyles = {
+    'background': !! props.bg ? props.bg : 'pink'
+  };
+
+  // let btnStyles = {
+  //   'background': !! props.btn_bg ? props.btn_bg : "white"  
+  // }
 
   let levels = [];
 
   props.levels.forEach(level => {
     levels.push(
-      <button title={!! level.description ? level.description : ""} onClick={level.onClick}>
-        <a href={`${props.goTo}/${level.linkValue}`}>
+      <a href={`${props.goTo}/${level.linkValue}`}>
+        <div className="button">
           {level.name} 
-        </a> 
-      </button>
+        </div>
+      </a> 
     )
   })
 
   return (
-    <div>
+    <div className="container" style={ bgStyles }>
       {levels}
     </div>
   )
