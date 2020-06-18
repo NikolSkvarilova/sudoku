@@ -157,6 +157,16 @@ function Home() {
               name: "Level 3",
               description: "This is level for masters.",
               linkValue: 3
+            },
+            {
+              name: "Level 4",
+              description: "This is level for masters.",
+              linkValue: 4
+            },
+            {
+              name: "Level 5",
+              description: "This is level for masters.",
+              linkValue: 5
             }
           ]
         }
