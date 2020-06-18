@@ -165,6 +165,39 @@ class Play extends React.Component {
     return elements;
   }
 
+  checkSudoku() {
+    console.log("Checking...")
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify([this.objectSudokuToArraySudoku(), this.state.originalSudoku])
+    };
+
+    fetch('/play/check_sudoku', requestOptions)
+      .then(response => response.json())
+      .then(data => console.log(data.solved_correctly))
+  }
+
+  objectSudokuToArraySudoku() {
+    let size = this.state.originalSudoku.length;
+    let sudoku = this.generateBlankBoard(size);
+
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size; j++) {
+        let value = this.state.currentSudoku[i][j].value;
+
+        if (value === null) {
+          value = 0;
+        }
+
+        sudoku[i].push(value)
+      }
+    }
+
+    return sudoku
+  }
+
 
   render () {
     return (
@@ -180,8 +213,8 @@ class Play extends React.Component {
         </div>
 
         <div className="btn-section">
-          <button className="reset-btn" onClick={ () => {this.createSudokuFromOriginal()} }>Reset</button>
-          <button className="check-btn">Check</button>
+          <button className="reset-btn" onClick={ () => { this.createSudokuFromOriginal() } }>Reset</button>
+          <button className="check-btn" onClick={ () => { this.checkSudoku() } }>Check</button>
           <button className="new-btn">New</button>
         </div>
       </div>
