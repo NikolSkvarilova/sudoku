@@ -24,7 +24,15 @@ const LandingPage = (props) => {
       <h1 className="main_title" style={titleStyles}>{props.main_title}</h1>
       <div className="scroll-down_container">
         <p className="sub_text" style={subTextStyles}>{props.sub_text}</p>
-        <IconButton className="icon-tittle" style={{backgroundColor: props.btn_bg_color}} href={`#${props.link}`}>
+        <IconButton 
+          className="icon-tittle" 
+          style={
+            {
+              backgroundColor: props.btn_bg_color, 
+              boxShadow: "0px 0px 55px -2px rgba(0,0,0,0.63)"
+            }
+          } 
+          href={`#${props.link}`}>
           <KeyboardArrowDown fontSize="large" style={{color: "#CFCFCF"}} href={`#${props.link}`} />
         </IconButton>
       </div>
