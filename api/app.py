@@ -8,9 +8,11 @@ app = Flask("__name__")
 
 getter = Getter()
 
+
 @app.route('/play/get_sudoku/<int:lvl>')
 def get_sudoku(lvl):
   return {"sudoku": getter.generateFromSeed("level" + str(lvl))}
+
 
 @app.route('/play/check_sudoku', methods=['GET', 'POST'])
 def check_sudoku():
@@ -29,4 +31,4 @@ def check_sudoku():
     
 
 if __name__ == "__main__": 
-   app.run(debug=True, port=5000)
+  app.run(debug=True, port=5000)
