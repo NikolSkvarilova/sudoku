@@ -67,10 +67,8 @@ nav {
   z-index: 50;
   position: fixed;
 
-
   .elements {
     position: relative;
-    width: 400px;
     display: table;
   }
 
@@ -157,30 +155,25 @@ nav {
     color: #fff;
   }
   
-  .elements a:hover:before, .elements a:hover:after
-  {
+  .elements a:hover:before, .elements a:hover:after {
     transform: scale(1);
   }
   
-  .elements a:nth-child(1):hover ~ #indicator
-  {
+  .elements a:nth-child(1):hover ~ #indicator {
     background: linear-gradient(130deg, yellow, red);
   }
   
-  .elements a:nth-child(2):hover ~ #indicator
-  {
+  .elements a:nth-child(2):hover ~ #indicator {
     left: 30%;
     background: linear-gradient(130deg, #00e2ff, #89ff00);
   }
   
-  .elements a:nth-child(3):hover ~ #indicator
-  {
+  .elements a:nth-child(3):hover ~ #indicator {
     left: 62%;
     background: linear-gradient(130deg, purple, palevioletred);
   }
 
-  .elements a:nth-child(4):hover ~ #indicator
-  {
+  .elements a:nth-child(4):hover ~ #indicator {
     left: 87%;
     background: linear-gradient(130deg, #545cf7, #ED1DFF);
   }
