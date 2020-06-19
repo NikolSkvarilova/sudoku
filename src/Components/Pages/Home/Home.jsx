@@ -132,9 +132,9 @@ function Home() {
           <p>Sudoku begins with some of the grid cells already filled with numbers.</p>
           <p>The object of Sudoku is to fill the other empty cells with numbers between 1 and 9 (1 number only in each cell) according the following guidelines</p>
           <ol>
-            <li>Number can Homeear only once on each <strong>row</strong>.</li>
-            <li>Number can Homeear only once on each <strong>column</strong>.</li>
-            <li>Number can Homeear only once on each <strong>region</strong>.</li>
+            <li>Number can appear only once on each <strong>row</strong>.</li>
+            <li>Number can appear only once on each <strong>column</strong>.</li>
+            <li>Number can appear only once on each <strong>region</strong>.</li>
           </ol>
           <p>And that’s it, ladies and gentlemans! You are ready to start solving some sudoku puzzles!</p>
           <p><strong>Warning!</strong> Some sudokus are not solvable or have more solutions. But keep calm, our sudokus are solvable ane have only one solution!</p>
