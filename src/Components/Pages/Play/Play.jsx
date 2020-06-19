@@ -8,7 +8,8 @@ class Play extends React.Component {
     this.state = {
       originalSudoku: null, // The fetched one (won't change)
       currentSudoku: null, // The one which can user change
-      selectedValue: "" // Value the user wants to see highlighted or which the user wants to insert into the sudoku.
+      selectedValue: "", // Value the user wants to see highlighted or which the user wants to insert into the sudoku.
+      noting: false
     };
   }
 
@@ -71,7 +72,7 @@ class Play extends React.Component {
 
         let cell = {
           value:      value,
-          notes:      null,
+          notes:      [],
           prefilled:  prefilled,
           row:        i,
           col:        j
@@ -85,18 +86,42 @@ class Play extends React.Component {
   }
 
 
+  checkIfElementInArray(arr, element) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === element) {
+        return true;
+      }
+    }
+  }
+
+
   handleClickOnCell(row, col) {
     // Click handling
     if (! this.state.currentSudoku[row][col].prefilled) {
       let currentSudoku = this.state.currentSudoku;
+      let cell = this.state.currentSudoku[row][col];
+      let selectedValue = this.state.selectedValue;
 
-      if (!! this.state.currentSudoku[row][col].value) {
-        // Delete value
-        currentSudoku[row][col].value = null;
+      if (this.state.noting) { 
+        if (this.checkIfElementInArray(cell.notes, selectedValue)) {
+          let index = cell.notes.indexOf(selectedValue);
+
+          if (index > -1) {
+            cell.notes.splice(index, 1);
+          }
+        } else {
+          cell.notes.push(selectedValue);
+        }
+        
       } else {
-        currentSudoku[row][col].value = this.state.selectedValue; 
+        if (!! cell.value) {
+          // Delete value
+          cell.value = null;
+        } else {
+          cell.value = selectedValue; 
+        }
       }
-      
+      currentSudoku[row][col] = cell;
       this.setState({ currentSudoku: currentSudoku });
     }
   }
@@ -137,7 +162,10 @@ class Play extends React.Component {
             className={ this.getClassesForCell(cell) } 
             onClick={ () => this.handleClickOnCell(cell.row, cell.col) }
           >
-            { cell.value }
+            <div className="cell-value">
+              { cell.value }  
+            </div>
+            { ! cell.value ? <div className="cell-note">{ cell.notes }</div> : "" }
           </td>
         );
       });
@@ -235,6 +263,12 @@ class Play extends React.Component {
   }
 
 
+  changeMode() {
+    let neg = !this.state.noting;
+    this.setState({ noting: neg })
+  }
+
+
   render () {
     return (
       <div className="play-container">
@@ -252,6 +286,7 @@ class Play extends React.Component {
           <div className="button" onClick={ () => { this.createSudokuFromOriginal() } }>Reset Sudoku</div>
           <div className="button" onClick={ () => { this.checkSudoku() } }>Check the Sudoku</div>
           <div className="button" onClick={ () => { this.fetchSudoku() } }>Get New Sudoku</div>
+          <div className={ `button ${ this.state.noting ? ' noting' : ''}` } onClick={ () => { this.changeMode() } }>Change Mode</div>
         </div>
       </div>
     );

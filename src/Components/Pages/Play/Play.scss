@@ -21,6 +21,14 @@
       font-size: map-get($font-sizes, sudoku-nums);
       width: 50px;
       height: 50px;
+      max-width: 50px;
+
+      .cell-note {
+        padding: 0 6px;
+        font-size: 0.6em;
+        color: gray;
+        overflow-wrap: break-word;
+      }
     }
 
     .prefilled {
@@ -32,7 +40,7 @@
     }
 
     .selected {
-      background: #7598ff;
+      background: #96b0ff;
     }
   }
 
@@ -64,54 +72,60 @@
     }
 
     .value-btn-selected {
-      background-color: #7598ff;
+      background-color: #96b0ff;
     }
   }
 
   .btn-section {
     display: flex;
+}
 
-    .button {
-      -webkit-box-flex: 1;
-      flex: 1 1 auto;
-      margin: 10px;
-      padding: 20px;
-      border: 1px solid #1A1A1A;
-      text-align: center;
-      text-transform: uppercase;
-      position: relative;
-      overflow: hidden;
+  .button {
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #1A1A1A;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    color: #1A1A1A;
+
+    &:after {
+      position: absolute;
       -webkit-transition: 0.3s;
       transition: 0.3s;
-      color: #1A1A1A;
-
-      &:after {
-        position: absolute;
-        -webkit-transition: 0.3s;
-        transition: 0.3s;
-        content: "";
-        width: 0;
-        left: 50%;
-        bottom: 0;
-        height: 3px;
-        background: #7598ff;
-      }
-      
-      &:hover {
-        cursor: pointer;
-      }
-      
-      &:hover:after {
-        width: 100%;
-        left: 0;
-      }
-      
-      &:after {
-        right: 0;
-        left: auto;
-      }
+      content: "";
+      width: 0;
+      left: 50%;
+      bottom: 0;
+      height: 3px;
+      background: #96b0ff;
+    }
+    
+    &:hover {
+      cursor: pointer;
+    }
+    
+    &:hover:after {
+      width: 100%;
+      left: 0;
+    }
+    
+    &:after {
+      right: 0;
+      left: auto;
     }
   }
+
+  .noting {
+    background-color: #96b0ff;
+    color: black;
+  }
+
 }
 
 
