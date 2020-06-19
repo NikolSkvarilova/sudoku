@@ -11,7 +11,8 @@
   background: #f5f5f5;
 
   .sudoku-table {
-
+    border-collapse: collapse;
+    
     tbody, tr, td {
       border: 1px solid #1A1A1A;
     }
@@ -42,6 +43,14 @@
     .selected {
       background: #96b0ff;
     }
+
+    .edge-horizontal {
+      border-left: 3px solid;
+    }
+
+    .edge-vertical {
+      border-top: 3px solid;
+    }
   }
 
   .value-buttons {
@@ -63,6 +72,7 @@
       .value {
         padding-bottom: 7px;
       }
+
       .howManyLeft {
         font-size: 0.65em;
         margin: 0;

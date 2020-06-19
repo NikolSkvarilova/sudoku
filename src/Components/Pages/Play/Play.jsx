@@ -132,7 +132,8 @@ class Play extends React.Component {
     // Why? Because prefilled cells will have different color and so on
 
     let classes = "";
-
+    let regionSize = this.state.originalSudoku.length ** (1 / 2);
+ 
     if (cell.prefilled) {
       classes += " prefilled";
     } else {
@@ -144,7 +145,23 @@ class Play extends React.Component {
       classes += " selected"
     } 
 
+    // Col
+    console.log(cell.col / regionSize)
+    if (! this.wholeNumTest(cell.col / regionSize) && (cell.col / regionSize) !== 0) {
+      classes += " edge-horizontal"
+    } 
+
+    // Row
+    if (! this.wholeNumTest(cell.row / regionSize) && (cell.row / regionSize) !== 0) {
+      classes += " edge-vertical"
+    } 
+
     return classes;
+  }
+
+
+  wholeNumTest(n) {
+    return (n - Math.floor(n)) !== 0; 
   }
 
 
