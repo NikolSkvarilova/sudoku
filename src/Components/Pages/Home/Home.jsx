@@ -29,6 +29,17 @@ function Home() {
 
   return (
     <div>
+      <nav>
+        <div className="elements">
+          <a href="#">Home</a>
+          <a href="#about">About</a>
+          <a href="#rules">Rules</a>
+          <a href="#levels">Play</a>
+          <div id="indicator"></div>
+        </div>
+      </nav>
+
+
       <section className="dark-container"style={{'backgroundColor': colorPalette.bgDark}}>
         <LandingPage 
           main_title={["It's not just", <br />, "sudoku."]}
