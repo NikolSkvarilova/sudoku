@@ -182,7 +182,7 @@ class Play extends React.Component {
             <div className="cell-value">
               { cell.value }  
             </div>
-            { ! cell.value ? <div className="cell-note">{ cell.notes }</div> : "" }
+            { ! cell.value ? <div className="cell-note">{ cell.notes.sort() }</div> : "" }
           </td>
         );
       });
