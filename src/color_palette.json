@@ -2,8 +2,8 @@
   "txtPrimaryDark":   "#000000",
   "txtPrimaryLight":  "#FFFFFF",
   "txtSecondary":     "#9E9E9E",
-  "fancy1":           "#24FFFF",
-  "fancy2":           "#ED1DFF",
+  "fancy1":           "#FF00FF",
+  "fancy2":           "#0071BC",
   "bgDark":           "#1A1A1A",
   "bgLight":          "#FFFFFF",
   "bgCard":           "#222222"

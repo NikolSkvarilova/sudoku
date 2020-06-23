@@ -46,9 +46,10 @@ function Home() {
           sub_text="We have taken sudoku to a new level."
           bg_img={require('../../../images/background_landing_page.png')}
           title_color={colorPalette.txtPrimaryLight}
-          sub_text_color={colorPalette.txtSecondary}
+          sub_text_color={colorPalette.txtPrimaryLight}
           bg_color={colorPalette.bgDark}
-          btn_bg_color="#212121"
+          btn_bg_color="rgba(219, 219, 219, 0.3)"
+          arrow_color="#212121"
           link="quote"
         />
 

@@ -33,7 +33,7 @@ const LandingPage = (props) => {
             }
           } 
           href={`#${props.link}`}>
-          <KeyboardArrowDown fontSize="large" style={{color: "#CFCFCF"}} href={`#${props.link}`} />
+          <KeyboardArrowDown fontSize="large" style={{color: !! props.arrow_color ? props.arrow_color : "black" }} href={`#${props.link}`} />
         </IconButton>
       </div>
     </div>
