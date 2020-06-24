@@ -1,8 +1,13 @@
 @import '../../variables';
 @import '../../mixins';
 
-.dark-container {
-  margin-bottom: 0;
+html {
+  scroll-behavior: smooth;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .cards-container {
@@ -23,7 +28,6 @@
   .note {
     text-align: center;
     color: #999;
-    padding: 0 50px;
   }
 }
 
@@ -35,23 +39,9 @@
 
 .light-container {
   .wavy-transition {
-    width: 100%;
-    margin-top: -1px;
-    margin-bottom: 50px;
+    width: 100vw;
   }
 }
-
-
-html {
-  scroll-behavior: smooth;
-}
-
-a {
-  text-decoration: none;
-}
-
-
-
 
 nav {
   width: 100%;

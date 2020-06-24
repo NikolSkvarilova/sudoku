@@ -1,36 +1,33 @@
 import React from 'react';
 import './Home.scss';
 
-
-// my components
+// My components
 import Section from '../../Sections/Section/Section.jsx';
-
 import LandingPage from '../../Sections/LandingPage/LandingPage.jsx';
 import Quote from '../../Sections/Quote/Quote.jsx';
 import Card from '../../Elements/Card/Card.jsx';
 import TextSection from '../../Sections/TextSection/TextSection.jsx';
-import Footer from '../../Sections/Footer/Footer.jsx';
 import ChooseLvlSection from '../../Sections/ChooseLvlSection/ChooseLvlSection.jsx';
 
 // Icons
-import { ReactComponent as ExploreIcon } from '../../../images/explore.svg';
+import {  ReactComponent as ExploreIcon  } from '../../../images/explore.svg';
 
 // Color palette
 import colorPalette from '../../../color_palette.json'
 
-function Home() {
+const Home = () => { 
 
-  let cardStyles = {
+  let cardStyles = { 
     bg_color: colorPalette.bgCard,
     txt_color: colorPalette.txtPrimaryLight,
-    img: `linear-gradient(to right bottom, ${colorPalette.fancy1}, ${colorPalette.fancy2}`,
-    btn_bg_color: `linear-gradient(to right, ${colorPalette.fancy1}, ${colorPalette.fancy2}`,
+    img: `linear-gradient(to right bottom, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 } `,
+    btn_bg_color: `linear-gradient(to right, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 } `,
     btn_txt_color: colorPalette.txtPrimaryDark
-  };
-
+   };
 
   return (
-    <div>
+    <div className="home">
+  
       <nav>
         <div className="elements">
           <a href="#">Home</a>
@@ -43,19 +40,19 @@ function Home() {
 
       <Section
         padding="0"
-        bg={ colorPalette.bgDark } 
+        bg={  colorPalette.bgDark  } 
         className="dark-container">
 
         <Section
           padding="0 0 60px 0">
 
           <LandingPage 
-            main_title={["It's not just", <br />, "sudoku."]}
+            main_title={ ["It's not just", <br />, "sudoku."] }
             sub_text="We have taken sudoku to a new level."
-            bg_img={require('../../../images/background_landing_page.png')}
-            title_color={colorPalette.txtPrimaryLight}
-            sub_text_color={colorPalette.txtPrimaryLight}
-            bg_color={colorPalette.bgDark}
+            bg_img={ require('../../../images/background_landing_page.png') }
+            title_color={ colorPalette.txtPrimaryLight }
+            sub_text_color={ colorPalette.txtPrimaryLight }
+            bg_color={ colorPalette.bgDark }
             btn_bg_color="rgba(219, 219, 219, 0.3)"
             arrow_color="#212121"
             link="quote"
@@ -69,9 +66,9 @@ function Home() {
             text="If you are curious, you'll find the puzzles around you. If you are determined, you will solve them."
             author="Erno Rubik"
             line="true"
-            line_color={`linear-gradient(to right, ${colorPalette.fancy1}, ${colorPalette.fancy2}`}
-            text_color={colorPalette.txtPrimaryLight}
-            author_color={colorPalette.fancy1}
+            line_color={ `linear-gradient(to right, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }` }
+            text_color={ colorPalette.txtPrimaryLight }
+            author_color={ colorPalette.fancy1 }
           />
         </Section>
 
@@ -81,21 +78,21 @@ function Home() {
               <Card 
                 heading="About"
                 sub_text="Read more about the project!"
-                {...cardStyles}
+                { ...cardStyles }
                 btn_link="about"
               />
 
               <Card 
                 heading="Rules"
                 sub_text="Check out how to solve sudoku!"
-                {...cardStyles}
+                { ...cardStyles }
                 btn_link="rules"
               />
 
               <Card 
                 heading="Play"
                 sub_text="Do you wanna play a game?"
-                {...cardStyles}
+                { ...cardStyles }
                 btn_link="levels"
               />
             </div>
@@ -110,15 +107,14 @@ function Home() {
           <TextSection 
             title="About project"
             sub_title="A few words from the author."
-            title_color={colorPalette.txtPrimaryLight}
-            sub_title_color={colorPalette.txtSecondary}
-            txt_color={colorPalette.txtPrimaryLight}
-            line_color={`linear-gradient(to top, ${colorPalette.fancy1}, ${colorPalette.fancy2}`}
-            img={require('../../../images/about_img.png')}
+            title_color={ colorPalette.txtPrimaryLight }
+            sub_title_color={ colorPalette.txtSecondary }
+            txt_color={ colorPalette.txtPrimaryLight }
+            line_color={ `linear-gradient(to top, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }` }
+            img={ require('../../../images/about_img.png') }
             alt="Designer Image"
             img_align_mobile="top"
-            img_align="left"
-            >
+            img_align="left">
             
             <p>Aliquam sollicitudin egestas pellentesque. Nulla porta sollicitudin lacus, ut finibus libero fermentum quis. Integer fermentum mattis ex, lacinia lobortis ex hendrerit in. Vivamus at ante imperdiet, lobortis felis vitae, efficitur massa.</p> <p>Nam ex metus, venenatis id justo nec, tempus dictum mauris. Sed non nibh lorem. Phasellus et faucibus ligula, sit amet porttitor magna. Phasellus non volutpat dolor, nec lobortis ex.</p>
           </TextSection>
@@ -131,7 +127,7 @@ function Home() {
         
         <img 
           className="wavy-transition" 
-          src={require('../../../images/transition1.png')} 
+          src={ require('../../../images/transition1.png') } 
           alt="wavy thing"
         />
 
@@ -141,10 +137,10 @@ function Home() {
           <TextSection 
             title="Rules"
             sub_title="Learn the rules for solving sudoku!"
-            title_color={colorPalette.txtPrimaryDark}
-            sub_title_color={colorPalette.txtSecondary}
-            txt_color={colorPalette.txtPrimaryDark}
-            img={require('../../../images/sudoku.png')}
+            title_color={ colorPalette.txtPrimaryDark }
+            sub_title_color={ colorPalette.txtSecondary }
+            txt_color={ colorPalette.txtPrimaryDark }
+            img={ require('../../../images/sudoku.png') }
             alt="Designer Image"
             img_align="left"
             img_align_mobile="bot">
@@ -162,74 +158,43 @@ function Home() {
 
           </TextSection>
         </Section>
-
       </Section>
 
       <Section
         sectionLink="levels">
         
         <ChooseLvlSection
-          levels = {
+          levels = { 
             [
-              {
+              { 
                 name: "Beginner",
                 linkValue: 1
               },
-              {
+              { 
                 name: "Normal",
                 linkValue: 2
               },
-              {
+              { 
                 name: "Advanced",
                 linkValue: 3
               },
-              {
+              { 
                 name: "Hard",
                 linkValue: 4
               },
-              {
+              { 
                 name: "Extra Hard",
                 linkValue: 5
               }
             ]
-          }
+           }
           goTo="/play"
-          bg={`linear-gradient(to right, ${colorPalette.fancy1}, ${colorPalette.fancy2}`}
+          bg={ `linear-gradient(to right, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }` }
           btn_bg="white"
         />
-      </Section>
-
-      
-
-      {/* <Footer 
-        categories={
-          [
-            {text: "Explore", 
-            icon: <ExploreIcon fill={colorPalette.txtSecondary}/>,
-            sub_categories: [
-              {text: "About project", link: "about"}, 
-              {text: "Rules", link: "rules"},
-              {text: "Play game", link: "play"}
-            ]}, 
-            {text: "Visit", 
-            sub_categories: [
-              {text: "Web1", link: "www.google.com"}, 
-              {text: "Web2", link: "www.facebook.com"}
-            ]},
-            {text: "Contact", 
-            note: "Lorem Ipsum dolor sit amet.",
-            sub_categories: [
-              {text: "E-mail", link: "www.google.com"}, 
-              {text: "GitHub", link: "www.facebook.com"}
-            ]}
-          ]}
-        bg="#222"
-        category_txt_color={colorPalette.txtSecondary}
-        note_txt_color={colorPalette.txtSecondary}
-        subcategory_txt_color={colorPalette.txtSecondary}
-      /> */}
+      </Section> 
     </div>
   )
 }
 
-export default Home
+export default Home;
