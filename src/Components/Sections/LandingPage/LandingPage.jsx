@@ -11,10 +11,6 @@ const LandingPage = (props) => {
     background: !! props.bg_img ? `url(${props.bg_img})` : 'white'
   }
 
-  let titleStyles = {
-    color: !! props.title_color ? props.title_color : 'black'
-  }
-
   let subTextStyles = {
     color: !! props.sub_text_color ? props.sub_text_color : 'gray'
   }
