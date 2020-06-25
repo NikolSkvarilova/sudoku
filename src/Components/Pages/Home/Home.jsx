@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div className="home">
   
-      <nav>
+      {/* <nav>
         <div className="elements">
           <a href="#">Home</a>
           <a href="#about">About</a>
@@ -36,7 +36,7 @@ const Home = () => {
           <a href="#levels">Play</a>
           <div id="indicator"></div>
         </div>
-      </nav>
+      </nav> */}
 
       <Section
         padding="0"
@@ -53,12 +53,12 @@ const Home = () => {
             bg_color={ colorPalette.bgDark }
             icon
             btn_bg_color="rgba(219, 219, 219, 0.3)"
-            arrow_color="#212121"
+            arrow_color="white"
             link="quote">
 
             <h1 style={{ color: colorPalette.txtPrimaryLight }}>It's not just <br /> sudoku.</h1>
             <h2 style={{ color: colorPalette.txtPrimaryLight }}>Lorem Ipsum Dolor sit amet.</h2>
-            <p style={{ color: colorPalette.txtPrimaryLight }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br /> Maecenas quis sagittis nisi. Donec vitae blandit quam,<br /> et rhoncus nulla. Nulla vitae urna at ex maximus rutrum.</p>
+            <p style={{ color: colorPalette.txtPrimaryLight }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis sagittis nisi. Donec vitae blandit quam, et rhoncus nulla. Nulla vitae urna at ex maximus rutrum.</p>
           </LandingPage>
         </Section>
 
@@ -162,7 +162,7 @@ const Home = () => {
         </Section>
       </Section>
 
-      <Section
+      {/* <Section
         sectionLink="levels">
         
         <ChooseLvlSection
@@ -194,7 +194,7 @@ const Home = () => {
           bg={ `linear-gradient(to right, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }` }
           btn_bg="white"
         />
-      </Section> 
+      </Section>  */}
     </div>
   )
 }
