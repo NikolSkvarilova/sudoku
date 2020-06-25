@@ -7,16 +7,39 @@ import { KeyboardArrowDown } from '@material-ui/icons/';
 
 const LandingPage = (props) => {
   let bgStyles = {
-    'backgroundColor': !! props.bg_color ? props.bg_color : 'white',
-    'background': !! props.bg_img ? `url(${props.bg_img})` : 'white'
+    backgroundColor: !! props.bg_color ? props.bg_color : 'white',
+    background: !! props.bg_img ? `url(${props.bg_img})` : 'white'
   }
 
   let titleStyles = {
-    'color': !! props.title_color ? props.title_color : 'black'
+    color: !! props.title_color ? props.title_color : 'black'
   }
 
   let subTextStyles = {
-    'color': !! props.sub_text_color ? props.sub_text_color : 'gray'
+    color: !! props.sub_text_color ? props.sub_text_color : 'gray'
+  }
+
+  let iconStyles = {
+    backgroundColor: !! props.btn_bg_color && props.btn_bg_color, 
+    boxShadow: !! props.btn_shadow ? props.btn_shadow : "0px 0px 55px -2px rgba(0,0,0,0.63)"
+  }
+
+  let icon;
+
+  if (props.icon) {
+    icon = <IconButton style={ iconStyles } href={ `#${ props.link }` }>
+      <KeyboardArrowDown fontSize="large" style={{ color: !! props.arrow_color ? props.arrow_color : "black" }} />
+    </IconButton>
+  }
+
+  let scrollDown_container;
+
+  if (props.icon || props.sub_text) {
+    scrollDown_container = 
+    <div className="scroll-down_container">
+      { !! props.sub_text && <p className="sub_text" style={subTextStyles}>{props.sub_text}</p> }
+      { icon }
+    </div>
   }
 
   return (
@@ -25,20 +48,7 @@ const LandingPage = (props) => {
         { props.children }
       </div>
       
-      <div className="scroll-down_container">
-        <p className="sub_text" style={subTextStyles}>{props.sub_text}</p>
-        <IconButton 
-          className="icon-tittle" 
-          style={
-            {
-              backgroundColor: props.btn_bg_color, 
-              boxShadow: "0px 0px 55px -2px rgba(0,0,0,0.63)"
-            }
-          } 
-          href={`#${props.link}`}>
-          <KeyboardArrowDown fontSize="large" style={{color: !! props.arrow_color ? props.arrow_color : "black" }} href={`#${props.link}`} />
-        </IconButton>
-      </div>
+      { scrollDown_container }
     </div>
   )
 }

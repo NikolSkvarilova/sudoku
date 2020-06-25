@@ -51,8 +51,10 @@ const Home = () => {
             sub_text_color={ colorPalette.txtPrimaryLight }
             bg_img={ require('../../../images/background_landing_page.png') }
             bg_color={ colorPalette.bgDark }
+            icon
             btn_bg_color="rgba(219, 219, 219, 0.3)"
-            arrow_color="#212121">
+            arrow_color="#212121"
+            link="quote">
 
             <h1 style={{ color: colorPalette.txtPrimaryLight }}>It's not just <br /> sudoku.</h1>
             <h2 style={{ color: colorPalette.txtPrimaryLight }}>Lorem Ipsum Dolor sit amet.</h2>
