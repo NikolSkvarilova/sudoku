@@ -33,13 +33,13 @@ const LandingPage = (props) => {
   if (props.icon || props.sub_text) {
     scrollDown_container = 
     <div className="scroll-down_container">
-      { !! props.sub_text && <p className="sub_text" style={subTextStyles}>{props.sub_text}</p> }
+      { !! props.sub_text && <p className="sub_text" style={ subTextStyles }>{ props.sub_text }</p> }
       { icon }
     </div>
   }
 
   return (
-    <div className="landing_page_container" style={bgStyles}>
+    <div className="landing_page_container" style={ bgStyles }>
       <div className="text-section">
         { props.children }
       </div>
