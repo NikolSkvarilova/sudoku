@@ -50,12 +50,14 @@ const LandingPage = (props) => {
 }
 
 LandingPage.propTypes = {
-  main_title:     PropTypes.string.isRequired,
-  sub_text:       PropTypes.string,
-  bg_img:         PropTypes.node,
-  title_color:    PropTypes.string,
-  sub_text_color: PropTypes.string,
-  bg_color:       PropTypes.string,
+  bg_img:             PropTypes.node,
+  bg_color:           PropTypes.string,
+  sub_text:           PropTypes.string,
+  sub_text_color:     PropTypes.string,
+  icon:               PropTypes.bool,
+  btn_bg_color:       PropTypes.string,
+  arrow_color:        PropTypes.string,
+  link:               PropTypes.string
 }
 
 export default LandingPage;
