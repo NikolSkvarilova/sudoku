@@ -35,23 +35,26 @@ $font-sizes-desktop: (
   "title": 6em,
   "quote": 1.3em,
   "quote-author": 1em,
-  "heading1": 2em,
+  "heading1": 3em,
   "section-title": 4em
 );
 
 $font-sizes-tablet: (
   "title": 5.5em,
+  "heading1": 2.5em,
   "quote": 1.2em,
-  "quote-author": 0.8em
+  "quote-author": 0.8em,
+  "regular-text": 1em
 );
 
 $font-sizes-mobile: (
   "title": 4em,
+  "heading1": 2em,
   "quote": 0.9em,
   "quote-author": 0.7em,
   "section-title": 3em,
   "subtitle": 1.5em,
-  "text": 1em
+  "regular-text": 1em
 );
 
 // Some sizes

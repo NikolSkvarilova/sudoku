@@ -11,24 +11,69 @@
   z-index: 5;
   box-shadow: 0px 0px 55px -2px rgba(0,0,0,0.63);
 
-  .main_title {
-    @include clean-element;
+  .text-section {
     position: absolute;
-    top: 35%;
+    top: 30%;
     left: 10%;
-    font-family: map-get($font-families, title);
-    font-size: map-get($font-sizes-desktop, title);
-    font-weight: map-get($font-weights, bold);
 
-    @media only screen and (max-width: map-get($breakpoints, tablet)) {
-      top: 25%;
-      left: 0;
-    }
-
-
-    @media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
+    @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
       top: 20%;
+      right: 10%;
+      text-align: center;
     }
+
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      top: 15%;
+    }
+
+    h1 {
+      @include clean-element;
+      
+      font-family: map-get($font-families, title);
+      font-size: map-get($font-sizes-desktop, title);
+      font-weight: map-get($font-weights, bold);
+
+      @media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
+        font-size: map-get($font-sizes-tablet, title);
+      }
+
+      @media only screen and (max-width: map-get($breakpoints, mobile)) {
+        font-size: map-get($font-sizes-mobile, title);
+      }
+    }
+
+    h2 {
+      @include clean-element;
+      margin-top: 15px;
+      font-family: map-get($font-families, heading1);
+      font-size: map-get($font-sizes-desktop, heading1);
+
+      @media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
+        font-size: map-get($font-sizes-tablet, heading1);
+      }
+
+      @media only screen and (max-width: map-get($breakpoints, mobile)) {
+        font-size: map-get($font-sizes-mobile, heading1);
+      }
+    }
+
+    p {
+      font-family: map-get($font-families, regular-text);
+      font-size: 1em;
+      max-width: 50%;
+
+      @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+        max-width: 100%;
+      }
+      @media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
+        font-size: map-get($font-sizes-tablet, regular-text);
+      }
+
+      @media only screen and (max-width: map-get($breakpoints, mobile)) {
+        font-size: map-get($font-sizes-mobile, regular-text);
+      }
+    }
+
   }
 
   .scroll-down_container {
@@ -38,8 +83,12 @@
     flex-direction: column;
     align-items: center;
 
-    @media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
-      top: 75%;
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      top: 80%;
+    }
+
+    @media only screen and (max-height: 700px) {
+      visibility: hidden;
     }
 
     .sub_text {
@@ -49,36 +98,6 @@
       font-weight: map-get($font-weights, regular);
       text-align: center;
       margin-bottom: 20px;
-    }
-  }
-}
-
-// tablet
-@media only screen and (max-width: map-get($breakpoints, tablet)) {
-  .landing_page_container {
-    .main_title {
-      right: 10%;
-      text-align: center;
-    }
-  }
-}
-
-// tablet -> mobile
-@media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
-  .landing_page_container {
-    .main_title {
-      top: 35%;
-      font-size: map-get($font-sizes-tablet, title);
-    }
-  }
-}
-
-// mobile
-@media only screen and (max-width: map-get($breakpoints, mobile)) {
-  .landing_page_container {
-    .main_title {
-      top: 30%;
-      font-size: map-get($font-sizes-mobile, title);
     }
   }
 }
