@@ -65,10 +65,9 @@ const Home = () => {
           <Quote 
             text="If you are curious, you'll find the puzzles around you. If you are determined, you will solve them."
             author="Erno Rubik"
-            line="true"
             line_color={ `linear-gradient(to right, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }` }
             text_color={ colorPalette.txtPrimaryLight }
-            author_color={ colorPalette.fancy1 }
+            author_color={ colorPalette.txtSecondary }
           />
         </Section>
 
