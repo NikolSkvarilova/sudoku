@@ -19,6 +19,7 @@ $font-families: (
 
 
 $font-weights: (
+  "light": 200,
   "regular": 400,
   "bold": 700
 );
@@ -32,8 +33,8 @@ $font-sizes: (
 
 $font-sizes-desktop: (
   "title": 6em,
-  "quote": 2.5em,
-  "quote-author": 0.8em,
+  "quote": 1.3em,
+  "quote-author": 1em,
   "heading1": 2em,
   "section-title": 4em
 );
