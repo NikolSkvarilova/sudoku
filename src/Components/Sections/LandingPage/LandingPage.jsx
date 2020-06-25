@@ -7,17 +7,17 @@ import { KeyboardArrowDown } from '@material-ui/icons/';
 
 const LandingPage = (props) => {
   let bgStyles = {
-    backgroundColor: !! props.bg_color ? props.bg_color : 'white',
-    background: !! props.bg_img ? `url(${props.bg_img})` : 'white'
+    backgroundColor:  !! props.bg_color         ? props.bg_color          : 'white',
+    background:       !! props.bg_img           ? `url(${props.bg_img})`  : 'white'
   }
 
   let subTextStyles = {
-    color: !! props.sub_text_color ? props.sub_text_color : 'gray'
+    color:            !! props.sub_text_color   ? props.sub_text_color    : 'gray'
   }
 
   let iconStyles = {
-    backgroundColor: !! props.btn_bg_color && props.btn_bg_color, 
-    boxShadow: !! props.btn_shadow ? props.btn_shadow : "0px 0px 55px -2px rgba(0,0,0,0.63)"
+    backgroundColor:  !! props.btn_bg_color     && props.btn_bg_color, 
+    boxShadow:        !! props.btn_shadow       ? props.btn_shadow        : "0px 0px 55px -2px rgba(0,0,0,0.63)"
   }
 
   let icon;
