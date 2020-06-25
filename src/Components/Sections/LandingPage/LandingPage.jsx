@@ -21,7 +21,10 @@ const LandingPage = (props) => {
 
   return (
     <div className="landing_page_container" style={bgStyles}>
-      <h1 className="main_title" style={titleStyles}>{props.main_title}</h1>
+      <div className="text-section">
+        { props.children }
+      </div>
+      {/* <h1 className="main_title" style={titleStyles}>{props.main_title}</h1> */}
       <div className="scroll-down_container">
         <p className="sub_text" style={subTextStyles}>{props.sub_text}</p>
         <IconButton 
