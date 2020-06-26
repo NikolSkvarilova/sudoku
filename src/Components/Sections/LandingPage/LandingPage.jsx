@@ -8,7 +8,8 @@ import { KeyboardArrowDown } from '@material-ui/icons/';
 const LandingPage = (props) => {
   let bgStyles = {
     backgroundColor:  !! props.bg_color         ? props.bg_color          : 'white',
-    background:       !! props.bg_img           ? `url(${props.bg_img})`  : 'white'
+    background:       !! props.bg_img           ? `url(${props.bg_img})`  : 'white',
+    boxShadow:        !! props.shadow           ? props.shadow            : ''
   }
 
   let subTextStyles = {
@@ -57,7 +58,8 @@ LandingPage.propTypes = {
   icon:               PropTypes.bool,
   btn_bg_color:       PropTypes.string,
   arrow_color:        PropTypes.string,
-  link:               PropTypes.string
+  link:               PropTypes.string,
+  shadow:             PropTypes.bool
 }
 
 export default LandingPage;
