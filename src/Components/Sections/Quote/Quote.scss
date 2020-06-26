@@ -5,7 +5,6 @@
   width: 100%;
 
   .figure-container {
-    font-size: map-get($font-sizes-desktop, quote);
     text-align: center;
     width: 70%;
     display: block;
@@ -13,56 +12,25 @@
 
     .quote-text {
       @include clean-element;
-      font-weight: map-get($font-weights, light);
+      @include quote;
       letter-spacing: 3px;
-      font-family: map-get($font-families, quote);
-      font-size: map-get($font-sizes, quote);
       text-transform: uppercase;
     }
 
     .quote-author {
-      margin-top: 2vh;
-      font-family: map-get($font-families, quote-author);
-      font-size: map-get($font-sizes-desktop, quote-author);
+      @include quote-author;
+      margin-top: 15px;
     }
   }
 
   .rectangle {
-    margin: 2vh auto;
+    margin: 20px auto 0 auto;
     height: $line-size;
     flex-shrink: 0;
-    width: 380px;
-  }
-}
+    width: 20vw;
 
-@media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
-  .quote-container {
-    .figure-container {
-      .quote-text {
-        font-size: map-get($font-sizes-tablet, quote)
-      }
-
-      .quote-author {
-        font-size: map-get($font-sizes-tablet, quote-author)
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: map-get($breakpoints, mobile)) {
-  .quote-container {
-    .figure-container {
-      .quote-text {
-        font-size: map-get($font-sizes-mobile, quote)
-      }
-
-      .quote-author {
-        font-size: map-get($font-sizes-mobile, quote-author)
-      }
-    }
-
-    .rectangle {
-      width: 70vw;
+    @media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
+      width: 60vw;
     }
   }
 }
