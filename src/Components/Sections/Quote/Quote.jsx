@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import './Quote.scss'
+import './Quote.scss';
 
 const Quote = (props) => {
 
@@ -24,11 +24,11 @@ const Quote = (props) => {
 }
 
 Quote.propTypes = {
-  text:         PropTypes.string.isRequired,
-  author:       PropTypes.string,
-  line_color:   PropTypes.string,
-  text_color:   PropTypes.string,
-  author_color: PropTypes.string
+  text:               PropTypes.string.isRequired,
+  author:             PropTypes.string,
+  text_styles:        PropTypes.object,
+  author_styles:      PropTypes.object,
+  line_styles:        PropTypes.object
 }
 
-export default Quote
+export default Quote;
