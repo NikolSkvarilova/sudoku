@@ -5,9 +5,9 @@ import './Home.scss';
 import Section from '../../Sections/Section/Section.jsx';
 import LandingPage from '../../Sections/LandingPage/LandingPage.jsx';
 import Quote from '../../Sections/Quote/Quote.jsx';
-import Card from '../../Elements/Card/Card.jsx';
-import TextSection from '../../Sections/TextSection/TextSection.jsx';
-import ChooseLvlSection from '../../Sections/ChooseLvlSection/ChooseLvlSection.jsx';
+// import Card from '../../Elements/Card/Card.jsx';
+// import TextSection from '../../Sections/TextSection/TextSection.jsx';
+// import ChooseLvlSection from '../../Sections/ChooseLvlSection/ChooseLvlSection.jsx';
 
 // Icons
 import {  ReactComponent as ExploreIcon  } from '../../../images/explore.svg';
@@ -54,7 +54,8 @@ const Home = () => {
             icon
             btn_bg_color="rgba(219, 219, 219, 0.3)"
             arrow_color="white"
-            link="quote">
+            link="quote"
+            shadow="0px 0px 55px -2px rgba(0,0,0,0.63)">
 
             <h1 style={{ color: colorPalette.txtPrimaryLight }}>It's not just <br /> sudoku.</h1>
             <h2 style={{ color: colorPalette.txtPrimaryLight }}>Lorem Ipsum Dolor sit amet.</h2>
@@ -73,7 +74,7 @@ const Home = () => {
           />
         </Section>
 
-        <Section>
+        {/* <Section>
           <section className="cards-container">
             <div className="cards-wrapper">
               <Card 
@@ -100,9 +101,9 @@ const Home = () => {
             
             <p className="note">Or scroll down and see all the stuffs by yourself!</p>
           </section>
-        </Section>
+        </Section> */}
 
-        <Section
+        {/* <Section
           sectionLink="about">
 
           <TextSection 
@@ -119,7 +120,7 @@ const Home = () => {
             
             <p>Aliquam sollicitudin egestas pellentesque. Nulla porta sollicitudin lacus, ut finibus libero fermentum quis. Integer fermentum mattis ex, lacinia lobortis ex hendrerit in. Vivamus at ante imperdiet, lobortis felis vitae, efficitur massa.</p> <p>Nam ex metus, venenatis id justo nec, tempus dictum mauris. Sed non nibh lorem. Phasellus et faucibus ligula, sit amet porttitor magna. Phasellus non volutpat dolor, nec lobortis ex.</p>
           </TextSection>
-        </Section>
+        </Section> */}
       </Section>
 
       <Section
@@ -132,7 +133,7 @@ const Home = () => {
           alt="wavy thing"
         />
 
-        <Section
+        {/* <Section
           sectionLink="rules">
 
           <TextSection 
@@ -158,7 +159,7 @@ const Home = () => {
             <p><strong>Warning!</strong> Some sudokus are not solvable or have more solutions. But keep calm, our sudokus are solvable ane have only one solution!</p>
 
           </TextSection>
-        </Section>
+        </Section> */}
       </Section>
 
       {/* <Section
