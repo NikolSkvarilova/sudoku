@@ -3,7 +3,6 @@
 // Montserrat Font
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
 
-// Font stuffs
 $font-families: (
   "title": Montserrat,
   "sub-title": Montserrat,
@@ -17,7 +16,6 @@ $font-families: (
   "footer": Montserrat
 );
 
-
 $font-weights: (
   "light": 200,
   "regular": 400,
@@ -25,43 +23,12 @@ $font-weights: (
 );
 
 $font-sizes: (
-  "regular": 1em,
-  "sub-text": 0.8em,
   "sudoku-nums": 1.5em,
   "sudoku-value-menu": 1.6em
 );
 
-$font-sizes-desktop: (
-  "title": 6em,
-  "quote": 1.3em,
-  "quote-author": 1em,
-  "heading1": 3em,
-  "section-title": 4em
-);
-
-$font-sizes-tablet: (
-  "title": 5.5em,
-  "heading1": 2.5em,
-  "quote": 1.2em,
-  "quote-author": 0.8em,
-  "regular-text": 1em
-);
-
-$font-sizes-mobile: (
-  "title": 4em,
-  "heading1": 2em,
-  "quote": 0.9em,
-  "quote-author": 0.7em,
-  "section-title": 3em,
-  "subtitle": 1.5em,
-  "regular-text": 1em
-);
-
 // Some sizes
 $line-size: 15px;
-
-// Positioning
-$component_margin_bottom: 60px;
 
 // Breakpoints
 $breakpoints: (
