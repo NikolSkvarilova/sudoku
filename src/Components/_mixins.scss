@@ -1,7 +1,79 @@
 
+// Montserrat Font
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
+
+@import './variables';
+
 
 // overwrite the weird 'user agent stylesheet' stuffs
 @mixin clean-element {
     margin: 0;
     padding: 0;
 }
+
+@mixin title {
+    font-family: Montserrat;
+    font-size: 6em;
+    font-weight: 700;
+  
+    @media only screen and (max-width: map-get($breakpoints, tablet-mobile)) {
+      font-size: 5.5em;
+    }
+  
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      font-size: 4em;
+    }
+  }
+  
+  @mixin section-title {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 4em;
+  
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      font-size: 3em;
+    }
+  }
+  
+  @mixin heading1 {
+    font-family: Montserrat;
+    font-size: 3em;
+  
+    @media only screen and (max-width: map-get($breakpoints, tablet)) {
+      font-size: 2.5em;
+    }
+  
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      font-size: 2em;
+    }
+  }
+  
+  @mixin heading2 {
+    font-family: Montserrat;
+    font-size: 2.5em;
+  
+    @media only screen and (max-width: map-get($breakpoints, tablet)) {
+      font-size: 2.2em;
+    }
+  
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      font-size: 2em;
+    }
+  }
+  
+  @mixin regular-text {
+    font-family: Montserrat;
+    font-size: 1em;
+  }
+  
+  @mixin quote {
+    font-family: Montserrat;
+    font-size: 1.3em;
+    font-weight: map-get($font-weights, light);
+    font-style: italic;
+  }
+  
+  @mixin quote-author {
+    font-family: Montserrat;
+    font-size: 1.2em;
+  }
