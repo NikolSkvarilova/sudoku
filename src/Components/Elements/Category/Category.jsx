@@ -6,7 +6,9 @@ const Category = (props) => {
 
   return (
     <div className="category-container" style={ props.style }>
-      <img src={ props.img } alt="image"/>
+      <div className="img-wrapper">
+        <img src={ props.img } alt="image"/>
+      </div>
       { props.children }
     </div>
   )

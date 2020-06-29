@@ -2,6 +2,8 @@
 @import '../../mixins';
 
 .category-container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -16,10 +18,27 @@
     max-width: 80%;
   }
 
-  img {
+  .img-wrapper {
     width: 100px;
     height: 100px;
-    border-radius: 100px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    
+    img {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
   }
 
   h1 {

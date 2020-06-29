@@ -79,15 +79,15 @@ const Home = () => {
           <Categories 
             categories={[
               {
-                img: require('./../../../images/background_landing_page.png'),
+                img: require('./../../../images/small.png'),
                 content: [<h1>About Project</h1>, <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porttitor ut tellus vel ornare.</p>]
               },
               {
-                img: require('./../../../images/background_landing_page.png'),
+                img: require('./../../../images/small.png'),
                 content: [<h1>Rules</h1>, <p>Praesent eget metus nisi. Donec sodales non dolor in pulvinar.</p>]
               },
               {
-                img: require('./../../../images/background_landing_page.png'),
+                img: require('./../../../images/small.png'),
                 content: [<h1>Play</h1>, <p>Duis elementum ac ex nec scelerisque.</p>]
               }
             ]}
