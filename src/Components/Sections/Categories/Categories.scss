@@ -1,0 +1,9 @@
+@import '../../variables';
+@import '../../mixins';
+
+.categories-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
