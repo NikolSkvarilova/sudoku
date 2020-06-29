@@ -26,6 +26,9 @@ const Categories = (props) => {
   )
 }
 
-Categories.propTypes = {}
+Categories.propTypes = {
+  categories:     PropTypes.array.isRequired,
+  style:          PropTypes.object
+}
 
 export default Categories;

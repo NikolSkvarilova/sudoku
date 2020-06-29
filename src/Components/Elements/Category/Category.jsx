@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import './Category.scss'
+import './Category.scss';
 
 const Category = (props) => { 
 
@@ -12,6 +12,12 @@ const Category = (props) => {
   )
 }
 
-Category.propTypes = { }
+Category.propTypes = {
+  img:        PropTypes.string,
+  children:   PropTypes.oneOfType([
+                PropTypes.arrayOf(PropTypes.node),
+                PropTypes.node
+              ]).isRequired
+}
 
 export default Category;
