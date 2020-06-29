@@ -1,0 +1,41 @@
+@import '../../variables';
+@import '../../mixins';
+
+.category-container {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 40px 50px;
+  max-width: 18%;
+
+  @media only screen and (max-width: map-get($breakpoints, tablet)) {
+    max-width: 30%;
+  }
+
+  @media only screen and (max-width: map-get($breakpoints, mobile)) {
+    max-width: 80%;
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+  }
+
+  h1 {
+    @include heading1;
+    font-size: 1.3em;
+
+    @media only screen and (max-width: map-get($breakpoints, tablet)) {
+      font-size: 1.2em;
+    }
+    
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      font-size: 1.1em;
+    }
+  }
+
+  p {
+    @include regular-text;
+  }
+}
