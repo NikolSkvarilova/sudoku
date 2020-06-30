@@ -95,35 +95,6 @@ const Home = () => {
           />
         </Section>
 
-        {/* <Section>
-          <section className="cards-container">
-            <div className="cards-wrapper">
-              <Card 
-                heading="About"
-                sub_text="Read more about the project!"
-                { ...cardStyles }
-                btn_link="about"
-              />
-
-              <Card 
-                heading="Rules"
-                sub_text="Check out how to solve sudoku!"
-                { ...cardStyles }
-                btn_link="rules"
-              />
-
-              <Card 
-                heading="Play"
-                sub_text="Do you wanna play a game?"
-                { ...cardStyles }
-                btn_link="levels"
-              />
-            </div>
-            
-            <p className="note">Or scroll down and see all the stuffs by yourself!</p>
-          </section>
-        </Section> */}
-
         {/* <Section
           sectionLink="about">
 
