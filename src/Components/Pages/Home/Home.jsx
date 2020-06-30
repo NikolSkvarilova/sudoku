@@ -164,7 +164,7 @@ const Home = () => {
             ]
            }
           goTo="/play"
-          sectionStyle={{ background: `linear-gradient(to right, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }`, color: 'white' }}
+          sectionStyle={{ background: `linear-gradient(135deg, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }`, color: 'white' }}
           btnStyle={{ color: "white" }}
         />
       </Section> 
