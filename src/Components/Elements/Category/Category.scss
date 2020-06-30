@@ -8,14 +8,14 @@
   align-items: center;
   text-align: center;
   margin: 40px 50px;
-  max-width: 18%;
+  width: 15%;
 
   @media only screen and (max-width: map-get($breakpoints, tablet)) {
-    max-width: 30%;
+    width: 30%;
   }
 
   @media only screen and (max-width: map-get($breakpoints, mobile)) {
-    max-width: 80%;
+    width: 80%;
   }
 
   .img-wrapper {
