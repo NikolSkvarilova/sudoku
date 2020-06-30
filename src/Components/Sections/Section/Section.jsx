@@ -7,7 +7,8 @@ const Section = (props) => {
     justifyContent: !! props.justifyContent ? props.justifyContent  : "center",   // horizontally
     background:     !! props.bg             ? props.bg              : "none",
     padding:        !! props.padding        ? props.padding         : "60px 0",
-    flexDirection:  !! props.flexDirection  ? props.flexDirection   : "column"
+    flexDirection:  !! props.flexDirection  ? props.flexDirection   : "column",
+    height:         !! props.height         ? props.height          : "auto"
   }
 
   return (
