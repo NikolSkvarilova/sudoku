@@ -5,31 +5,23 @@ import './ChooseLvlSection.scss'
 
 const ChooseLvlSection = (props) => {
 
-  let bgStyles = {
-    'background': !! props.bg ? props.bg : 'pink'
-  };
-
-  // let btnStyles = {
-  //   'background': !! props.btn_bg ? props.btn_bg : "white"  
-  // }
-
   let levels = [];
 
   props.levels.forEach(level => {
     levels.push(
-      <a href={`${props.goTo}/${level.linkValue}`}>
-        <div className="button">
-          {level.name} 
+      <a href={ `${ props.goTo }/${ level.linkValue }` }>
+        <div className="button" style={ props.btnStyle }>
+          { level.name } 
         </div>
       </a> 
     )
   })
 
   return (
-    <div className="container" style={ bgStyles }>
+    <div className="container" style={ props.sectionStyles }>
       <h1>Choose your level!</h1>
       <div className="levels-container">
-        {levels}
+        { levels }
       </div>
     </div>
   )
