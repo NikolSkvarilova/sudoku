@@ -34,6 +34,16 @@
     font-size: 3em;
   }
 }
+
+@mixin section-subtitle {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 2em;
+  
+  @media only screen and (max-width: map-get($breakpoints, mobile)) {
+    font-size: 1.5em;
+  }
+}
   
 @mixin heading1 {
   font-family: Montserrat;
