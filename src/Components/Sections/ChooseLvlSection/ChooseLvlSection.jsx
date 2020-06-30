@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './ChooseLvlSection.scss'
+import './ChooseLvlSection.scss';
 
 const ChooseLvlSection = (props) => {
 
@@ -18,7 +18,7 @@ const ChooseLvlSection = (props) => {
   })
 
   return (
-    <div className="container" style={ props.sectionStyles }>
+    <div className="container" style={ props.sectionStyle }>
       <h1>Choose your level!</h1>
       <div className="levels-container">
         { levels }
@@ -27,6 +27,11 @@ const ChooseLvlSection = (props) => {
   )
 }
 
-ChooseLvlSection.propTypes = {}
+ChooseLvlSection.propTypes = {
+  levels:         PropTypes.array.isRequired,
+  goTo:           PropTypes.string,
+  sectionStyle:   PropTypes.object,
+  btnStyle:       PropTypes.object
+}
 
 export default ChooseLvlSection;
