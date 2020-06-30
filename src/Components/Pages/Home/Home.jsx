@@ -6,7 +6,7 @@ import Section from '../../Sections/Section/Section.jsx';
 import LandingPage from '../../Sections/LandingPage/LandingPage.jsx';
 import Quote from '../../Sections/Quote/Quote.jsx';
 // import Card from '../../Elements/Card/Card.jsx';
-// import TextSection from '../../Sections/TextSection/TextSection.jsx';
+import TextSection from '../../Sections/TextSection/TextSection.jsx';
 // import ChooseLvlSection from '../../Sections/ChooseLvlSection/ChooseLvlSection.jsx';
 import Categories from '../../Sections/Categories/Categories.jsx'
 
@@ -95,7 +95,7 @@ const Home = () => {
           />
         </Section>
 
-        {/* <Section
+        <Section
           sectionLink="about">
 
           <TextSection 
@@ -112,7 +112,7 @@ const Home = () => {
             
             <p>Aliquam sollicitudin egestas pellentesque. Nulla porta sollicitudin lacus, ut finibus libero fermentum quis. Integer fermentum mattis ex, lacinia lobortis ex hendrerit in. Vivamus at ante imperdiet, lobortis felis vitae, efficitur massa.</p> <p>Nam ex metus, venenatis id justo nec, tempus dictum mauris. Sed non nibh lorem. Phasellus et faucibus ligula, sit amet porttitor magna. Phasellus non volutpat dolor, nec lobortis ex.</p>
           </TextSection>
-        </Section> */}
+        </Section>
       </Section>
 
       <Section
