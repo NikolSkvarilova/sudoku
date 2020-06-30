@@ -286,25 +286,48 @@ class Play extends React.Component {
   }
 
 
+  renderSudokuPage() {
+    // Renders the whole page w/ sudoku board, buttons
+    return([
+      <table className="sudoku-table">
+        <tbody>
+          { this.renderSudoku() } 
+        </tbody>
+      </table>,
+
+      <div className="value-buttons">
+      { this.state.currentSudoku !== null ? this.getPossibleValuesElements() : "" }
+      </div>,
+
+      <div className="btn-section">
+        <div className="button" onClick={ () => { this.createSudokuFromOriginal() } }>Reset Sudoku</div>
+        <div className="button" onClick={ () => { this.checkSudoku() } }>Check the Sudoku</div>
+        <div className="button" onClick={ () => { this.fetchSudoku() } }>Get New Sudoku</div>
+        <div 
+          className={ `button ${ this.state.noting ? ' noting' : ''}` } 
+          onClick={ () => { this.changeMode() } }>
+            
+            Change Mode
+        </div>
+      </div>
+    ])
+  }
+
+
+  renderErrPage() {
+    // Renders an error msg and button to go back to main page
+    return([
+      <h1 className="err-msg">Oops! Looks like there is an error with our server :(</h1>,
+
+      <a href="/"><div className="button">Go back to main page</div></a>
+    ])
+  }
+
+
   render () {
     return (
       <div className="play-container">
-        <table className="sudoku-table">
-          <tbody>
-            { this.state.currentSudoku !== null ? this.renderSudoku() : <tr><td>Hello</td></tr> }
-          </tbody>
-        </table>
-        
-        <div className="value-buttons">
-          { this.state.currentSudoku !== null ? this.getPossibleValuesElements() : "" }
-        </div>
-
-        <div className="btn-section">
-          <div className="button" onClick={ () => { this.createSudokuFromOriginal() } }>Reset Sudoku</div>
-          <div className="button" onClick={ () => { this.checkSudoku() } }>Check the Sudoku</div>
-          <div className="button" onClick={ () => { this.fetchSudoku() } }>Get New Sudoku</div>
-          <div className={ `button ${ this.state.noting ? ' noting' : ''}` } onClick={ () => { this.changeMode() } }>Change Mode</div>
-        </div>
+        { this.state.currentSudoku !== null ? this.renderSudokuPage() : this.renderErrPage() }
       </div>
     );
   }
