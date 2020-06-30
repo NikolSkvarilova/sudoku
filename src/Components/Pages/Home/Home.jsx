@@ -79,17 +79,17 @@ const Home = () => {
           <Categories 
             categories={[
               {
-                img: require('./../../../images/small.png'),
-                content: [<h1>About Project</h1>, <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porttitor ut tellus vel ornare.</p>]
+                img: require('./../../../images/small1 (1).png'),
+                content: [<h1>About Us</h1>, <p>Learn more about our team and our work.</p>]
               },
               {
-                img: require('./../../../images/small.png'),
-                content: [<h1>Rules</h1>, <p>Praesent eget metus nisi. Donec sodales non dolor in pulvinar.</p>]
+                img: require('./../../../images/small2 (1).png'),
+                content: [<h1>Code</h1>, <p>View source code and check out used technologies.</p>]
               },
               {
-                img: require('./../../../images/small.png'),
-                content: [<h1>Play</h1>, <p>Duis elementum ac ex nec scelerisque.</p>]
-              }
+                img: require('./../../../images/small3 (1).png'),
+                content: [<h1>Documentation</h1>, <p>Read the documentation and join the development process!</p>]
+              },
             ]}
             style={{ color: 'white' }}
           />
