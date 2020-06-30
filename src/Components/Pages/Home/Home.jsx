@@ -8,6 +8,7 @@ import Quote from '../../Sections/Quote/Quote.jsx';
 // import Card from '../../Elements/Card/Card.jsx';
 // import TextSection from '../../Sections/TextSection/TextSection.jsx';
 // import ChooseLvlSection from '../../Sections/ChooseLvlSection/ChooseLvlSection.jsx';
+import Categories from '../../Sections/Categories/Categories.jsx'
 
 // Icons
 import {  ReactComponent as ExploreIcon  } from '../../../images/explore.svg';
@@ -71,6 +72,26 @@ const Home = () => {
             author="Erno Rubik"
             text_styles={{ color: colorPalette.txtPrimaryLight }}
             author_styles={{ color: colorPalette.txtSecondary }}
+          />
+        </Section>
+
+        <Section>
+          <Categories 
+            categories={[
+              {
+                img: require('./../../../images/small.png'),
+                content: [<h1>About Project</h1>, <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porttitor ut tellus vel ornare.</p>]
+              },
+              {
+                img: require('./../../../images/small.png'),
+                content: [<h1>Rules</h1>, <p>Praesent eget metus nisi. Donec sodales non dolor in pulvinar.</p>]
+              },
+              {
+                img: require('./../../../images/small.png'),
+                content: [<h1>Play</h1>, <p>Duis elementum ac ex nec scelerisque.</p>]
+              }
+            ]}
+            style={{ color: 'white' }}
           />
         </Section>
 
