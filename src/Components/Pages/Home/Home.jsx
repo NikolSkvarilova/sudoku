@@ -5,7 +5,6 @@ import './Home.scss';
 import Section from '../../Sections/Section/Section.jsx';
 import LandingPage from '../../Sections/LandingPage/LandingPage.jsx';
 import Quote from '../../Sections/Quote/Quote.jsx';
-// import Card from '../../Elements/Card/Card.jsx';
 import TextSection from '../../Sections/TextSection/TextSection.jsx';
 // import ChooseLvlSection from '../../Sections/ChooseLvlSection/ChooseLvlSection.jsx';
 import Categories from '../../Sections/Categories/Categories.jsx'
@@ -17,14 +16,6 @@ import {  ReactComponent as ExploreIcon  } from '../../../images/explore.svg';
 import colorPalette from '../../../color_palette.json'
 
 const Home = () => { 
-
-  let cardStyles = { 
-    bg_color: colorPalette.bgCard,
-    txt_color: colorPalette.txtPrimaryLight,
-    img: `linear-gradient(to right bottom, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 } `,
-    btn_bg_color: `linear-gradient(to right, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 } `,
-    btn_txt_color: colorPalette.txtPrimaryDark
-   };
 
   return (
     <div className="home">
