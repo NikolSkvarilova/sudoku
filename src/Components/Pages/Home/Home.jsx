@@ -6,7 +6,7 @@ import Section from '../../Sections/Section/Section.jsx';
 import LandingPage from '../../Sections/LandingPage/LandingPage.jsx';
 import Quote from '../../Sections/Quote/Quote.jsx';
 import TextSection from '../../Sections/TextSection/TextSection.jsx';
-// import ChooseLvlSection from '../../Sections/ChooseLvlSection/ChooseLvlSection.jsx';
+import ChooseLvlSection from '../../Sections/ChooseLvlSection/ChooseLvlSection.jsx';
 import Categories from '../../Sections/Categories/Categories.jsx'
 
 // Icons
@@ -134,7 +134,8 @@ const Home = () => {
         </Section>
       </Section>
 
-      {/* <Section
+      <Section
+        padding="0"
         sectionLink="levels">
         
         <ChooseLvlSection
@@ -163,10 +164,10 @@ const Home = () => {
             ]
            }
           goTo="/play"
-          bg={ `linear-gradient(to right, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }` }
-          btn_bg="white"
+          sectionStyle={{ background: `linear-gradient(to right, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }`, color: 'white' }}
+          btnStyle={{ color: "white" }}
         />
-      </Section>  */}
+      </Section> 
     </div>
   )
 }
