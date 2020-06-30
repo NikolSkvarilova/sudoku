@@ -116,7 +116,7 @@ const Home = () => {
           alt="wavy thing"
         />
 
-        {/* <Section
+        <Section
           sectionLink="rules">
 
           <TextSection 
@@ -127,7 +127,7 @@ const Home = () => {
             txt_color={ colorPalette.txtPrimaryDark }
             img={ require('../../../images/sudoku.png') }
             alt="Designer Image"
-            img_align="left"
+            img_align="right"
             img_align_mobile="bot">
 
             <p>Sudoku is played over a <strong>9x9 grid</strong>, divided to <strong>3x3 sub</strong> grids called "regions".</p>
@@ -142,7 +142,7 @@ const Home = () => {
             <p><strong>Warning!</strong> Some sudokus are not solvable or have more solutions. But keep calm, our sudokus are solvable ane have only one solution!</p>
 
           </TextSection>
-        </Section> */}
+        </Section>
       </Section>
 
       {/* <Section
