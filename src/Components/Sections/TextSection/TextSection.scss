@@ -34,24 +34,18 @@
       .text_half {
         .text_section_title {
           @include clean-element;
-          font-family: map-get($font-families, section-title);
-          font-size: map-get($font-sizes-desktop, section-title);
+          @include section-title;
         }
     
         .text_section_subtitle {
-          font-family: map-get($font-families, sub-title);
-          font-weight: map-get($font-weights, regular);
+          @include section-subtitle;
         }
 
         .text {
-          font-family: map-get($font-families, regular-text);
-          font-weight: map-get($font-weights, regular);
+          @include regular-text;
         }
       }
     }
-
-    
-
   }
 
   .img_half_container {
@@ -95,7 +89,6 @@
   }
 }
 
-
 .to_edge_right_full_screen_mobile {
   justify-content: flex-end;
   @include justify_content_small_desktop()
@@ -117,7 +110,6 @@
   @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
     padding: 0 15vw;
   }
-
 }
 
 .img_on_the_right_from_text {
