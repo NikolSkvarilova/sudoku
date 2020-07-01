@@ -25,7 +25,9 @@ class Play extends React.Component {
       .then(response => response.json())
       .then(data => this.setState({ originalSudoku: data.sudoku }))
       .then(() => this.createSudokuFromOriginal())
-      .catch(err => console.log(err));
+      .catch(err => {
+        this.setState({ currentSudoku: null })
+      });
   }
 
 
