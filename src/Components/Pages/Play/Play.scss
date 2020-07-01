@@ -82,6 +82,10 @@
     margin: 20px 0;
     flex-wrap: wrap;
 
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      margin: 0;
+    }
+
     .value-btn {
       font-size: map-get($font-sizes, sudoku-value-menu);
       flex: 1 1 auto;
@@ -96,6 +100,7 @@
       @media only screen and (max-width: map-get($breakpoints, mobile)) {
         padding: 12px;
         font-size: 1.2em;
+        margin: 5px;
       }
 
       .value {
@@ -118,6 +123,19 @@
   .btn-section {
     display: flex;
     flex-wrap: wrap-reverse;
+
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      margin: 5px;
+      min-width: 50vw;
+    }
+
+    .button {
+      @media only screen and (max-width: map-get($breakpoints, mobile)) {
+        margin: 5px 0 0 0;
+        min-width: 50vw;
+      }
+    }
+
 }
 
   .button {
