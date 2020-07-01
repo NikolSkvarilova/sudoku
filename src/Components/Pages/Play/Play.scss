@@ -8,10 +8,6 @@
   align-items: center;
   height: 100vh;
 
-  @media only screen and (max-width: map-get($breakpoints, mobile)) {
-    height: auto;
-  }
-
   .err-msg {
     @include heading1;
     text-align: center;
@@ -171,5 +167,8 @@
   }
 }
 
-
-
+.no-err {
+  @media only screen and (max-width: map-get($breakpoints, mobile)) {
+    height: auto;
+  }
+}

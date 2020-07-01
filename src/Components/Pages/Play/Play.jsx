@@ -315,9 +315,10 @@ class Play extends React.Component {
 
 
   renderErrPage() {
+
     // Renders an error msg and button to go back to main page
     return([
-      <h1 className="err-msg">Oops! Looks like there is an error with our server :(</h1>,
+      <h1 className="err-msg">Oops! Looks like there is an error with our server <span style={{ whiteSpace: "nowrap" }}>:(</span></h1>,
 
       <a href="/"><div className="button">Go back to main page</div></a>
     ])
@@ -326,7 +327,7 @@ class Play extends React.Component {
 
   render () {
     return (
-      <div className="play-container">
+      <div className={ `play-container ${ this.state.currentSudoku !== null && "no-err" }` }>
         { this.state.currentSudoku !== null ? this.renderSudokuPage() : this.renderErrPage() }
       </div>
     );
