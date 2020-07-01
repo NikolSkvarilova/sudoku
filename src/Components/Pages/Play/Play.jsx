@@ -148,7 +148,6 @@ class Play extends React.Component {
     } 
 
     // Col
-    console.log(cell.col / regionSize)
     if (! this.wholeNumTest(cell.col / regionSize) && (cell.col / regionSize) !== 0) {
       classes += " edge-horizontal"
     } 
