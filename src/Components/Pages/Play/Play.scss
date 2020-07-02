@@ -7,19 +7,20 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  
+  // @media only screen and (max-width: map-get($breakpoints, mobile)) {
+  //   padding: 5px;
+  // }
 
   .err-msg {
     @include heading1;
     text-align: center;
-    max-width: 60%;
+    max-width: 80%;
   }
 
   .sudoku-table {
     border-collapse: collapse;
-
-    @media only screen and (max-width: map-get($breakpoints, mobile)) {
-      margin: 5px;
-    }
+    margin: 5px;
     
     tbody, tr, td {
       border: 1px solid #1A1A1A;
@@ -38,16 +39,17 @@
       }
 
       .cell-note {
+        margin: 0 auto;
         font-size: 0.6em;
         color: gray;
         overflow-wrap: break-word;
         letter-spacing: 1px;
-        width: 30px;
+        width: 45px;
 
         @media only screen and (max-width: map-get($breakpoints, mobile)) {
-          font-size: 0.45em;
-          letter-spacing: 0;
-          margin: 0 auto;
+          font-size: 0.5em;
+          letter-spacing: 0.5px;
+          width: 9vw;
         }
       }
     }
@@ -104,7 +106,7 @@
       @media only screen and (max-width: map-get($breakpoints, mobile)) {
         padding: 6px;
         font-size: 1.2em;
-        margin: 5px;
+        margin: 5px 5px 0;
         width: 20vw;
         flex-direction: row;
       }
