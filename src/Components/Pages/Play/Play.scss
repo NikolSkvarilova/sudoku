@@ -7,20 +7,14 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  
-  // @media only screen and (max-width: map-get($breakpoints, mobile)) {
-  //   padding: 5px;
-  // }
-
-  .err-msg {
-    @include heading1;
-    text-align: center;
-    max-width: 80%;
-  }
 
   .sudoku-table {
     border-collapse: collapse;
     margin: 5px;
+
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      min-width: 97vw;
+    }
     
     tbody, tr, td {
       border: 1px solid #1A1A1A;
@@ -86,29 +80,30 @@
 
     @media only screen and (max-width: map-get($breakpoints, mobile)) {
       margin: 0;
+      min-width: 97vw;
     }
 
     .value-btn {
-      font-size: map-get($font-sizes, sudoku-value-menu);
+      position: relative;
       display: flex;
       flex-direction: column;
       flex: 1 1 auto;
-      margin: 10px;
-      padding: 18px;
-      border: 1px solid #1A1A1A;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      color: #1A1A1A;
       justify-content: center;
       align-items: center;
+      text-align: center;
+      margin: 10px;
+      padding: 18px;
+      overflow: hidden;
+      color: #1A1A1A;
+      font-size: map-get($font-sizes, sudoku-value-menu);
+      border: 1px solid #1A1A1A;
       
       @media only screen and (max-width: map-get($breakpoints, mobile)) {
+        flex-direction: row;
+        margin: 5px 5px 0 5px;
+        min-width: 22vw;
         padding: 6px;
         font-size: 1.2em;
-        margin: 5px 5px 0;
-        width: 20vw;
-        flex-direction: row;
       }
 
       .value {
@@ -140,16 +135,8 @@
 
     @media only screen and (max-width: map-get($breakpoints, mobile)) {
       margin: 5px;
-      min-width: 50vw;
+      min-width: 97vw;
     }
-
-    .button {
-      @media only screen and (max-width: map-get($breakpoints, mobile)) {
-        margin: 5px 0 0 0;
-        min-width: 50vw;
-      }
-    }
-
 }
 
   .button {
@@ -165,6 +152,12 @@
     -webkit-transition: 0.3s;
     transition: 0.3s;
     color: #1A1A1A;
+
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      min-width: 97vw;
+      margin: 5px 0 0 0;
+      padding: 15px 0;
+    }
   
     &:after {
       position: absolute;
