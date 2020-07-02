@@ -301,6 +301,7 @@ class Play extends React.Component {
       </div>,
 
       <div className="btn-section">
+        <a href="/"><div className="button">Go to main page</div></a>
         <div className="button" onClick={ () => { this.createSudokuFromOriginal() } }>Reset Sudoku</div>
         <div className="button" onClick={ () => { this.checkSudoku() } }>Check the Sudoku</div>
         <div className="button" onClick={ () => { this.fetchSudoku() } }>Get New Sudoku</div>
