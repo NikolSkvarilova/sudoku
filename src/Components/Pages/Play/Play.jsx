@@ -25,7 +25,9 @@ class Play extends React.Component {
       .then(response => response.json())
       .then(data => this.setState({ originalSudoku: data.sudoku }))
       .then(() => this.createSudokuFromOriginal())
-      .catch(err => console.log(err));
+      .catch(err => {
+        this.setState({ currentSudoku: null })
+      });
   }
 
 
@@ -146,7 +148,6 @@ class Play extends React.Component {
     } 
 
     // Col
-    console.log(cell.col / regionSize)
     if (! this.wholeNumTest(cell.col / regionSize) && (cell.col / regionSize) !== 0) {
       classes += " edge-horizontal"
     } 
@@ -286,25 +287,50 @@ class Play extends React.Component {
   }
 
 
+  renderSudokuPage() {
+    // Renders the whole page w/ sudoku board, buttons
+    return([
+      <table className="sudoku-table">
+        <tbody>
+          { this.renderSudoku() } 
+        </tbody>
+      </table>,
+
+      <div className="value-buttons">
+      { this.state.currentSudoku !== null ? this.getPossibleValuesElements() : "" }
+      </div>,
+
+      <div className="btn-section">
+        <a href="/"><div className="button">Go to main page</div></a>
+        <div className="button" onClick={ () => { this.createSudokuFromOriginal() } }>Reset Sudoku</div>
+        <div className="button" onClick={ () => { this.checkSudoku() } }>Check the Sudoku</div>
+        <div className="button" onClick={ () => { this.fetchSudoku() } }>Get New Sudoku</div>
+        <div 
+          className={ `button ${ this.state.noting ? ' noting' : ''}` } 
+          onClick={ () => { this.changeMode() } }>
+            
+            Change Mode
+        </div>
+      </div>
+    ])
+  }
+
+
+  renderErrPage() {
+
+    // Renders an error msg and button to go back to main page
+    return([
+      <h1 className="err-msg">Oops! We seem to be having trouble with the server <span style={{ whiteSpace: "nowrap" }}>:(</span></h1>,
+
+      <a href="/"><div className="button">Go back to main page</div></a>
+    ])
+  }
+
+
   render () {
     return (
-      <div className="play-container">
-        <table className="sudoku-table">
-          <tbody>
-            { this.state.currentSudoku !== null ? this.renderSudoku() : <tr><td>Hello</td></tr> }
-          </tbody>
-        </table>
-        
-        <div className="value-buttons">
-          { this.state.currentSudoku !== null ? this.getPossibleValuesElements() : "" }
-        </div>
-
-        <div className="btn-section">
-          <div className="button" onClick={ () => { this.createSudokuFromOriginal() } }>Reset Sudoku</div>
-          <div className="button" onClick={ () => { this.checkSudoku() } }>Check the Sudoku</div>
-          <div className="button" onClick={ () => { this.fetchSudoku() } }>Get New Sudoku</div>
-          <div className={ `button ${ this.state.noting ? ' noting' : ''}` } onClick={ () => { this.changeMode() } }>Change Mode</div>
-        </div>
+      <div className={ `play-container ${ this.state.currentSudoku !== null && "no-err" }` }>
+        { this.state.currentSudoku !== null ? this.renderSudokuPage() : this.renderErrPage() }
       </div>
     );
   }
