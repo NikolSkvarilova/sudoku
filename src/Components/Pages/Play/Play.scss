@@ -33,7 +33,7 @@
 
       @media only screen and (max-width: map-get($breakpoints, mobile)) {
         font-size: 1.2em;
-        max-width: 10vw;
+        width: 9.5vw;
         height: 5vh;
       }
 
@@ -88,6 +88,8 @@
 
     .value-btn {
       font-size: map-get($font-sizes, sudoku-value-menu);
+      display: flex;
+      flex-direction: column;
       flex: 1 1 auto;
       margin: 10px;
       padding: 18px;
@@ -96,15 +98,21 @@
       position: relative;
       overflow: hidden;
       color: #1A1A1A;
-
+      justify-content: center;
+      align-items: center;
+      
       @media only screen and (max-width: map-get($breakpoints, mobile)) {
-        padding: 12px;
+        padding: 6px;
         font-size: 1.2em;
         margin: 5px;
+        width: 20vw;
+        flex-direction: row;
       }
 
       .value {
-        padding-bottom: 7px;
+        @media only screen and (max-width: map-get($breakpoints, mobile)) {
+          margin-right: 2px;
+        }  
       }
 
       .howManyLeft {
@@ -112,6 +120,10 @@
         margin: 0;
         padding: 0;
         color: #585858;
+
+        @media only screen and (max-width: map-get($breakpoints, mobile)) {
+          margin-left: 2px;
+        }  
       }
     }
 
@@ -151,7 +163,7 @@
     -webkit-transition: 0.3s;
     transition: 0.3s;
     color: #1A1A1A;
-
+  
     &:after {
       position: absolute;
       -webkit-transition: 0.3s;
