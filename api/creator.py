@@ -36,37 +36,21 @@ class Creator(Solver):
           return False
                 
     return True
-        
-                   
+
+
   # Generates 2D array with numbers
-  # (1) It gives the first row random numbers 1-9
-  # (2) Shifts the second and third row's elements by 3
-  # (3) The next one it shifts by 1 and repeat the (2) 
+  # Randomly fills the 1. row and solver fills the rest.
   def generate(self):
     self.generateBlankArr()
 
     nums = list(range(1, self.size + 1))
+    random.shuffle(nums)
     
     for i in range(self.size):
-      self.board[0][i] = nums.pop(nums.index(random.choice(nums)))
+      self.board[0][i] = nums[i]
 
-    # Shifting (by: 1, 3, 3)
-    for i in range(1, self.size):
-      self.board[i] = self.board[i - 1].copy()
-      # If we are on the first row in the little square
-      if i % self.base == 0:
-        self.board[i] = self.shift(self.board[i], 1)
-      # If we are somewhere else
-      else:
-        self.board[i] = self.shift(self.board[i], 3)
-
-    # Checks if the sudoku is valid
-    if self.checkIfValid():
-      return True
-
-    else:
-      self.generate()
-
+    self.solve()
+    
 
   # Removes some numbers from the board 
   def removeCharacters(self, percentage_chance=0.4):
