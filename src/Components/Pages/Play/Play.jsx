@@ -320,7 +320,7 @@ class Play extends React.Component {
 
     // Renders an error msg and button to go back to main page
     return([
-      <h1 className="err-msg">Oops! Looks like there is an error with our server <span style={{ whiteSpace: "nowrap" }}>:(</span></h1>,
+      <h1 className="err-msg">Oops! We seem to be having trouble with the server <span style={{ whiteSpace: "nowrap" }}>:(</span></h1>,
 
       <a href="/"><div className="button">Go back to main page</div></a>
     ])
