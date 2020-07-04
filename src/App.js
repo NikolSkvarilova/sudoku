@@ -33,12 +33,16 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <nav style={ window.location.pathname === "/" ? { background: "none" } : { background: colorPalette.bgDark } }>
+          <nav 
+            // style={ window.location.pathname === "/" ? { background: "none" } : { background: colorPalette.bgDark } } 
+            className={ this.state.navActive ? 'navActive' : '' }
+            onClick={ () => { this.toggleNavActive() }}>
+
             <span class="navbar-toggle" onClick={ () => { this.toggleNavActive() }}>
               <i class="fa fa-bars"></i>
             </span>
 
-            <div className={ `elements ${ this.state.navActive ? 'active' : '' }` }>
+            <div className={ `elements ${ this.state.navActive ? 'active' : '' }` }> 
               <a href="/#">Home</a>
               <a href="/#about">About</a>
               <a href="/#rules">Rules</a>
