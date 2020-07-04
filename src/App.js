@@ -6,11 +6,14 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './Components/Pages/Home/Home.jsx'
 import Play from './Components/Pages/Play/Play.jsx'
 
+// Color palette
+import colorPalette from './color_palette.json'
+
 function App() {
   return (
     <Router>
       <div className="App">
-        <nav style={ window.location.pathname === "/" ? { background: "none" } : { background: "#1A1A1A" } }>
+        <nav style={ window.location.pathname === "/" ? { background: "none" } : { background: colorPalette.bgDark } }>
           <div className="elements">
             <a href="/#">Home</a>
             <a href="/#about">About</a>
