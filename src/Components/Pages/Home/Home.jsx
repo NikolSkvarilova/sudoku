@@ -60,15 +60,15 @@ const Home = () => {
           <Categories 
             categories={[
               {
-                img: require('./../../../images/small1 (1).png'),
+                img: require('./../../../images/small1.png'),
                 content: [<h1>About Us</h1>, <p>Learn more about our team and our work.</p>]
               },
               {
-                img: require('./../../../images/small2 (1).png'),
+                img: require('./../../../images/small2.png'),
                 content: [<h1>Code</h1>, <p>View source code and check out used technologies.</p>]
               },
               {
-                img: require('./../../../images/small3 (1).png'),
+                img: require('./../../../images/small3.png'),
                 content: [<h1>Documentation</h1>, <p>Read the documentation and join the development process!</p>]
               },
             ]}
