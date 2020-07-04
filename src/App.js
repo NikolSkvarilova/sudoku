@@ -10,6 +10,16 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <nav style={ window.location.pathname === "/" ? { background: "none" } : { background: "#1A1A1A" } }>
+          <div className="elements">
+            <a href="/#">Home</a>
+            <a href="/#about">About</a>
+            <a href="/#rules">Rules</a>
+            <a href="/#levels">Play</a>
+            <div id="indicator"></div>
+          </div>
+        </nav>
+
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/play/:level" component={Play} />

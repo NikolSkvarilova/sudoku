@@ -19,16 +19,6 @@ const Home = () => {
 
   return (
     <div className="home">
-  
-      {/* <nav>
-        <div className="elements">
-          <a href="#">Home</a>
-          <a href="#about">About</a>
-          <a href="#rules">Rules</a>
-          <a href="#levels">Play</a>
-          <div id="indicator"></div>
-        </div>
-      </nav> */}
 
       <Section
         padding="0"

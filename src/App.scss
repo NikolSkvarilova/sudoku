@@ -1,0 +1,133 @@
+$color1a: #BA1EED;
+$color1b:   #713FDA;
+
+$color2a: #0071BC;
+$color2b:   #6743D7;
+
+$color3a: #FCD507;
+$color3b:   #F4A81F;
+
+$color4a: #F4AD1B;
+$color4b:   #A329E7;
+
+nav {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  position: fixed;
+
+  .elements {
+    position: relative;
+    display: table;
+  }
+
+  .elements a {
+    text-transform: uppercase;
+    position: relative;
+    width: 25%;
+    display: table-cell;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: 0.2s ease color;
+  }
+  
+  .elements a:before, .elements a:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 0.2s ease transform;
+  }
+  
+  .elements a:before {
+    top: 0;
+    left: 10px;
+    width: 6px;
+    height: 6px;
+  }
+  
+  .elements a:after {
+    top: 5px;
+    left: 18px;
+    width: 4px;
+    height: 4px
+  }
+  
+  .elements a:nth-child(1):before {
+    background-color: $color1a;
+  }
+  
+  .elements a:nth-child(1):after {
+    background-color: $color1b;
+  }
+  
+  .elements a:nth-child(2):before {
+    background-color: $color2a;
+  }
+  
+  .elements a:nth-child(2):after {
+    background-color: $color2b;
+  }
+  
+  .elements a:nth-child(3):before {
+    background-color: $color3a;
+  }
+  
+  .elements a:nth-child(3):after {
+    background-color: $color3b;
+  }
+
+  .elements a:nth-child(4):before {
+    background-color: $color4a;
+  }
+  
+  .elements a:nth-child(4):after {
+    background-color: $color4b;
+  }
+  
+  #indicator {
+    position: absolute;
+    left: 5%;
+    bottom: 0;
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: 0.2s ease left;
+  }
+  
+  .elements a:hover {
+    color: #fff;
+  }
+  
+  .elements a:hover:before, .elements a:hover:after {
+    transform: scale(1);
+  }
+  
+  .elements a:nth-child(1):hover ~ #indicator {
+    background: linear-gradient(130deg, $color1a, $color1b);
+  }
+  
+  .elements a:nth-child(2):hover ~ #indicator {
+    left: 30%;
+    background: linear-gradient(130deg, $color2a, $color2b);
+  }
+  
+  .elements a:nth-child(3):hover ~ #indicator {
+    left: 62%;
+    background: linear-gradient(130deg, $color3a, $color3b);
+  }
+
+  .elements a:nth-child(4):hover ~ #indicator {
+    left: 87%;
+    background: linear-gradient(130deg, $color4a, $color4b);
+  }
+}
+
