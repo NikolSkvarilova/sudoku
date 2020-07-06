@@ -14,7 +14,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      navActive: false
+      navActive: false,
     }
   }
   // let mainNav = document.getElementById("js-menu");
@@ -34,11 +34,15 @@ class App extends React.Component {
       <Router>
         <div className="App">
           <nav 
-            // style={ window.location.pathname === "/" ? { background: "none" } : { background: colorPalette.bgDark } } 
+            { ... window.location.pathname.includes("/play") && { style: { background: colorPalette.bgDark }}} 
             className={ this.state.navActive ? 'navActive' : '' }
             onClick={ () => { this.toggleNavActive() }}>
 
-            <span class="navbar-toggle" onClick={ () => { this.toggleNavActive() }}>
+            <span 
+              class="navbar-toggle" 
+              onClick={ () => { this.toggleNavActive() }}
+              style={ window.location.pathname !== "/" ? { color: "#8a8a8a" } : { color: "white" } }>
+                
               <i class="fa fa-bars"></i>
             </span>
 
