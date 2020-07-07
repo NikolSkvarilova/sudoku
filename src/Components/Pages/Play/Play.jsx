@@ -1,27 +1,35 @@
 import React from 'react';
 import './Play.scss';
 
+// My components
+import Section from './../../Sections/Section/Section.jsx'
+import TextSection from './../../Sections/TextSection/TextSection.jsx'
+import Button from './../../Elements/Button/Button.jsx'
+
 class Play extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      originalSudoku: null, // The fetched one (won't change)
-      currentSudoku: null, // The one which can user change
-      selectedValue: "", // Value the user wants to see highlighted or which the user wants to insert into the sudoku.
-      noting: false
+      originalSudoku:   null,   // The fetched one (won't change)
+      currentSudoku:    null,   // The one which can user change
+      selectedValue:    "",     // Value the user wants to see highlighted or which the user wants to insert into the sudoku.
+      noting:           false,  // Are we noting right now?
+      dailySudoku:      false   // If the sudoku we are dealing with is daily or not
     };
   }
 
 
   componentDidMount() {
-    this.fetchSudoku()
+    this.fetchSudoku(`/play/get_sudoku/${ this.props.match.params.level }`)
   }
 
 
-  fetchSudoku() {
+  fetchSudoku(address) {
     // Getting sudoku from backend
-    fetch(`/play/get_sudoku/${this.props.match.params.level}`)
+    // param: address = link (example: /play/2)
+
+    fetch(address)
       .then(response => response.json())
       .then(data => this.setState({ originalSudoku: data.sudoku }))
       .then(() => this.createSudokuFromOriginal())
@@ -91,6 +99,24 @@ class Play extends React.Component {
   resetSudoku() {
     this.createSudokuFromOriginal();
     this.setState({ selectedValue: "", noting: false });
+  }
+
+
+  getSudoku() {
+    // Fetch normal sudoku 
+    this.fetchSudoku(`/play/get_sudoku/${ this.props.match.params.level }`);
+    this.setState({ dailySudoku: false, selectedValue: "" })
+  }
+
+
+  getDailySudoku() {
+    // Getting the daily sudoku (same all day)
+    this.fetchSudoku('/play/getDailySudoku');
+    this.setState({ dailySudoku: true });
+
+    // Scrolling back to top
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
 
@@ -288,14 +314,42 @@ class Play extends React.Component {
 
 
   changeMode() {
-    let neg = !this.state.noting;
-    this.setState({ noting: neg })
+    this.setState({ noting: !this.state.noting })
+  }
+
+
+  renderNoErrPage() {
+    // Renders page when there is no error
+
+    return([
+      this.renderSudokuPage(),
+
+      // Daily Sudoku section
+      <Section
+      alignItems="center">
+
+        <TextSection
+        title="Try daily sudoku!"
+        img={ require('../../../images/daily.png') }
+        img_align_mobile="top">
+
+          <p>Curabitur ornare eros ultrices arcu blandit, at vestibulum velit pellentesque. Sed maximus dolor non sapien tristique faucibus. Duis lorem quam, vulputate vehicula lacus vel, commodo fringilla eros. </p>
+          
+          <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras volutpat, quam in condimentum finibus, magna est faucibus tortor, sit amet iaculis purus purus nec quam. Sed malesuada quam sed nulla placerat vehicula. Fusce consectetur sagittis finibus.</p>
+
+          <Button onClick={ () => { this.getDailySudoku() }} margin="10px 10px 10px 0">Try Daily Sudoku</Button>
+        </TextSection>
+      </Section>
+    ])
   }
 
 
   renderSudokuPage() {
-    // Renders the whole page w/ sudoku board, buttons
+    // Renders the sudoku board, buttons
+
     return([
+      this.state.dailySudoku ? <h1>Daily Sudoku</h1> : "",
+
       <table className="sudoku-table">
         <tbody>
           { this.renderSudoku() } 
@@ -307,35 +361,29 @@ class Play extends React.Component {
       </div>,
 
       <div className="btn-section">
-        <div className="button" onClick={ () => { this.resetSudoku() } }>Reset Sudoku</div>
-        <div className="button" onClick={ () => { this.checkSudoku() } }>Check the Sudoku</div>
-        <div className="button" onClick={ () => { this.fetchSudoku() } }>Get New Sudoku</div>
-        <div 
-          className={ `button ${ this.state.noting ? ' noting' : ''}` } 
-          onClick={ () => { this.changeMode() } }>
-            
-          Change Mode
-        </div>
+        <Button class="play_btn" onClick={ () => { this.resetSudoku() }}>Reset Sudoku</Button>
+        <Button class="play_btn" onClick={ () => { this.checkSudoku() }}>Check the Sudoku</Button>
+        <Button class="play_btn" onClick={ () => { this.getSudoku() }}>Get New Sudoku</Button>
+        <Button onClick={ () => { this.changeMode() }} class={ !! this.state.noting ? "noting play_btn" : "play_btn" }>Change Mode</Button>
       </div>
     ])
   }
 
 
   renderErrPage() {
-
     // Renders an error msg and button to go back to main page
+
     return([
       <h1 className="err-msg">Oops! We seem to be having trouble with the server <span style={{ whiteSpace: "nowrap" }}>:(</span></h1>,
-
-      <a href="/"><div className="button">Go back to main page</div></a>
+      <Button class="play_btn" link="/">Go Back to Main Page</Button>
     ])
   }
 
 
   render () {
     return (
-      <div className={ `play-container ${ this.state.currentSudoku !== null && "no-err" }` }>
-        { this.state.currentSudoku !== null ? this.renderSudokuPage() : this.renderErrPage() }
+      <div className={ `play-container ${ this.state.currentSudoku !== null ? "no-err" : "err" }` }>
+        { this.state.currentSudoku !== null ? this.renderNoErrPage() : this.renderErrPage() }
       </div>
     );
   }
