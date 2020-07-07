@@ -7,6 +7,7 @@ from solver import Solver
 app = Flask("__name__")
 
 getter = Getter()
+getter.generateDailySudoku()
 
 
 @app.route('/play/get_sudoku/<int:lvl>')
@@ -32,7 +33,7 @@ def check_sudoku():
 
 @app.route('/play/getDailySudoku')
 def get_daily_sudoku():
-  return {"daily_sudoku": getter.getDailySudoku()}
+  return {"sudoku": getter.getDailySudoku()}
 
 
 if __name__ == "__main__": 
