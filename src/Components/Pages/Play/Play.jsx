@@ -84,7 +84,13 @@ class Play extends React.Component {
       }
     }
 
-    this.setState({ currentSudoku: sudoku, selectedValue: "" });
+    this.setState({ currentSudoku: sudoku });
+  }
+
+
+  resetSudoku() {
+    this.createSudokuFromOriginal();
+    this.setState({ selectedValue: "", noting: false });
   }
 
 
@@ -301,14 +307,14 @@ class Play extends React.Component {
       </div>,
 
       <div className="btn-section">
-        <div className="button" onClick={ () => { this.createSudokuFromOriginal() } }>Reset Sudoku</div>
+        <div className="button" onClick={ () => { this.resetSudoku() } }>Reset Sudoku</div>
         <div className="button" onClick={ () => { this.checkSudoku() } }>Check the Sudoku</div>
         <div className="button" onClick={ () => { this.fetchSudoku() } }>Get New Sudoku</div>
         <div 
           className={ `button ${ this.state.noting ? ' noting' : ''}` } 
           onClick={ () => { this.changeMode() } }>
             
-            Change Mode
+          Change Mode
         </div>
       </div>
     ])
