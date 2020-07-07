@@ -6,4 +6,4 @@
 * `npm run` will run the react (frontend) server.
 * `yarn start-api` will run the backend server (see more in `package.json`).
 
-**If you are having troubles to run the live server** with `npm run` and gettinge errors, try delete the `node_modules` folder (`sudo rm -r node_modules`) and run `npm install` again. 
+**If you are having troubles to run the live server** with `npm run` and getting errors, try delete the `node_modules` folder (`sudo rm -r node_modules`) and run `npm install` again. 
