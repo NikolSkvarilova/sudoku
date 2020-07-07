@@ -3,17 +3,21 @@ import PropTypes from 'prop-types';
 
 import './ChooseLvlSection.scss';
 
+import Button from './../../Elements/Button/Button.jsx'
+
 const ChooseLvlSection = (props) => {
 
   let levels = [];
 
   props.levels.forEach(level => {
     levels.push(
-      <a href={ `${ props.goTo }/${ level.linkValue }` }>
-        <div className="button" style={ props.btnStyle }>
-          { level.name } 
-        </div>
-      </a> 
+      <Button 
+        link={ `${ props.goTo }/${ level.linkValue }` } 
+        borderColor={ props.borderColor }
+        txtColor={ props.txtColor }>
+
+        { level.name }
+      </Button>
     )
   })
 
