@@ -1,0 +1,43 @@
+@import '../../variables';
+@import '../../mixins';
+
+.button {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: fit-content;
+
+  &:after {
+    background: currentColor;
+    position: absolute;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    content: "";
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+  }
+  
+  &:hover {
+    cursor: pointer;
+  }
+  
+  &:hover:after {
+    width: 100%;
+    left: 0;
+  }
+  
+  &:after {
+    right: 0;
+    left: auto;
+  }
+}
