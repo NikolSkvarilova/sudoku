@@ -1,6 +1,9 @@
 @import '../../variables';
 @import '../../mixins';
 
+$main_color: #ffd70f;
+// #96b0ff
+
 .play-container {
   display: flex;
   flex-direction: column;
@@ -61,7 +64,7 @@
     }
 
     .selected {
-      background: #96b0ff;
+      background: $main_color;
     }
 
     .edge-horizontal {
@@ -125,7 +128,7 @@
     }
 
     .value-btn-selected {
-      background-color: #96b0ff;
+      background-color: $main_color;
     }
   }
 
@@ -168,7 +171,7 @@
       left: 50%;
       bottom: 0;
       height: 3px;
-      background: #96b0ff;
+      background: $main_color;
     }
     
     &:hover {
@@ -187,7 +190,7 @@
   }
 
   .noting {
-    background-color: #96b0ff;
+    background-color: $main_color;
     color: black;
   }
 }
