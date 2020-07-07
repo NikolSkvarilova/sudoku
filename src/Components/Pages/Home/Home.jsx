@@ -85,7 +85,7 @@ const Home = () => {
             title_color={ colorPalette.txtPrimaryLight }
             sub_title_color={ colorPalette.txtSecondary }
             txt_color={ colorPalette.txtPrimaryLight }
-            line_color={ `linear-gradient(to top, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }` }
+            line_color="#741FFF"
             img={ require('../../../images/about_img.png') }
             alt="Designer Image"
             img_align_mobile="top"
@@ -155,7 +155,8 @@ const Home = () => {
            }
           goTo="/play"
           sectionStyle={{ background: `linear-gradient(135deg, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }`, color: 'white' }}
-          btnStyle={{ color: "white" }}
+          borderColor="white"
+          txtColor="white"
         />
       </Section> 
     </div>
