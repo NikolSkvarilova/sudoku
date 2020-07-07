@@ -1,16 +1,19 @@
 @import '../../variables';
 @import '../../mixins';
 
-$main_color: #ffd70f;
-// #96b0ff
+$main_color: #9b5eff;
 
 .play-container {
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 
+  @media only screen and (max-width: 768px) {
+    padding: 0;
+  }
+    
   .sudoku-table {
     border-collapse: collapse;
     margin: 5px;
@@ -140,63 +143,25 @@ $main_color: #ffd70f;
       margin: 5px;
       min-width: 97vw;
     }
-}
-
-  .button {
-    -webkit-box-flex: 1;
-    flex: 1 1 auto;
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #1A1A1A;
-    text-align: center;
-    text-transform: uppercase;
-    position: relative;
-    overflow: hidden;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-    color: #1A1A1A;
-
-    @media only screen and (max-width: map-get($breakpoints, mobile)) {
-      min-width: 97vw;
-      margin: 5px 0 0 0;
-      padding: 15px 0;
-    }
-  
-    &:after {
-      position: absolute;
-      -webkit-transition: 0.3s;
-      transition: 0.3s;
-      content: "";
-      width: 0;
-      left: 50%;
-      bottom: 0;
-      height: 3px;
-      background: $main_color;
-    }
-    
-    &:hover {
-      cursor: pointer;
-    }
-    
-    &:hover:after {
-      width: 100%;
-      left: 0;
-    }
-    
-    &:after {
-      right: 0;
-      left: auto;
-    }
-  }
-
-  .noting {
-    background-color: $main_color;
-    color: black;
   }
 }
+
+.button:after {
+  background: $main_color;
+}
+
+.noting {
+  background-color: $main_color;
+}
+
 
 .no-err {
   @media only screen and (max-width: map-get($breakpoints, mobile)) {
     height: auto;
   }
+}
+
+.err {
+  height: 100vh;
+  text-align: center;
 }
