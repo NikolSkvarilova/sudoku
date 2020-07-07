@@ -28,7 +28,12 @@ def check_sudoku():
 
     else:
       return {"solved_correctly": False}
-    
+
+
+@app.route('/play/getDailySudoku')
+def get_daily_sudoku():
+  return {"daily_sudoku": getter.getDailySudoku()}
+
 
 if __name__ == "__main__": 
   app.run(debug=True, port=5000)
