@@ -1,13 +1,30 @@
 
 from flask import Flask, request
+from flask_sqlalchemy import SQLAlchemy
+
+from datetime import datetime
 
 from getter import Getter
 from solver import Solver
 
 app = Flask("__name__")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db_sudoku.db'
+db = SQLAlchemy(app)
 
 getter = Getter()
 getter.generateDailySudoku()
+
+# Database models
+class DailySudoku(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  board = db.Column(db.Text)
+  date = db.Column(db.DateTime, default=datetime.utcnow)
+
+class DailySudokuSolver(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  name = db.Column(db.Text)
+  sudokuID = db.Column(db.Integer)
+  time = db.Column(db.DateTime)
 
 
 @app.route('/play/get_sudoku/<int:lvl>')
