@@ -1,10 +1,10 @@
-import React from 'react';
+ import React from 'react';
 import './Play.scss';
 
 // My components
-import Section from './../../Sections/Section/Section.jsx'
-import TextSection from './../../Sections/TextSection/TextSection.jsx'
-import Button from './../../Elements/Button/Button.jsx'
+import Section from './../../Sections/Section/Section.jsx';
+import TextSection from './../../Sections/TextSection/TextSection.jsx';
+import Button from './../../Elements/Button/Button.jsx';
 
 class Play extends React.Component {
   constructor(props) {
@@ -15,13 +15,37 @@ class Play extends React.Component {
       currentSudoku:    null,   // The one which can user change
       selectedValue:    "",     // Value the user wants to see highlighted or which the user wants to insert into the sudoku.
       noting:           false,  // Are we noting right now?
-      dailySudoku:      false   // If the sudoku we are dealing with is daily or not
+      dailySudoku:      false,  // If the sudoku we are dealing with is daily or not
+      minutes:           0,
+      seconds:           0,
+      stopTime:         false,
+      intervalID:       0
     };
   }
 
 
   componentDidMount() {
-    this.fetchSudoku(`/play/get_sudoku/${ this.props.match.params.level }`)
+    this.getSudoku();
+  }
+
+
+  startStopwatch() {
+    // Stopwatch thingy
+    // 'cause I do not know how to make it a component lol
+    this.state.intervalID = setInterval(() => {
+      return this.setState((state, props) => {
+        
+        return {
+          seconds: state.seconds === 59 ? 0 : state.seconds++,
+          minutes: state.seconds === 59 ? state.minutes++ : state.minutes
+        }
+      })
+    }, 1000)
+  }
+
+
+  stopStopwatch() {
+    clearInterval(this.state.intervalID);
   }
 
 
@@ -105,7 +129,8 @@ class Play extends React.Component {
   getSudoku() {
     // Fetch normal sudoku 
     this.fetchSudoku(`/play/get_sudoku/${ this.props.match.params.level }`);
-    this.setState({ dailySudoku: false, selectedValue: "" })
+    this.setState({ dailySudoku: false, selectedValue: "", minutes: 0, seconds: 0 })
+    this.startStopwatch()
   }
 
 
@@ -272,6 +297,7 @@ class Play extends React.Component {
   }
 
   checkSudoku() {
+    this.stopStopwatch()
 
     const requestOptions = {
       method: 'POST',
@@ -349,6 +375,8 @@ class Play extends React.Component {
 
     return([
       this.state.dailySudoku ? <h1>Daily Sudoku</h1> : "",
+
+      <p className="stopwatch">{ this.state.minutes }:{ this.state.seconds }</p>,
 
       <table className="sudoku-table">
         <tbody>
