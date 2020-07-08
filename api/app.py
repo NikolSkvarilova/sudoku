@@ -90,7 +90,7 @@ def getSudokuID(board):
   return DailySudoku.query.filter_by(board=str(board)).first().id
 
 def addDailySudokuToDatabase(board):
-  sudoku = DailySudoku(board=str(board), date=datetime.utcnow())
+  sudoku = DailySudoku(board=str(board), date=datetime.now().date())
   db.session.add(sudoku)
   db.session.commit()
 
