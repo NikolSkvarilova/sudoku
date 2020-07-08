@@ -128,7 +128,7 @@ class Getter:
 
   def generateDailySudoku(self):
     # Generates specific sudoku considered as "daily"
-    self.dailySudoku = self.generateFromSeed("level4")
+    self.dailySudoku = self.generateFromSeed("level1")
 
   def getDailySudoku(self):
     # Returns daily sudoku
