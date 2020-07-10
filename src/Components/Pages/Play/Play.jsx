@@ -302,8 +302,16 @@ class Play extends React.Component {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify([this.objectSudokuToArraySudoku(), this.state.originalSudoku, `${ this.state.minutes }:${ this.state.seconds }`, "Foo"])
-      // body: { 'original-sudoku': this.state.originalSudoku, 'solved-sudoku': this.objectSudokuToArraySudoku(), 'time': [ this.state.minutes, this.state.seconds ] }
+      // body: JSON.stringify([this.objectSudokuToArraySudoku(), this.state.originalSudoku, this.state.minutes, this.state.seconds, "Foo"])
+      body: JSON.stringify({ 
+        name:             "Foo",
+        originalSudoku:   this.state.originalSudoku,
+        solvedSudoku:     this.objectSudokuToArraySudoku(), 
+        time:             { 
+                            minutes:  this.state.minutes, 
+                            seconds:  this.state.seconds 
+                          }
+      })
     };
 
     fetch('/play/check_sudoku', requestOptions)
