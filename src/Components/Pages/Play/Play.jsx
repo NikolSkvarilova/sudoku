@@ -16,10 +16,10 @@ class Play extends React.Component {
       selectedValue:    "",     // Value the user wants to see highlighted or which the user wants to insert into the sudoku.
       noting:           false,  // Are we noting right now?
       dailySudoku:      false,  // If the sudoku we are dealing with is daily or not
-      minutes:           0,
-      seconds:           0,
-      stopTime:         false,
-      intervalID:       0
+      minutes:          0,
+      seconds:          0,
+      intervalID:       0,
+      name:             ""
     };
   }
 
@@ -33,7 +33,7 @@ class Play extends React.Component {
     // Stopwatch thingy
     // 'cause I do not know how to make it a component lol
     this.state.intervalID = setInterval(() => {
-      return this.setState((state, props) => {
+      return this.setState((state) => {
         
         return {
           seconds: state.seconds === 59 ? 0 : state.seconds++,
@@ -46,6 +46,21 @@ class Play extends React.Component {
 
   stopStopwatch() {
     clearInterval(this.state.intervalID);
+  }
+
+
+  resetStopwatch() {
+    this.setState({ minutes: 0, seconds: 0 })
+  }
+
+
+  getUsername() {
+    let username = prompt("Please enter your name: ")
+    if ( username === null || username === "" ) {
+      username = "N/A"
+    }
+
+    this.setState({ name: username })
   }
 
 
@@ -129,7 +144,8 @@ class Play extends React.Component {
   getSudoku() {
     // Fetch normal sudoku 
     this.fetchSudoku(`/play/get_sudoku/${ this.props.match.params.level }`);
-    this.setState({ dailySudoku: false, selectedValue: "", minutes: 0, seconds: 0 })
+    this.setState({ dailySudoku: false, selectedValue: "" });
+    this.resetStopwatch()
     this.startStopwatch()
   }
 
@@ -137,11 +153,14 @@ class Play extends React.Component {
   getDailySudoku() {
     // Getting the daily sudoku (same all day)
     this.fetchSudoku('/play/getDailySudoku');
-    this.setState({ dailySudoku: true });
+    this.setState({ dailySudoku: true, selectedValue: "" });
 
-    // Scrolling back to top
+    // Scroll back to top
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+
+    this.resetStopwatch()
+    this.startStopwatch()
   }
 
 
@@ -296,15 +315,21 @@ class Play extends React.Component {
     return elements;
   }
 
+
   checkSudoku() {
-    this.stopStopwatch()
+    this.stopStopwatch();
+
+    if ( this.state.dailySudoku ) {
+      this.getUsername();
+    }
+
+    console.log(this.state)
 
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      // body: JSON.stringify([this.objectSudokuToArraySudoku(), this.state.originalSudoku, this.state.minutes, this.state.seconds, "Foo"])
       body: JSON.stringify({ 
-        name:             "Foo",
+        name:             this.state.name,
         originalSudoku:   this.state.originalSudoku,
         solvedSudoku:     this.objectSudokuToArraySudoku(), 
         time:             { 
@@ -318,6 +343,7 @@ class Play extends React.Component {
       .then(response => response.json())
       .then(data => this.solved(data.solved_correctly))
   }
+
 
   objectSudokuToArraySudoku() {
     let size = this.state.originalSudoku.length;
