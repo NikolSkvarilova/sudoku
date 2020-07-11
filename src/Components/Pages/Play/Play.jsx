@@ -29,6 +29,9 @@ class Play extends React.Component {
   }
 
 
+  // -------------- STOPWATCH --------------
+
+
   startStopwatch() {
     // Stopwatch thingy
     // 'cause I do not know how to make it a component lol
@@ -64,6 +67,9 @@ class Play extends React.Component {
   }
 
 
+  // -------------- SUDOKU --------------
+
+
   fetchSudoku(address) {
     // Getting sudoku from backend
     // param: address = link (example: /play/2)
@@ -78,16 +84,61 @@ class Play extends React.Component {
   }
 
 
-  generateBlankBoard(height) {
-    // param: height = number of sublists in the parent list ([[], [], []] --> height = 3)
+  getSudoku() {
+    // Fetch normal sudoku 
+    this.fetchSudoku(`/play/get_sudoku/${ this.props.match.params.level }`);
+    this.setState({ dailySudoku: false, selectedValue: "" });
+    this.resetStopwatch()
+    this.startStopwatch()
+  }
 
-    let board = [];
 
-    for (let i = 0; i < height; i++) {
-      board.push([]);
+  getDailySudoku() {
+    // Getting the daily sudoku (same all day)
+    this.fetchSudoku('/play/getDailySudoku');
+    this.setState({ dailySudoku: true, selectedValue: "" });
+
+    // Scroll back to top
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+
+    this.resetStopwatch()
+    this.startStopwatch()
+  }
+
+
+  resetSudoku() {
+    this.createSudokuFromOriginal();
+    this.setState({ selectedValue: "", noting: false });
+  }
+
+
+  checkSudoku() {
+    this.stopStopwatch();
+
+    if ( this.state.dailySudoku ) {
+      this.getUsername();
     }
 
-    return board;
+    console.log(this.state)
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        name:             this.state.name,
+        originalSudoku:   this.state.originalSudoku,
+        solvedSudoku:     this.objectSudokuToArraySudoku(), 
+        time:             { 
+                            minutes:  this.state.minutes, 
+                            seconds:  this.state.seconds 
+                          }
+      })
+    };
+
+    fetch('/play/check_sudoku', requestOptions)
+      .then(response => response.json())
+      .then(data => this.solved(data.solved_correctly))
   }
 
 
@@ -135,41 +186,23 @@ class Play extends React.Component {
   }
 
 
-  resetSudoku() {
-    this.createSudokuFromOriginal();
-    this.setState({ selectedValue: "", noting: false });
-  }
+  objectSudokuToArraySudoku() {
+    let size = this.state.originalSudoku.length;
+    let sudoku = this.generateBlankBoard(size);
 
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size; j++) {
+        let value = this.state.currentSudoku[i][j].value;
 
-  getSudoku() {
-    // Fetch normal sudoku 
-    this.fetchSudoku(`/play/get_sudoku/${ this.props.match.params.level }`);
-    this.setState({ dailySudoku: false, selectedValue: "" });
-    this.resetStopwatch()
-    this.startStopwatch()
-  }
+        if (value === null) {
+          value = 0;
+        }
 
-
-  getDailySudoku() {
-    // Getting the daily sudoku (same all day)
-    this.fetchSudoku('/play/getDailySudoku');
-    this.setState({ dailySudoku: true, selectedValue: "" });
-
-    // Scroll back to top
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-
-    this.resetStopwatch()
-    this.startStopwatch()
-  }
-
-
-  checkIfElementInArray(arr, element) {
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i] === element) {
-        return true;
+        sudoku[i].push(value)
       }
     }
+
+    return sudoku
   }
 
 
@@ -237,42 +270,6 @@ class Play extends React.Component {
   }
 
 
-  wholeNumTest(n) {
-    return (n - Math.floor(n)) !== 0; 
-  }
-
-
-  renderSudoku() {
-    // Returns list of trs and tds with specific values and classnames
-
-    // ... for each row in the sudoku ...
-    return this.state.currentSudoku.map(row => {
-      let rowList = [];
-      
-      // ... for each cell in the row ...
-      row.forEach(cell => {
-        rowList.push(
-          <td 
-            className={ this.getClassesForCell(cell) } 
-            onClick={ () => this.handleClickOnCell(cell.row, cell.col) }
-          >
-            <div className="cell-value">
-              { cell.value }  
-            </div>
-            { ! cell.value ? <div className="cell-note">{ cell.notes.sort() }</div> : "" }
-          </td>
-        );
-      });
-
-      return (
-        <tr>
-          {rowList}
-        </tr>
-      );
-    });
-  }
-
-
   countHowManyLeft(value) {
     let count = 0;
     let size = this.state.currentSudoku.length;
@@ -316,53 +313,73 @@ class Play extends React.Component {
   }
 
 
-  checkSudoku() {
-    this.stopStopwatch();
-
-    if ( this.state.dailySudoku ) {
-      this.getUsername();
-    }
-
-    console.log(this.state)
-
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        name:             this.state.name,
-        originalSudoku:   this.state.originalSudoku,
-        solvedSudoku:     this.objectSudokuToArraySudoku(), 
-        time:             { 
-                            minutes:  this.state.minutes, 
-                            seconds:  this.state.seconds 
-                          }
-      })
-    };
-
-    fetch('/play/check_sudoku', requestOptions)
-      .then(response => response.json())
-      .then(data => this.solved(data.solved_correctly))
+  changeMode() {
+    this.setState({ noting: !this.state.noting })
   }
 
 
-  objectSudokuToArraySudoku() {
-    let size = this.state.originalSudoku.length;
-    let sudoku = this.generateBlankBoard(size);
+  renderSudoku() {
+    // Returns list of trs and tds with specific values and classnames
 
-    for (let i = 0; i < size; i++) {
-      for (let j = 0; j < size; j++) {
-        let value = this.state.currentSudoku[i][j].value;
+    // ... for each row in the sudoku ...
+    return this.state.currentSudoku.map(row => {
+      let rowList = [];
+      
+      // ... for each cell in the row ...
+      row.forEach(cell => {
+        rowList.push(
+          <td 
+            className={ this.getClassesForCell(cell) } 
+            onClick={ () => this.handleClickOnCell(cell.row, cell.col) }
+          >
+            <div className="cell-value">
+              { cell.value }  
+            </div>
+            { ! cell.value ? <div className="cell-note">{ cell.notes.sort() }</div> : "" }
+          </td>
+        );
+      });
 
-        if (value === null) {
-          value = 0;
-        }
+      return (
+        <tr>
+          {rowList}
+        </tr>
+      );
+    });
+  }
 
-        sudoku[i].push(value)
+
+  // -------------- GENERAL --------------
+
+
+  generateBlankBoard(height) {
+    // param: height = number of sublists in the parent list ([[], [], []] --> height = 3)
+
+    let board = [];
+
+    for (let i = 0; i < height; i++) {
+      board.push([]);
+    }
+
+    return board;
+  }
+
+
+  checkIfElementInArray(arr, element) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === element) {
+        return true;
       }
     }
-
-    return sudoku
   }
+
+
+  wholeNumTest(n) {
+    return (n - Math.floor(n)) !== 0; 
+  }
+
+
+  // -------------- OTHER PAGE STUFFS --------------
 
 
   solved(correctly) {
@@ -374,8 +391,13 @@ class Play extends React.Component {
   }
 
 
-  changeMode() {
-    this.setState({ noting: !this.state.noting })
+  renderErrPage() {
+    // Renders an error msg and button to go back to main page
+
+    return([
+      <h1 className="err-msg">Oops! We seem to be having trouble with the server <span style={{ whiteSpace: "nowrap" }}>:(</span></h1>,
+      <Button class="play_btn" link="/">Go Back to Main Page</Button>
+    ])
   }
 
 
@@ -383,7 +405,7 @@ class Play extends React.Component {
     // Renders page when there is no error
 
     return([
-      this.renderSudokuPage(),
+      this.renderSudokuSection(),
 
       // Daily Sudoku section
       <Section
@@ -405,7 +427,7 @@ class Play extends React.Component {
   }
 
 
-  renderSudokuPage() {
+  renderSudokuSection() {
     // Renders the sudoku board, buttons
 
     return([
@@ -429,16 +451,6 @@ class Play extends React.Component {
         <Button class="play_btn" onClick={ () => { this.getSudoku() }}>Get New Sudoku</Button>
         <Button onClick={ () => { this.changeMode() }} class={ !! this.state.noting ? "noting play_btn" : "play_btn" }>Change Mode</Button>
       </div>
-    ])
-  }
-
-
-  renderErrPage() {
-    // Renders an error msg and button to go back to main page
-
-    return([
-      <h1 className="err-msg">Oops! We seem to be having trouble with the server <span style={{ whiteSpace: "nowrap" }}>:(</span></h1>,
-      <Button class="play_btn" link="/">Go Back to Main Page</Button>
     ])
   }
 
