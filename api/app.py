@@ -88,6 +88,29 @@ def get_daily_sudoku():
   return {"sudoku": getter.getDailySudoku()}
 
 
+@app.route('/play/getDailySudokuSolvers')
+def get_daily_sudoku_solvers():
+  data = DailySudokuSolver.query.filter_by(sudokuID=getSudokuID(getter.dailySudoku))
+  data = solversToArrOfObjects(data)
+  # Sort the data by time
+  data.sort(key = lambda i: i['time'])
+  return {"solvers": data}
+
+
+def solversToArrOfObjects(solvers):
+  data = []
+
+  for solver in solvers:
+    data.append(
+      {
+        "name": solver.name,
+        "time": solver.time
+      }
+    )
+
+  return data
+
+
 def getSudokuID(board):
   return DailySudoku.query.filter_by(board=str(board)).first().id
 

@@ -144,6 +144,26 @@ $main_color: #9b5eff;
       min-width: 97vw;
     }
   }
+
+  .daily-solvers-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    margin-top: 25px;
+
+    th, td {
+      height: 25px;
+    }
+
+    th {
+      font-size: 1.1em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      border-bottom: 1px solid gray;
+    }
+
+
+  }
 }
 
 .button:after {

@@ -11,21 +11,23 @@ class Play extends React.Component {
     super(props);
 
     this.state = {
-      originalSudoku:   null,   // The fetched one (won't change)
-      currentSudoku:    null,   // The one which can user change
-      selectedValue:    "",     // Value the user wants to see highlighted or which the user wants to insert into the sudoku.
-      noting:           false,  // Are we noting right now?
-      dailySudoku:      false,  // If the sudoku we are dealing with is daily or not
-      minutes:          0,
-      seconds:          0,
-      intervalID:       0,
-      name:             ""
+      originalSudoku:           null,   // The fetched one (won't change)
+      currentSudoku:            null,   // The one which can user change
+      selectedValue:            "",     // Value the user wants to see highlighted or which the user wants to insert into the sudoku.
+      noting:                   false,  // Are we noting right now?
+      dailySudoku:              false,  // If the sudoku we are dealing with is daily or not
+      minutes:                  0,
+      seconds:                  0,
+      intervalID:               0,
+      dailySolvers:             [],
+      rowsInSolversTable:       5
     };
   }
 
 
   componentDidMount() {
     this.getSudoku();
+    this.getDailySudokuSolvers();
   }
 
 
@@ -54,16 +56,6 @@ class Play extends React.Component {
 
   resetStopwatch() {
     this.setState({ minutes: 0, seconds: 0 })
-  }
-
-
-  getUsername() {
-    let username = prompt("Please enter your name: ")
-    if ( username === null || username === "" ) {
-      username = "N/A"
-    }
-
-    this.setState({ name: username })
   }
 
 
@@ -115,18 +107,18 @@ class Play extends React.Component {
 
   checkSudoku() {
     this.stopStopwatch();
+    
+    let name = "N/A";
 
-    if ( this.state.dailySudoku ) {
-      this.getUsername();
+    if (this.state.dailySudoku) {
+      name = prompt("Enter your name: ")
     }
-
-    console.log(this.state)
 
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
-        name:             this.state.name,
+        name:             name,
         originalSudoku:   this.state.originalSudoku,
         solvedSudoku:     this.objectSudokuToArraySudoku(), 
         time:             { 
@@ -382,12 +374,60 @@ class Play extends React.Component {
   // -------------- OTHER PAGE STUFFS --------------
 
 
+  getDailySudokuSolvers() {
+    fetch('/play/getDailySudokuSolvers')
+      .then(response => response.json())
+      .then(data =>this.setState({ dailySolvers: data.solvers }))
+      .catch(err => {
+        this.setState({ currentSudoku: null })
+      });
+  }
+
+
   solved(correctly) {
     if (correctly) {
       alert("Congratulation! You have solved the sudoku!")
     } else {
       alert("Whoop! You did not solved it correctly. :(")
     }
+  }
+
+
+  renderDailySolversSolvers() {
+    let howMany = this.state.rowsInSolversTable;
+
+    if (howMany > this.state.dailySolvers.length) {
+      howMany = this.state.dailySolvers.length
+    } 
+
+    let tableRows = [];
+
+    for (let i = 0; i < howMany; i++) {
+      let solver = this.state.dailySolvers[i]
+
+      tableRows.push(
+        <tr>
+          <td>{ i + 1 }</td>
+          <td>{ solver.name }</td>
+          <td>{ solver.time }</td>
+        </tr>
+      )
+    }
+
+    return([
+        <table className="daily-solvers-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            { tableRows }
+          </tbody>
+        </table>
+    ])
   }
 
 
@@ -418,9 +458,11 @@ class Play extends React.Component {
 
           <p>Curabitur ornare eros ultrices arcu blandit, at vestibulum velit pellentesque. Sed maximus dolor non sapien tristique faucibus. Duis lorem quam, vulputate vehicula lacus vel, commodo fringilla eros. </p>
           
-          <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras volutpat, quam in condimentum finibus, magna est faucibus tortor, sit amet iaculis purus purus nec quam. Sed malesuada quam sed nulla placerat vehicula. Fusce consectetur sagittis finibus.</p>
+          <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras volutpat, quam in condimentum finibus.</p>
 
           <Button onClick={ () => { this.getDailySudoku() }} margin="10px 10px 10px 0">Try Daily Sudoku</Button>
+
+          { this.renderDailySolversSolvers() }
         </TextSection>
       </Section>
     ])
