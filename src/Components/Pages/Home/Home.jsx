@@ -60,15 +60,15 @@ const Home = () => {
           <Categories 
             categories={[
               {
-                img: require('./../../../images/small1.png'),
+                img: require('./../../../images/about_us.png'),
                 content: [<h1>About Us</h1>, <p>Learn more about our team and our work.</p>]
               },
               {
-                img: require('./../../../images/small2.png'),
-                content: [<h1>Code</h1>, <p>View source code and check out used technologies.</p>]
+                img: require('./../../../images/code.png'),
+                content: [<h1>Code</h1>, <p><a href="https://github.com/NikolSkvarilova/sudoku">View source code</a> and check out used technologies.</p>]
               },
               {
-                img: require('./../../../images/small3.png'),
+                img: require('./../../../images/documentation.png'),
                 content: [<h1>Documentation</h1>, <p>Read the documentation and join the development process!</p>]
               },
             ]}
@@ -85,11 +85,12 @@ const Home = () => {
             title_color={ colorPalette.txtPrimaryLight }
             sub_title_color={ colorPalette.txtSecondary }
             txt_color={ colorPalette.txtPrimaryLight }
-            line_color={ `linear-gradient(to top, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }` }
+            line_color="#741FFF"
             img={ require('../../../images/about_img.png') }
             alt="Designer Image"
             img_align_mobile="top"
-            img_align="left">
+            img_align="left"
+            line_bg="linear-gradient(90deg, rgba(150,85,255,1) 0%, rgba(116,31,255,1) 100%);">
             
             <p>Aliquam sollicitudin egestas pellentesque. Nulla porta sollicitudin lacus, ut finibus libero fermentum quis. Integer fermentum mattis ex, lacinia lobortis ex hendrerit in. Vivamus at ante imperdiet, lobortis felis vitae, efficitur massa.</p> <p>Nam ex metus, venenatis id justo nec, tempus dictum mauris. Sed non nibh lorem. Phasellus et faucibus ligula, sit amet porttitor magna. Phasellus non volutpat dolor, nec lobortis ex.</p>
           </TextSection>
@@ -155,7 +156,8 @@ const Home = () => {
            }
           goTo="/play"
           sectionStyle={{ background: `linear-gradient(135deg, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }`, color: 'white' }}
-          btnStyle={{ color: "white" }}
+          borderColor="white"
+          txtColor="white"
         />
       </Section> 
     </div>

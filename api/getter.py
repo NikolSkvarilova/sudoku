@@ -126,7 +126,15 @@ class Getter:
 
     return sudoku 
 
+  def generateDailySudoku(self):
+    # Generates specific sudoku considered as "daily"
+    self.dailySudoku = self.generateFromSeed("level1")
+
+  def getDailySudoku(self):
+    # Returns daily sudoku
+    return self.dailySudoku
 
 if __name__ == "__main__":
   app = Getter()
-  print(app.generateFromSeed("level1"))
+  app.generateDailySudoku()
+  print(app.getDailySudoku())
