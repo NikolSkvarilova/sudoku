@@ -34,7 +34,6 @@ class App extends React.Component {
       <Router>
         <div className="App">
           <nav 
-            { ... window.location.pathname.includes("/play") && { style: { background: colorPalette.bgDark }}} 
             className={ this.state.navActive ? 'navActive' : '' }
             onClick={ () => { this.toggleNavActive() }}>
 
@@ -46,7 +45,7 @@ class App extends React.Component {
               <i class="fa fa-bars"></i>
             </span>
 
-            <div className={ `elements ${ this.state.navActive ? 'active' : '' }` }> 
+            <div className={ `elements ${ this.state.navActive ? 'active' : '' }` } { ... window.location.pathname === "/" && { style: { color: "white" }}} > 
               <a href="/#">Home</a>
               <a href="/#about">About</a>
               <a href="/#rules">Rules</a>
