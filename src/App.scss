@@ -24,7 +24,7 @@ nav {
       text-transform: uppercase;
       position: relative;
       text-align: center;
-      color: white;
+      // color: white;
       text-decoration: none;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       font-weight: bold;
@@ -119,9 +119,9 @@ nav {
       transition: 0.2s ease left;
     }
     
-    .elements a:hover {
-      color: #fff;
-    }
+    // .elements a:hover {
+    //   color: #fff;
+    // }
     
     .elements a:hover:before, .elements a:hover:after {
       transform: scale(1);
