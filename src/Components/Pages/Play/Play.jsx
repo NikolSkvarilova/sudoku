@@ -131,6 +131,10 @@ class Play extends React.Component {
     fetch('/play/check_sudoku', requestOptions)
       .then(response => response.json())
       .then(data => this.solved(data.solved_correctly))
+
+    if (this.state.dailySudoku) {
+      this.getDailySudokuSolvers();
+    }
   }
 
 
