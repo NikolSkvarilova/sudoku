@@ -1,4 +1,8 @@
 # Sudoku
+[![LoC](https://tokei.rs/b1/github/NikolSkvarilova/sudoku?category=code)](https://github.com/NikolSkvarilova/sudoku)
+![GitHub last commit](https://img.shields.io/github/last-commit/NikolSkvarilova/sudoku?color=%236823D8&logo=git&logoColor=%20%23FFFFFF)
+![GitHub repo size](https://img.shields.io/github/repo-size/NikolSkvarilova/sudoku?color=%23741FFF&label=repo%20size&logo=Github)
+
 [Check out the development process on Trello!](https://trello.com/b/PfZc7t8b)
 
 ## How to run
