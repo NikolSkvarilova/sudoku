@@ -15,7 +15,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from getter import Getter
 from solver import Solver
 
-app = Flask("__name__")
+app = Flask(__name__, static_folder='build', static_url_path='')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db_sudoku.db'
 db = SQLAlchemy(app)
 
@@ -36,7 +36,12 @@ class DailySudokuSolver(db.Model):
   time = db.Column(db.Text)
 
 
-@app.route('/play/get_sudoku/<int:lvl>')
+@app.route('/', methods=["GET"])
+def index():
+  return app.send_static_file('index.html')
+
+
+@app.route('/play/get_sudoku/<int:lvl>', methods=["GET"])
 def get_sudoku(lvl):
   return {"sudoku": getter.generateFromSeed("level" + str(lvl))}
 
@@ -83,12 +88,12 @@ def check_sudoku():
       return {"solved_correctly": False}
 
 
-@app.route('/play/getDailySudoku')
+@app.route('/play/getDailySudoku', methods=["GET"])
 def get_daily_sudoku():
   return {"sudoku": getter.getDailySudoku()}
 
 
-@app.route('/play/getDailySudokuSolvers')
+@app.route('/play/getDailySudokuSolvers', methods=["GET"])
 def get_daily_sudoku_solvers():
   data = DailySudokuSolver.query.filter_by(sudokuID=getSudokuID(getter.dailySudoku))
   data = solversToArrOfObjects(data)
@@ -146,4 +151,6 @@ scheduler.start()
 atexit.register(lambda: scheduler.shutdown())
 
 if __name__ == "__main__": 
-  app.run(debug=True, port=5000)
+  # app.run(debug=True, port=5000)
+  if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
