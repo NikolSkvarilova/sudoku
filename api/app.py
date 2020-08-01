@@ -15,7 +15,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from getter import Getter
 from solver import Solver
 
-app = Flask(__name__, static_folder='build', static_url_path='')
+app = Flask(__name__, static_folder='../build', static_url_path='')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db_sudoku.db'
 db = SQLAlchemy(app)
 
