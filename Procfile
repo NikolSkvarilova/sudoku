@@ -1,2 +1,2 @@
 web: node server.js 
-web: gunicorn app:app
+web: cd api && gunicorn app:app
