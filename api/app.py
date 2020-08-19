@@ -56,7 +56,7 @@ def getNumOfSudokus():
 
 
 # Returns a sudoku based on the level from url.
-@app.route('/play/get_sudoku/<int:lvl>', methods=["GET"])
+@app.route('/api/play/get_sudoku/<int:lvl>', methods=["GET"])
 def get_sudoku(lvl):
   return {"sudoku": getter.generateFromSeed("level" + str(lvl))}
 
@@ -69,7 +69,7 @@ def get_sudoku(lvl):
 #     seconds         :int      - Number of seconds it took the solver to solve it
 # Name, minutes and seconds are useless when the sudoku is not Daily Sudoku. 
 # We check the originalSudoku to see if it is the Daily Sudoku.
-@app.route('/play/check_sudoku', methods=['GET', 'POST'])
+@app.route('/api/play/check_sudoku', methods=['GET', 'POST'])
 def check_sudoku():
   if request.method == 'POST':
 
@@ -116,13 +116,13 @@ def check_sudoku():
 
 
 # Returns daily sudoku
-@app.route('/play/getDailySudoku', methods=["GET"])
+@app.route('/api/play/getDailySudoku', methods=["GET"])
 def get_daily_sudoku():
   return {"sudoku": getter.getDailySudoku()}
 
 
 # Returns list of Daily Sudoku solvers
-@app.route('/play/getDailySudokuSolvers', methods=["GET"])
+@app.route('/api/play/getDailySudokuSolvers', methods=["GET"])
 def get_daily_sudoku_solvers():
   data = DailySudokuSolver.query.filter_by(sudokuID=getSudokuID(getter.dailySudoku))
   data = solversToArrOfObjects(data)
