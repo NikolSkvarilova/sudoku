@@ -22,7 +22,7 @@
     "symbols": "0.0.6"
   },
   "scripts": {
-    "start": "node server/server.js",
+    "start": "react-scripts start",
     "start-api": "cd api && python app.py",
     "build": "react-scripts build",
     "test": "react-scripts test",
