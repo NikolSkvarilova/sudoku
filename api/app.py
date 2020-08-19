@@ -48,6 +48,13 @@ def play_page(lvl):
   return app.send_static_file('index.html')
 
 
+# Get number of sudokus user can play.
+@app.route('/api/numOfSudokus', methods=["GET"])
+def getNumOfSudokus():
+  numOfSudokus = getter.getNumOfSudokus()
+  return {"numOfSudokus": numOfSudokus}
+
+
 # Returns a sudoku based on the level from url.
 @app.route('/play/get_sudoku/<int:lvl>', methods=["GET"])
 def get_sudoku(lvl):

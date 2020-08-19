@@ -134,6 +134,21 @@ class Getter:
     # Returns daily sudoku
     return self.dailySudoku
 
+  def getNumOfSudokus(self):
+    # Get num of seed sudokus
+    numOfSeedSudokus = 0
+
+    for lvl in self.sudokuFile:
+      numOfSeedSudokus += len(self.sudokuFile[lvl])
+
+    # Get final num
+    # * 9 for changing the original numbers to new values
+    # * 4 for rotating the puzzle by 0°, 90°, 180°, 270°
+    # * 4 for mirroring the original sudoku horizontally and vertically 
+    finalNum = numOfSeedSudokus * 9 * 4 * 4 
+
+    return finalNum
+
 if __name__ == "__main__":
   app = Getter()
   app.generateDailySudoku()
