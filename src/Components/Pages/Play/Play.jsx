@@ -64,7 +64,7 @@ class Play extends React.Component {
 
   fetchSudoku(address) {
     // Getting sudoku from backend
-    // param: address = link (example: /play/2)
+    // param: address = link (example: /api/play/2)
 
     fetch(address)
       .then(response => response.json())
@@ -78,7 +78,7 @@ class Play extends React.Component {
 
   getSudoku() {
     // Fetch normal sudoku 
-    this.fetchSudoku(`/play/get_sudoku/${ this.props.match.params.level }`);
+    this.fetchSudoku(`/api/play/get_sudoku/${ this.props.match.params.level }`);
     this.setState({ dailySudoku: false, selectedValue: "" });
     this.resetStopwatch()
     this.startStopwatch()
@@ -87,7 +87,7 @@ class Play extends React.Component {
 
   getDailySudoku() {
     // Getting the daily sudoku (same all day)
-    this.fetchSudoku('/play/getDailySudoku');
+    this.fetchSudoku('/api/getDailySudoku');
     this.setState({ dailySudoku: true, selectedValue: "" });
 
     // Scroll back to top
@@ -128,7 +128,7 @@ class Play extends React.Component {
       })
     };
 
-    fetch('/play/check_sudoku', requestOptions)
+    fetch('/api/play/check_sudoku', requestOptions)
       .then(response => response.json())
       .then(data => this.solved(data.solved_correctly))
 
@@ -379,7 +379,7 @@ class Play extends React.Component {
 
 
   getDailySudokuSolvers() {
-    fetch('/play/getDailySudokuSolvers')
+    fetch('/api/play/getDailySudokuSolvers')
       .then(response => response.json())
       .then(data =>this.setState({ dailySolvers: data.solvers }))
       .catch(err => {
