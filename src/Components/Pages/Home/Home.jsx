@@ -9,6 +9,7 @@ import TextSection from '../../Sections/TextSection/TextSection.jsx';
 import ChooseLvlSection from '../../Sections/ChooseLvlSection/ChooseLvlSection.jsx';
 import Categories from '../../Sections/Categories/Categories.jsx'
 import Counter from '../../Sections/Counter/Counter.jsx'
+import Button from '../../Elements/Button/Button.jsx'
 
 // Icons
 import {  ReactComponent as ExploreIcon  } from '../../../images/explore.svg';
@@ -154,43 +155,61 @@ class Home extends React.Component {
   
             </TextSection>
           </Section>
+        
+    
+          <Section
+            padding="0"
+            sectionLink="levels">
+            
+            <ChooseLvlSection
+              levels = { 
+                [
+                  { 
+                    name: "Beginner",
+                    linkValue: 1
+                  },
+                  { 
+                    name: "Normal",
+                    linkValue: 2
+                  },
+                  { 
+                    name: "Advanced",
+                    linkValue: 3
+                  },
+                  { 
+                    name: "Hard",
+                    linkValue: 4
+                  },
+                  { 
+                    name: "Extra Hard",
+                    linkValue: 5
+                  }
+                ]
+              }
+              goTo="/play"
+              sectionStyle={{ background: `linear-gradient(135deg, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }`, color: 'white' }}
+              borderColor="white"
+              txtColor="white"
+            />
+          </Section> 
+
+          <Section
+            sectionLink="api">
+              <TextSection
+                title="API"
+                title_color={ colorPalette.txtPrimaryLight }
+                txt_color={ colorPalette.txtPrimaryLight }
+                img={ require('../../../images/API.png') }
+                alt="API img"
+                img_align="left"
+                img_align_mobile="bot">
+                
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint. </p>
+                <Button class="home-page-btn" borderColor="white" txtColor="white" link="#" margin="0px">See More</Button>
+              </TextSection>
+          </Section>
         </Section>
-  
-        <Section
-          padding="0"
-          sectionLink="levels">
-          
-          <ChooseLvlSection
-            levels = { 
-              [
-                { 
-                  name: "Beginner",
-                  linkValue: 1
-                },
-                { 
-                  name: "Normal",
-                  linkValue: 2
-                },
-                { 
-                  name: "Advanced",
-                  linkValue: 3
-                },
-                { 
-                  name: "Hard",
-                  linkValue: 4
-                },
-                { 
-                  name: "Extra Hard",
-                  linkValue: 5
-                }
-              ]
-             }
-            goTo="/play"
-            sectionStyle={{ background: `linear-gradient(135deg, ${ colorPalette.fancy1 }, ${ colorPalette.fancy2 }`, color: 'white' }}
-            borderColor="white"
-            txtColor="white"
-          />
-        </Section> 
       </div>
     )
   }

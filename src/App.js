@@ -50,6 +50,7 @@ class App extends React.Component {
               <a href="/#about">About</a>
               <a href="/#rules">Rules</a>
               <a href="/#levels">Play</a>
+              <a href="/#api">API</a>
               <div id="indicator" style={ window.location.pathname !== "/" ? { backgroundColor: "black" } : { backgroundColor: "white" } }></div>
             </div>
           </nav>
