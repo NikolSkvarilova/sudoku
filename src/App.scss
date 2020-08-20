@@ -1,16 +1,19 @@
 // $color1a: #BA1EED;
 // $color1b:   #713FDA;
-$color1a:   #7a8cff;
-$color1b:   #7ad0ff;
+$color1a:   #FF1F1F;
+$color1b:   #FFCE1F;
 
-$color2a:   #b47aff;
-$color2b:   #fc79e8;
+$color2a:   #FFE91F;
+$color2b:   #1FFFA1;
 
-$color3a:   #fffd78;
-$color3b:   #fc8479;
+$color3a:   #1FFFBC;
+$color3b:   #1F93FF;
 
-$color4a:   #7d79fc;
-$color4b:   #9a79fc;
+$color4a:   #1F50FF;
+$color4b:   #741FFF;
+
+$color5a:   #C51FFF;
+$color5b:   #FF1FF6;
 
 nav {
   display: flex;
@@ -107,6 +110,14 @@ nav {
     .elements a:nth-child(4):after {
       background-color: $color4b;
     }
+
+    .elements a:nth-child(5):before {
+      background-color: $color5a;
+    }
+    
+    .elements a:nth-child(5):after {
+      background-color: $color5b;
+    }
     
     #indicator {
       position: absolute;
@@ -127,18 +138,23 @@ nav {
     }
     
     .elements a:nth-child(2):hover ~ #indicator {
-      left: 30%;
+      left: 25%;
       background: linear-gradient(130deg, $color2a, $color2b);
     }
     
     .elements a:nth-child(3):hover ~ #indicator {
-      left: 62%;
+      left: 48%;
       background: linear-gradient(130deg, $color3a, $color3b);
     }
   
     .elements a:nth-child(4):hover ~ #indicator {
-      left: 87%;
+      left: 70%;
       background: linear-gradient(130deg, $color4a, $color4b);
+    }
+
+    .elements a:nth-child(5):hover ~ #indicator {
+      left: 89%;
+      background: linear-gradient(130deg, $color5a, $color5b);
     }
   }
 }
