@@ -140,8 +140,16 @@ $main_color: #9b5eff;
     flex-wrap: wrap-reverse;
 
     @media only screen and (max-width: map-get($breakpoints, mobile)) {
-      margin: 5px;
       min-width: 97vw;
+      flex-direction: column;
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+
+      .play_btn {
+        width: 88%;   
+        margin: 5px 0;
+      }
     }
   }
 
@@ -164,16 +172,15 @@ $main_color: #9b5eff;
 
 
   }
-}
 
-.button:after {
-  background: $main_color;
+  .button:after {
+    background: $main_color;
+  }
+  
+  .noting {
+    background-color: $main_color;
+  }
 }
-
-.noting {
-  background-color: $main_color;
-}
-
 
 .no-err {
   @media only screen and (max-width: map-get($breakpoints, mobile)) {
