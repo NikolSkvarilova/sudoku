@@ -14,7 +14,8 @@ const ChooseLvlSection = (props) => {
       <Button 
         link={ `${ props.goTo }/${ level.linkValue }` } 
         borderColor={ props.borderColor }
-        txtColor={ props.txtColor }>
+        txtColor={ props.txtColor }
+        margin="5px">
 
         { level.name }
       </Button>
