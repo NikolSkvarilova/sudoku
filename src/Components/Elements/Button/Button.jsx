@@ -37,7 +37,7 @@ class Button extends React.Component {
     let btnStyles = {
       borderColor:  !! this.props.borderColor  ? this.props.borderColor : "black",
       color:        !! this.props.txtColor     ? this.props.txtColor    : "black",
-      margin:       !! this.props.margin       && this.props.margin      
+      margin:       !! this.props.margin       ? this.props.margin     : "0"
     }
 
     return(
