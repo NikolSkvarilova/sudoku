@@ -87,7 +87,7 @@ class Play extends React.Component {
 
   getDailySudoku() {
     // Getting the daily sudoku (same all day)
-    this.fetchSudoku('/api/getDailySudoku');
+    this.fetchSudoku('/api/play/getDailySudoku');
     this.setState({ dailySudoku: true, selectedValue: "" });
 
     // Scroll back to top
@@ -381,9 +381,10 @@ class Play extends React.Component {
   getDailySudokuSolvers() {
     fetch('/api/play/getDailySudokuSolvers')
       .then(response => response.json())
-      .then(data =>this.setState({ dailySolvers: data.solvers }))
+      .then(data => this.setState({ dailySolvers: data.solvers }))
       .catch(err => {
-        this.setState({ currentSudoku: null })
+        this.setState({ dailySolvers: [] })
+        alert("I am sorry to inform you that there has been a problem providing top daily sudoku solvers. Try refreshing the page or wait a while and try again if necessary.")
       });
   }
 
