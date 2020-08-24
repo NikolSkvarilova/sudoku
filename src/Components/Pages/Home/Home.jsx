@@ -108,7 +108,7 @@ class Home extends React.Component {
               title_color={ colorPalette.txtPrimaryLight }
               sub_title_color={ colorPalette.txtSecondary }
               txt_color={ colorPalette.txtPrimaryLight }
-              line_color="#741FFF"
+              line_color={ colorPalette.fancy1 }
               img={ require('../../../images/about_img.png') }
               alt="Designer Image"
               img_align_mobile="top"
@@ -125,7 +125,7 @@ class Home extends React.Component {
               upperTxt="We have got for you over"
               bottomTxt="sudokus you can play right now!"
               noteColor="white"
-              counterColor="#741FFF"/>
+              counterColor={ colorPalette.fancy1 } />
           </Section>
   
           <Section
