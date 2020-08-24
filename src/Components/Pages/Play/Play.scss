@@ -2,6 +2,7 @@
 @import '../../mixins';
 
 $main_color: #9b5eff;
+$secondary_color: #b993f5;
 
 .play-container {
   padding-top: 80px;
@@ -83,7 +84,7 @@ $main_color: #9b5eff;
     }
 
     .selected {
-      background: $main_color;
+      background: $secondary_color;
     }
 
     .edge-horizontal {
@@ -147,7 +148,7 @@ $main_color: #9b5eff;
     }
 
     .value-btn-selected {
-      background-color: $main_color;
+      background-color: $secondary_color;
     }
   }
 
@@ -190,11 +191,11 @@ $main_color: #9b5eff;
   }
 
   .button:after {
-    background: $main_color;
+    background: $secondary_color;
   }
   
   .noting {
-    background-color: $main_color;
+    background-color: $secondary_color;
   }
 }
 
