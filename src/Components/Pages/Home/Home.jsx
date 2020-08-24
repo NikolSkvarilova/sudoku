@@ -63,8 +63,7 @@ class Home extends React.Component {
               shadow="0px 0px 55px -2px rgba(0,0,0,0.63)">
   
               <h1 style={{ color: colorPalette.txtPrimaryLight }}>It's not just <br /> sudoku.</h1>
-              <h2 style={{ color: colorPalette.txtPrimaryLight }}>Lorem Ipsum Dolor sit amet.</h2>
-              <p style={{ color: colorPalette.txtPrimaryLight }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis sagittis nisi. Donec vitae blandit quam, et rhoncus nulla. Nulla vitae urna at ex maximus rutrum.</p>
+              <p style={{ color: colorPalette.txtPrimaryLight }}>Have you heard of sudoku? Do you play sudoku occasionally, or are you a professional player? Maybe we'll interest you.</p>
             </LandingPage>
           </Section>
   
@@ -84,15 +83,15 @@ class Home extends React.Component {
               categories={[
                 {
                   img: require('./../../../images/about_us.png'),
-                  content: [<h1>About Us</h1>, <p>Learn more about our team and our work.</p>]
+                  content: [<h1>About Us</h1>, <p>Learn more about <a href="https://github.com/NikolSkvarilova/sudoku">our team and our work.</a></p>]
                 },
                 {
                   img: require('./../../../images/code.png'),
-                  content: [<h1>Code</h1>, <p><a href="https://github.com/NikolSkvarilova/sudoku">View source code</a> and check out used technologies.</p>]
+                  content: [<h1>We love open source</h1>, <p><a href="https://github.com/NikolSkvarilova/sudoku">View source code</a> and check out used technologies.</p>]
                 },
                 {
                   img: require('./../../../images/documentation.png'),
-                  content: [<h1>Documentation</h1>, <p>Read the documentation and join the development process!</p>]
+                  content: [<h1>Documentation</h1>, <p>Read the <a href="https://github.com/NikolSkvarilova/sudoku">documentation</a> and <a href="https://github.com/NikolSkvarilova/sudoku">join the development process!</a></p>]
                 },
               ]}
               style={{ color: 'white' }}
@@ -115,7 +114,9 @@ class Home extends React.Component {
               img_align="left"
               line_bg="linear-gradient(90deg, rgba(150,85,255,1) 0%, rgba(116,31,255,1) 100%);">
               
-              <p>Aliquam sollicitudin egestas pellentesque. Nulla porta sollicitudin lacus, ut finibus libero fermentum quis. Integer fermentum mattis ex, lacinia lobortis ex hendrerit in. Vivamus at ante imperdiet, lobortis felis vitae, efficitur massa.</p> <p>Nam ex metus, venenatis id justo nec, tempus dictum mauris. Sed non nibh lorem. Phasellus et faucibus ligula, sit amet porttitor magna. Phasellus non volutpat dolor, nec lobortis ex.</p>
+              <p><strong>Not Just Sudoku</strong> started as an <em>innocent school project</em>. There were no big prospects, no big plans - just a sudoku site. However, the opposite became true. Our development team was (and still is) so absorbed that the original ordinary project has become ... <em>this</em>.</p> 
+              
+              <p>We learned a lot. This is the first project in which we not only used <strong>Reast JS</strong>, but also learned it. And as they say, React JS will also teach you <strong>JavaScript</strong>, <strong>HTML and CSS (Sass)</strong>, and we can now write them down to our CV. But it wouldn't be possible without a proper backend. <strong>Python</strong> has been a guarantee for us for a long time, and in a combination with the <strong>Flask</strong> library it forms a very powerful combination. Last but not least, we got into databases. It's an <strong>SQLite</strong> database, which is solid enough for our purposes and we use <strong>SQLAlchemy</strong> for Python to communicate with it.</p>
             </TextSection>
           </Section>
   
@@ -123,7 +124,7 @@ class Home extends React.Component {
             <Counter 
               number={ this.state.numOfSudokus }
               upperTxt="We have got for you over"
-              bottomTxt="sudokus you can play right now!"
+              bottomTxt="sudokus you can play right now! (144x more than we have actually stored in a file.)"
               noteColor="white"
               counterColor={ colorPalette.fancy1 } />
           </Section>
@@ -204,8 +205,8 @@ class Home extends React.Component {
                 img_align="left"
                 img_align_mobile="bot">
                 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint. </p>
+                <p>We will not keep our sudoku and statistics to ourselves. We offer you our API, thanks to which you too can draw on our generated sudoku, use it for your own sites and applications, etc.</p>
+                <p>See the documentation for more information</p>
                 <Button class="home-page-btn" borderColor="white" txtColor="white" link="#">See More</Button>
               </TextSection>
           </Section>

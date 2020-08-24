@@ -391,8 +391,8 @@ class Play extends React.Component {
       .then(data => this.setState({ dailySolvers: data.solvers }))
       .catch(err => {
         this.setState({ dailySolvers: [] })
-        alert("I am sorry to inform you that there has been a problem providing top daily sudoku solvers. Try refreshing the page or wait a while and try again if necessary.")
-      });
+      }
+    );
   }
 
 
@@ -472,9 +472,19 @@ class Play extends React.Component {
         img_align_mobile="top"
         img_align="left">
 
-        <p>Curabitur ornare eros ultrices arcu blandit, at vestibulum velit pellentesque. Sed maximus dolor non sapien tristique faucibus. Duis lorem quam, vulputate vehicula lacus vel, commodo fringilla eros. </p>
+        <h2>How to use our playboard</h2>
+        <p>To <strong>fill a cell</strong> with a number, you select your number from the menu (it shows position of other cells with the same value) and then click into the cell. You can <strong>delete the value</strong> by clicking into the cell again. Below the values in the menu, you can see <strong>how many cells are left for this value.</strong></p>
+        <h3>Buttons</h3>
+        <ul>
+          <li><strong>Reset Button</strong> resets your current sudoku to the original state.</li>
+          <li><strong>Check the Sudoku Button</strong> checks your sudoku if it is solved correctly. If you play daily sudoku, it may also asks for your name to save it into the database of daily sudoku solvers.</li>
+          <li><strong>Get New Sudoku Button</strong> generates for you new sudoku with the same level.</li>
+          <li><strong>Change Mode Button</strong> lets you to change between <strong>noting</strong> - you can write more numbers into one cell - and <strong>filling</strong> - actually fills the selected number into a cell.</li>
+        </ul>
+
+        <h2>Change the level</h2>
+        <p>You can change your current level below by clicking on the level name!</p>
           
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </TextSection>
       </Section>,
 
@@ -522,9 +532,9 @@ class Play extends React.Component {
         img={ require('../../../images/daily.png') }
         img_align_mobile="top">
 
-          <p>Curabitur ornare eros ultrices arcu blandit, at vestibulum velit pellentesque. Sed maximus dolor non sapien tristique faucibus. Duis lorem quam, vulputate vehicula lacus vel, commodo fringilla eros. </p>
+          <p>Daily sudoku is exactly what it sounds like. A new sudoku is generated every day, which is the same throughout the day and everyone can try to solve it.</p>
           
-          <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras volutpat, quam in condimentum finibus.</p>
+          <p>Not only we will add you to our database when you solve it correctly, but if you were fast enough, you will see yourself in the table below with the name you entered!</p>
 
           <Button onClick={ () => { this.getDailySudoku() }} margin="10px 10px 10px 0">Try Daily Sudoku</Button>
 
