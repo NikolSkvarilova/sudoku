@@ -10,6 +10,22 @@ $main_color: #9b5eff;
   justify-content: center;
   align-items: center;
 
+  .lvl-link {
+    color: black;
+  }
+
+  .lvl-link:hover {
+    margin-bottom: 5px;
+    border-bottom: 1px solid black;
+    color: black;
+  }
+
+  .under-board-note {
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      visibility: hidden;
+    }
+  }
+
   @media only screen and (max-width: 768px) {
     padding: 0;
   }

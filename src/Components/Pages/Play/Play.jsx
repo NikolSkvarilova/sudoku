@@ -5,6 +5,10 @@ import './Play.scss';
 import Section from './../../Sections/Section/Section.jsx';
 import TextSection from './../../Sections/TextSection/TextSection.jsx';
 import Button from './../../Elements/Button/Button.jsx';
+import Categories from './../../Sections/Categories/Categories.jsx'
+
+// icon
+import crown from './../../../images/crown.png'
 
 class Play extends React.Component {
   constructor(props) {
@@ -451,6 +455,60 @@ class Play extends React.Component {
 
     return([
       this.renderSudokuSection(),
+
+      // Just note
+      <p style={{ color: "gray" }} className="under-board-note">Scroll down and learn more.</p>,
+
+      // Help Section
+      <Section
+      alignItems="center">
+
+        <TextSection
+        title="How to play"
+        img={ require('../../../images/help.png') }
+        img_align_mobile="top"
+        img_align="left">
+
+        <p>Curabitur ornare eros ultrices arcu blandit, at vestibulum velit pellentesque. Sed maximus dolor non sapien tristique faucibus. Duis lorem quam, vulputate vehicula lacus vel, commodo fringilla eros. </p>
+          
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </TextSection>
+      </Section>,
+
+      // Levels
+      <Section
+      padding="0"
+      bg="#f2f2f2"
+      >
+
+        <Categories 
+          categories={[
+            {
+              img: require('./../../../images/beginner.png'),
+              content: [<a className="lvl-link" href="/play/1"><h1>Easy</h1></a>, <p>You have never ever played sudoku?</p>]
+            },
+            {
+              img: require('./../../../images/normal.png'),
+              content: [<a className="lvl-link" href="/play/2"><h1>Normal</h1></a>, <p>You know some basic tricks, maybe played few times.</p>]
+            },
+            {
+              img: require('./../../../images/advanced.png'),
+              content: [<a className="lvl-link" href="/play/3"><h1>Advanced</h1></a>, <p>You are quite good at solving sudoku, but sometimes it takes way too long.</p>]
+            },
+            {
+              img: require('./../../../images/master.png'),
+              content: [<a className="lvl-link" href="/play/4"><h1>Master</h1></a>, <p>Dude, you know what you are doing.</p>]
+            },
+            {
+              img: require('./../../../images/pro.png'),
+              content: [
+              <a className="lvl-link" href="/play/5"><h1>Pro</h1></a>, 
+              <p>I think you have dropped your <span><img src={crown} alt="crown" style={{ height: "16px", display: "inline-block" }}></img></span>, king.</p>]
+            }
+          ]}
+          style={{ color: 'black' }}
+        />  
+      </Section>,
 
       // Daily Sudoku section
       <Section

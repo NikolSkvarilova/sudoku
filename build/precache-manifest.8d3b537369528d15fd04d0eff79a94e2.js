@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4450630ddea0c8e2f069bc95b043c72f",
+    "revision": "343e7af20077a9644e9e54a6f4275ac6",
     "url": "/index.html"
   },
   {
-    "revision": "1394ba80ecbdcfcb507e",
-    "url": "/static/css/main.777e82fa.chunk.css"
+    "revision": "0887993d71a7a65f1a64",
+    "url": "/static/css/main.7bff4f9d.chunk.css"
   },
   {
-    "revision": "207d071eae51da1facb6",
-    "url": "/static/js/2.8718c723.chunk.js"
+    "revision": "68dd054960ef987840f0",
+    "url": "/static/js/2.7c473805.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/static/js/2.8718c723.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.7c473805.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1394ba80ecbdcfcb507e",
-    "url": "/static/js/main.75f771b3.chunk.js"
+    "revision": "0887993d71a7a65f1a64",
+    "url": "/static/js/main.02b3f193.chunk.js"
   },
   {
     "revision": "ec9875811aa0f00c2e31",
@@ -36,8 +36,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/about_us.accbce02.png"
   },
   {
+    "revision": "2eb6c092679ebd0a877875917b629724",
+    "url": "/static/media/advanced.2eb6c092.png"
+  },
+  {
     "revision": "e5a962023a102961d9ad1fb2875bf93a",
     "url": "/static/media/background_landing_page.e5a96202.png"
+  },
+  {
+    "revision": "d309bd48b25e8e79ea0cdf889bc5e118",
+    "url": "/static/media/beginner.d309bd48.png"
   },
   {
     "revision": "66dcae631231f808c6ef72369bdfae22",
@@ -46,6 +54,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "a5edd4ac26e041570e691e4f173d64fa",
     "url": "/static/media/code.a5edd4ac.png"
+  },
+  {
+    "revision": "493f0c4ecec0d273ff1d5cdf2c1b8659",
+    "url": "/static/media/crown.493f0c4e.png"
   },
   {
     "revision": "d70311453a6bfac2dc198dd8844eb892",
@@ -58,6 +70,22 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "a578239623eb3a5e8e4614f41e7276b8",
     "url": "/static/media/explore.a5782396.svg"
+  },
+  {
+    "revision": "56197db3f8ebb8490438779f63cfc89c",
+    "url": "/static/media/help.56197db3.png"
+  },
+  {
+    "revision": "279e25981cb60f784bd07949d7e9226f",
+    "url": "/static/media/master.279e2598.png"
+  },
+  {
+    "revision": "16c537040c5f340b214bc0ba419ba6ea",
+    "url": "/static/media/normal.16c53704.png"
+  },
+  {
+    "revision": "23ed19acd760f537fae2747935d057b1",
+    "url": "/static/media/pro.23ed19ac.png"
   },
   {
     "revision": "eb40461f85958ca4017427e6bba3b62f",

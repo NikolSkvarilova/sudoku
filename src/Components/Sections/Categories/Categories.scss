@@ -6,4 +6,8 @@
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+
+  .break {
+    flex-basis: 100%
+  }
 }
