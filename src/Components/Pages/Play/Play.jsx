@@ -474,13 +474,12 @@ class Play extends React.Component {
 
         <h2>How to use our playboard</h2>
         <p>To <strong>fill a cell</strong> with a number, you select your number from the menu (it shows position of other cells with the same value) and then click into the cell. You can <strong>delete the value</strong> by clicking into the cell again. Below the values in the menu, you can see <strong>how many cells are left for this value.</strong></p>
+
         <h3>Buttons</h3>
-        <ul>
-          <li><strong>Reset Button</strong> resets your current sudoku to the original state.</li>
-          <li><strong>Check the Sudoku Button</strong> checks your sudoku if it is solved correctly. If you play daily sudoku, it may also asks for your name to save it into the database of daily sudoku solvers.</li>
-          <li><strong>Get New Sudoku Button</strong> generates for you new sudoku with the same level.</li>
-          <li><strong>Change Mode Button</strong> lets you to change between <strong>noting</strong> - you can write more numbers into one cell - and <strong>filling</strong> - actually fills the selected number into a cell.</li>
-        </ul>
+        <p><strong>Reset Button</strong> resets your current sudoku to the original state.</p>
+        <p><strong>Check the Sudoku Button</strong> checks your sudoku if it is solved correctly. If you play daily sudoku, it may also asks for your name to save it into the database of daily sudoku solvers.</p>
+        <p><strong>Get New Sudoku Button</strong> generates for you new sudoku with the same level.</p>
+        <p><strong>Change Mode Button</strong> lets you to change between <strong>noting</strong> - you can write more numbers into one cell - and <strong>filling</strong> - actually fills the selected number into a cell.</p>
 
         <h2>Change the level</h2>
         <p>You can change your current level below by clicking on the level name!</p>

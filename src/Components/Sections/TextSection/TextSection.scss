@@ -44,6 +44,10 @@
         .text {
           @include regular-text;
         }
+
+        @media only screen and (max-width: map-get($breakpoints, mobile)) {
+          min-width: 90vw;
+        }
       }
     }
   }
