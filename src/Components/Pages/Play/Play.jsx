@@ -457,7 +457,7 @@ class Play extends React.Component {
       this.renderSudokuSection(),
 
       // Just note
-      <p style={{ color: "gray" }}>Scroll down and learn more.</p>,
+      <p style={{ color: "gray" }} className="under-board-note">Scroll down and learn more.</p>,
 
       // Help Section
       <Section

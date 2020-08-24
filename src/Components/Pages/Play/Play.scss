@@ -20,6 +20,12 @@ $main_color: #9b5eff;
     color: black;
   }
 
+  .under-board-note {
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      visibility: hidden;
+    }
+  }
+
   @media only screen and (max-width: 768px) {
     padding: 0;
   }
