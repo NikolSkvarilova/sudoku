@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   .counter-num {
     @include title;
@@ -16,5 +17,9 @@
   .counter-note {
     @include regular-text;
     margin: 10px;
+
+    @media only screen and (max-width: map-get($breakpoints, mobile)) {
+      max-width: 90vw;
+    }
   }
 }
