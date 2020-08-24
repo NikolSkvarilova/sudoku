@@ -10,6 +10,9 @@ import Categories from './../../Sections/Categories/Categories.jsx'
 // icon
 import crown from './../../../images/crown.png'
 
+// color palette
+import colorPalette from './../../../color_palette.json'
+
 class Play extends React.Component {
   constructor(props) {
     super(props);
@@ -478,7 +481,7 @@ class Play extends React.Component {
       // Levels
       <Section
       padding="0"
-      bg="#f2f2f2"
+      bg={ colorPalette.bgLightGray }
       >
 
         <Categories 
