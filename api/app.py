@@ -118,6 +118,7 @@ def check_sudoku():
 # Returns daily sudoku
 @app.route('/api/play/getDailySudoku', methods=["GET"])
 def get_daily_sudoku():
+  generateDailySudoku()
   return {"sudoku": getter.getDailySudoku()}
 
 
@@ -174,15 +175,6 @@ def generateDailySudoku():
     getter.generateDailySudoku()
     addDailySudokuToDatabase()
 
-
-generateDailySudoku()
- 
-# Generate new daily sudoku every 24 hours
-scheduler = BackgroundScheduler()
-scheduler.add_job(func=generateDailySudoku, trigger="interval", hours=24)
-scheduler.start()
-# Shut down the scheduler when exiting the app
-atexit.register(lambda: scheduler.shutdown())
 
 if __name__ == "__main__": 
   # Run app on port 5000 for local purposes
