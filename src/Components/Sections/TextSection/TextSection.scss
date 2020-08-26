@@ -5,6 +5,7 @@
 .text_section_container {
   position: relative;
   display: flex;
+  max-width: 100vw;
 
   .text_half_container {
     width: 50%;
@@ -19,6 +20,14 @@
     .text_half_wrapper {
       display: flex;
       align-items: center;
+
+      @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+        padding: 0 50px;
+      }
+
+      @media only screen and (max-width: map-get($breakpoints, mobile)) {
+        padding: 0 19px;
+      }
 
       .rectangle {
         width: $line-size;
@@ -57,12 +66,16 @@
     width: 50%;
 
     @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-      width: 100%;
+      width: 100vw;
     }
 
     .img_half {
       margin: 5vh 0;
       width: 60%;
+
+      @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
+        width: 100%;
+      }
     }
   }
 }
@@ -111,19 +124,11 @@
 .img_on_the_left_from_text {
   padding-left: 3vw;
   padding-right: 10vw;
-
-  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-    padding: 0 15vw;
-  }
 }
 
 .img_on_the_right_from_text {
   padding-left: 10vw;
   padding-right: 3vw;
-
-  @media only screen and (max-width: map-get($breakpoints, small-desktop)) {
-    padding: 0 15vw;
-  }
 }
 
 .img_full_width_mobile {
