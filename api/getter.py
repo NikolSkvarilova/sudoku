@@ -142,10 +142,10 @@ class Getter:
       numOfSeedSudokus += len(self.sudokuFile[lvl])
 
     # Get final num
-    # * 9 for changing the original numbers to new values
+    # * 9! = 362880 for changing the original numbers to new values
     # * 4 for rotating the puzzle by 0°, 90°, 180°, 270°
     # * 4 for mirroring the original sudoku horizontally and vertically 
-    finalNum = numOfSeedSudokus * 9 * 4 * 4 
+    finalNum = numOfSeedSudokus * 362880 * 4 * 4 
 
     return finalNum
 
