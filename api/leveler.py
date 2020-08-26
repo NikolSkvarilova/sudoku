@@ -1,5 +1,7 @@
 
 
+from getter import Getter
+
 class Leveler:
   def __init__(self):
     # self.possibleValues = self.fillPosibleValuesMap()
@@ -7,6 +9,8 @@ class Leveler:
 
   def setBoard(self, board):
     self.board = board
+    self.size = len(self.board)
+    self.base = round(self.size ** (1 / 2))
 
   def countMissing(self):
     count = 0
@@ -16,6 +20,29 @@ class Leveler:
           count += 1
 
     return count
+
+
+  def checkValid(self,  num, pos):
+    for i in range(self.size):
+
+      # Check row
+      if (self.board[pos[0]][i] == num and pos[1] != i):
+        return False
+
+      # Check column
+      if self.board[i][pos[1]] == num and pos[0] != i:
+        return False
+    
+    # Check box
+    box_x = pos[1] // self.base # col
+    box_y = pos[0] // self.base # row
+
+    for i in range(box_y * self.base, box_y * self.base + self.base):
+      for j in range(box_x * self.base, box_x * self.base + self.base):
+        if self.board[i][j] == num and (i, j) != pos:
+          return False
+
+    return True
 
 
   def getLevel(self):
@@ -36,9 +63,44 @@ class Leveler:
   # [IMPORTANT] The code below is not ready to use!
   # ----------------------------------------------------------------
 
-# Methods for solving some pieces with specific techniques so I can estimate the level of sudoku
+# Creates a list of lists where each number is another list with numbers representing other possible numbers for the position
+  def possibleValuesMap(self):
+    return [[[] for i in range(self.size)] for j in range(self.size)]
+
+
+# Fill the possible-values-map with all the possible values for each cell
+  def fillPosibleValuesMap(self):
+    # Create the "sceleton"
+    possibleValues = self.possibleValuesMap()
+
+    # Fill the sceleton
+    for i in range(self.size):
+      for j in range(self.size):
+        # Is the cell empty?
+        if self.board[i][j] == 0:
+          # Find all the possible values
+          for k in range(1, self.size + 1):
+            if self.checkValid(k, (i, j)):
+              # Append the possible value into the cell's list
+              possibleValues[i][j].append(k)
+
+
+  def getUnusedValuesRow(self, row):
+    # Get unused values from a row
+    unused = []
+
+    for i in range(1, self.size + 1):
+      if i not in self.board[row]:
+        unused.append(i)
+
+    return unused
+
+# ====== methods ======
+
   def singleCandidate(self):
+    # Single Candidate is a technique which looks at every empty cell, finds all possible values and if there is a cell with only one possible solution (value), it fills it and add +1 to counter.
     counter = 0
+
     for i in range(self.size):
       for j in range(self.size):
 
@@ -49,24 +111,22 @@ class Leveler:
     return counter
 
 
-  def getUnusedRow(self, row):
-    unused = []
-    for i in range(1, self.size + 1):
-      if i not in self.board[row]:
-        unused.append(i)
-
-    return unused
-
-
   def singlePosition(self):
+    # Choose a row, column or box, and then go through each of the numbers that hasn’t already been placed. Because of other placements, the positions where you could place that number will be limited.
     counter = 0
+
+    # For each cell in a row
     for i in range(self.size):
       # Get the unused numbers for the row
-      unused = self.getUnusedRow(i)
+      unused = self.getUnusedValuesRow(i)
       
+      # For each unused row
       for num in unused:
+        # n = total of times the num could be used in a cell
         n = 0
+        # valid = position of the valid cell
         valid = []
+
         for q in range(self.size):
           if self.checkValid(num, (i, q)):
             # Coordinates of the valid position
@@ -79,23 +139,6 @@ class Leveler:
 
     return counter
 
-
-  # Creates a list of lists where each number is another list with numbers representing other possible numbers for the position
-  def possibleValuesMap(self):
-    return [[[] for i in range(self.size)] for j in range(self.size)]
-
-
-  def fillPosibleValuesMap(self):
-    possibleValues = self.possibleValuesMap()
-    for i in range(self.size):
-      for j in range(self.size):
-        if self.board[i][j] == 0:
-          for k in range(1, self.size + 1):
-            if self.checkValid(k, (i, j)):
-              possibleValues[i][j].append(k)
-
-
-    return possibleValues
 
   def getIntersection(self, arr1, arr2):
     return list(set(arr1) & set(arr2))
@@ -220,3 +263,22 @@ class Leveler:
 
   def printPossibleValues(self):
     for row in self.possibleValues: print(row)
+
+if __name__ == "__main__":
+  app = Leveler()
+  app.setBoard(
+    [
+    [0, 0, 6, 0, 3, 0, 7, 0, 8],
+    [0, 3, 0, 0, 0, 0, 0, 0, 1],
+    [2, 0, 0, 0, 0, 0, 6, 0, 0],
+    [1, 0, 0, 3, 5, 0, 0, 0, 6],
+    [0, 7, 9, 0, 4, 0, 1, 5, 0],
+    [5, 0, 0, 0, 1, 7, 0, 0, 4],
+    [0, 0, 2, 0, 0, 0, 0, 0, 7],
+    [6, 0, 0, 0, 0, 0, 0, 8, 0],
+    [4, 0, 7, 0, 6, 0, 2, 0, 0]
+  ]
+  )
+  print(app.board)
+  app.singlePosition()
+  print(app.board)
