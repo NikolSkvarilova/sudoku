@@ -2,6 +2,8 @@
 
 from getter import Getter
 
+import collections
+
 class Leveler:
   def __init__(self):
     self.board = None
@@ -86,7 +88,6 @@ class Leveler:
 
     return possibleValues
 
-
   def getUnusedValuesRow(self, row):
     # Get unused values from a row
     unused = []
@@ -144,149 +145,160 @@ class Leveler:
     return counter
 
 
-  def getIntersection(self, arr1, arr2):
-    return list(set(arr1) & set(arr2))
-
-
   def candidateLines(self):
-    self.printPossibleValues()
+    # This is the first technique which doesn’t actually tell you where to place a number, but instead helps you to determine places where you can’t place a number! If you’re using pencilmarks, then this will help you to remove candidates, and from there you should be able to make placements.
+    # If you look within a box, and find that all of the places where you can put a particular number lie along a single line, then you can be sure that wherever you put the number in that box, it has to be on the line.
+
+    # Number of times using this method was useful
+    counter = 0
+
+    # This method should be applied on rows and colls. To keep the code more simple, I wrote the code for checking rows. When checking cols, I rotate the sudoku by 90° to make from colls rows and perform the same operation. In the end, I rotate the sudoku by 270° to get it back as it should be.
+
+    for rotation in range(2):
+      # When rotation is 0, it stay as it is
+      # When rotation is 1, it rotates by 90°
+      self.board = Getter.rotateSudoku(self, self.board, rotation)
+      self.possibleValues = Getter.rotateSudoku(self, self.possibleValues, rotation)
+
+      # For each box in the sudoku
+      for row in range(self.base):
+        for col in range(self.base):
+
+          # Dictionary with duplicate values from rows - which we should check if they are in other rows, if so, we delete the key-value pair, if not, we keep it
+          # After scanning, we add data from the current row
+          checkValues = {}
+
+          # Go through each row of the box
+          for eachRow in range(self.base):
+            # It goes like this: 0-1-2, 0-1-2, 0-1-2, 3-4-5, 3-4-5, 3-4-5, ... from left to right, row by row
+            row_num = row * 3 + eachRow
+
+            # List of cell values from the row of the box
+            valuesOfRow = self.board[row_num][col * 3 : col * 3 + self.base]
+
+            # Check if there are at least 2 empty cells in the row
+            if valuesOfRow.count(0) >= 2:
+              # There are at least 2 empty cells
+
+              # List of lists of possible values for that row
+              possibleValuesRow = []
+
+              # Go through each col of the box
+              for eachCol in range(self.base):
+                # It goes like this 0-1-2, 0-1-2, 0-1-2, 3-4-5, 3-4-5, 3-4-5, 6-7-8, 6-7-8, 6-7-8 and again 0-1-2 ... 
+                col_num = col * 3 + eachCol
+
+                # If the cell is empty
+                if self.board[row_num][col_num] == 0:
+                  # Save its possible values into possibleValuesRow
+                  possibleValuesRow += self.possibleValues[row_num][col_num]
+
+              # Are there any same values in the row?
+              # Values which have occured in the row multiple times
+              sameValues = self.getDuplicates(possibleValuesRow)
+
+              # If there are any
+              if len(sameValues) > 0:
+                # Save the sameValues into the dict 
+                checkValues[row_num] = sameValues
+
+
+          # Dict containing all the possible values for the square
+          possibleValuesSquare = {}
+          
+          for p in range(self.base):
+            possibleValuesSquare[row * 3 + p] = self.possibleValues[row * 3 + p][col * 3 : col * 3 + 3]
+
+          # Check if the numbers are somewhere else in the square
+          # For each row in the dict with all possible values
+          for key in possibleValuesSquare:
+            # For each row in the dict with duplicate possible values
+            for key_2 in checkValues:
+              # If it is not the same row
+              if key != key_2:
+                # Iterate over every value from the check dict
+                for value in checkValues[key_2]:
+                  # Is the value in the other dict?
+                  for q in range(self.base):
+                    if value in possibleValuesSquare[key][q]:
+                      # The value is in other rows --> we have to delete the value 
+                      checkValues = self.removeValueFromDict(checkValues, value)
+
+          # Remove values from other boxes's row
+          for key in checkValues:
+            self.removePossibleValuesRow(checkValues[key], key, col)
+
+    # Rotate the sudoku back
+    self.board = Getter.rotateSudoku(self, self.board, 3) 
+    self.possibleValues = Getter.rotateSudoku(self, self.possibleValues, 3)
+
+    # Run Single Candidate method and Single Position method to see if it was useful
+    counter += self.singleCandidate() + self.singlePosition()
+    return counter  
+
+  def removePossibleValuesRow(self, values, row, notSquare):
+    # Remove specific values from possibleValues row.
+    # param values: list of values you want to remove
+    # param row: number of the row
+    # param: notSquare: number of the square in the sense of col (for 9x9 in it 0 (the first square), 1 (the second square), 2 (the third square))
+    for col in range(self.size):
+      if col not in range(notSquare * self.base, notSquare * self.base + 3):
+        for value in values:
+          if value in self.possibleValues[row][col]:
+            self.possibleValues[row][col].pop(self.possibleValues[row][col].index(value))
+
     
-    count = 0
-    # For each row of the squares
-    for i in range(self.base):
-      
-      # For each column of the squrares
-      for j in range(self.base):
 
-        # FOR EACH ROW IN THE SQUARE
-        for q in range(i * self.base, i * self.base + self.base):
-          # Rows are going horizontally
-          row = self.possibleValues[q][j*self.base : j*self.base+self.base] 
-          # Cols are going vertically
-          col = [self.possibleValues[r][q] for r in range (j*self.base, j*self.base + self.base)]
+              
+  def removeValueFromDict(self, dict, value):
+    # Check all key-value pairs and remove the value from every pair 
+    for key in dict:
+      if value in dict[key]:
+        dict[key].pop(dict[key].index(value))
 
-          valuesRow = []
-          valuesCol = []
+    return dict
 
-          for k in range(self.base):
-            currentRow = row[k]
-            currentCol = col[k]
-            for l in range(k, self.base-1):
-              valuesRow += self.getIntersection(currentRow, row[l+1])
-              valuesCol += self.getIntersection(currentCol, col[l+1])
-
-          valuesRow = self.removeDuplicates(valuesRow)
-          valuesCol = self.removeDuplicates(valuesCol)
-
-          pos = q - i * self.base
-
-          count += self.checkSquare(i, j, "row", pos, valuesRow)
-          count += self.checkSquare(j, i, "col", pos, valuesCol)
-    
-    
-    # print("__________________")
-    # self.printPossibleValues()
-                  
-
-    return count
-
-
-  def removeDuplicates(self, arr):
-    return list(set(arr))
-
-    
-
-  def deletePossibleValue(self, value, line):
-    for element in line:
-      if value in element:
-        element.pop(element.index(value))
-
-  def checkSquare(self, x, y, line, pos, values):
-    """
-    param: x = position (row) of the SQUARE (in 9 x 9 grid it can be 0, 1 or 2)
-    param: y = position (col) of the SQUARE (in 9 x 9 grid it can be 0, 1 or 2)
-    param: line = "row" or "col"; should we check the little square's rows or cols
-    param: pos = position of the line from which we have counted the possible values (in 9 x 9 grid where the little square is 3 x 3 it can be 0, 1 or 2)
-    param: num = the counetd value
-    """
-
-    squarePossible = []
-    
-    if line == "row":
-      for i in range(self.base):
-        if i != pos:
-          row = self.possibleValues[x * self.base + i]
-          # squarePossible = [row[j+y] for j in range(self.base)]
-          for j in range(self.base):
-            squarePossible.append(row[j + y])
-
-    if line == "col":
-      for i in range(self.base):
-        if i != pos:
-          # squarePossible = [self.possibleValues[j+x*self.base][i+self.base*y] for j in range(self.base)]
-          for j in range(self.base):
-            squarePossible.append(self.possibleValues[j + x * self.base][i + self.base * y])
-
-    print(squarePossible, line)
-    print("_________")
-            
-    
-
-    for element in squarePossible:
-      for num in values:
-        if num in element:
-          values.pop(values.index(num))
-
-    if line == "row":
-      arr = self.getValuesRow(x * self.base + pos, y*self.base)
-
-    elif line == "col":
-      arr = self.getValuesCol(y * self.base + pos, x)
-
-    for value in values:
-      self.deletePossibleValue(value, arr)
-
-    return 2
-
-
-  def getValuesRow(self, row, notThisSquare):
-    arr = []
-    for i in range(self.base):
-      if i != notThisSquare:
-        arr += self.possibleValues[row][i*self.base:i*self.base+self.base]
-    
-    return arr
-
-  def getValuesCol(self, col, notThisSquare):
-    arr = []
+  def printBoard(self):
     for i in range(self.size):
-      if i // self.base != notThisSquare:
-        arr.append(self.possibleValues[i][col])
+      if i % self.base == 0 and i != 0:
+        print("– – – – – – – – – – – –")
 
-    return arr
+      for j in range(self.size):
+        if j % self.base == 0 and j != 0:
+          print(" | ", end="")
+
+        # When it is at the end, go on new line
+        if j == self.size - 1:
+          print(self.board[i][j]) 
+        # ... Or continue on the same row
+        else:
+          print(str(self.board[i][j]) + " ", end="")
+          
+
+  def getDuplicates(self, arr):
+    # Returns list of duplicates from an arr
+    # param arr: list of elements
+    return [item for item, count in collections.Counter(arr).items() if count > 1]
+
 
   def printPossibleValues(self):
     for row in self.possibleValues: print(row)
 
 if __name__ == "__main__":
   app = Leveler()
-  app.setBoard(
-    [
-    [0, 0, 6, 0, 3, 0, 7, 0, 8],
-    [0, 3, 0, 0, 0, 0, 0, 0, 1],
-    [2, 0, 0, 0, 0, 0, 6, 0, 0],
-    [1, 0, 0, 3, 5, 0, 0, 0, 6],
-    [0, 7, 9, 0, 4, 0, 1, 5, 0],
-    [5, 0, 0, 0, 1, 7, 0, 0, 4],
-    [0, 0, 2, 0, 0, 0, 0, 0, 7],
-    [6, 0, 0, 0, 0, 0, 0, 8, 0],
-    [4, 0, 7, 0, 6, 0, 2, 0, 0]
-  ]
-  )
-
-  print(app.printPossibleValues()) 
-  print(app.board)
-  app.singlePosition()
-  print(app.board)
-  print("_____________________")
-  print(app.printPossibleValues())
+  app.setBoard([
+    [0, 0, 1, 9, 5, 7, 0, 6, 3],
+    [0, 0, 0, 8, 0, 6, 0, 7, 0],
+    [7, 6, 9, 1, 3, 0, 8, 0, 5],
+    [0, 0, 7, 2, 6, 1, 3, 5, 0],
+    [3, 1, 2, 4, 9, 5, 7, 8, 6],
+    [0, 5, 6, 3, 7, 8, 0, 0, 0],
+    [1, 0, 8, 6, 0, 9, 5, 0, 7],
+    [0, 9, 0, 7, 1, 0, 6, 0, 8],
+    [6, 7, 4, 5, 8, 3, 0, 0, 0]
+  ])
+  app.printPossibleValues()
+  app.candidateLines()
+  print("_________________")
+  app.printPossibleValues()
+  app.printBoard()
