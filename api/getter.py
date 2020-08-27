@@ -94,6 +94,30 @@ class Getter:
 
     return sudoku
 
+  def shuffleRows(self, sudoku):
+    # Shuffles whole rows but only in the smallew squares. That means that the first row can only stay at the position where it is (row 1), or it can move to row 2 or row 3, anywhere behind row 3.
+    # There is a chance for shuffling
+
+    # For each threesome of rows:
+    # (I use square root of the total number of rows to get the little section to make it more universal)
+    for i in range(round(len(sudoku) ** (1 / 2))):
+      setOfRows = sudoku[i * 3:i * 3 + 3]
+      random.shuffle(setOfRows)
+      sudoku[i * 3:i * 3 + 3] = setOfRows
+
+    return sudoku
+
+  def shuffleCols(self, sudoku):
+    # Same as shuffleRows(), but only with columns
+    # I rotate the sudoku to get the cols as rows, in the end, I rotate it back
+    rotatedSudoku = self.rotateSudoku(sudoku, 1)
+    # Then I shuffle the "rows"
+    shuffledSudoku = self.shuffleRows(rotatedSudoku)
+    # And rotate it back
+    finalSudoku = self.rotateSudoku(shuffledSudoku, 3)
+
+    return finalSudoku
+
   def getSeed(self, category):
     # Returns a random choosen sudoku from a specific category
 
@@ -122,7 +146,13 @@ class Getter:
 
     if random.random() < 0.5:
       # Here we also generate a random lvl of rotation
-      sudoku = self.rotateSudoku(sudoku, random.randrange(0, 4))   
+      sudoku = self.rotateSudoku(sudoku, random.randrange(0, 4))  
+
+    if random.random() < 0.5:
+      sudoku = self.shuffleRows(sudoku) 
+
+    if random.random() < 0.5:
+      sudoku = self.shuffleCols(sudoku) 
 
     return sudoku 
 
@@ -142,14 +172,13 @@ class Getter:
       numOfSeedSudokus += len(self.sudokuFile[lvl])
 
     # Get final num
-    # * 9 for changing the original numbers to new values
+    # * 9! = 362880 for changing the original numbers to new values
     # * 4 for rotating the puzzle by 0°, 90°, 180°, 270°
     # * 4 for mirroring the original sudoku horizontally and vertically 
-    finalNum = numOfSeedSudokus * 9 * 4 * 4 
+    # * 144 for shuffling the rows and cols 
+    finalNum = numOfSeedSudokus * 362880 * 4 * 4 * 144
 
     return finalNum
 
 if __name__ == "__main__":
   app = Getter()
-  app.generateDailySudoku()
-  print(app.getDailySudoku())

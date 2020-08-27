@@ -12,6 +12,8 @@
     @include title;
     text-shadow: 0px 0px 3px rgba(0, 2, 0, 0.79);
     margin: 0;
+    max-width: 90vw;
+    word-break: break-all;
   }
 
   .counter-note {

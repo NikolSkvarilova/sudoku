@@ -124,7 +124,7 @@ class Home extends React.Component {
             <Counter 
               number={ this.state.numOfSudokus }
               upperTxt="We have got for you over"
-              bottomTxt={["sudoku you can play right now!", <br />, "(144x more than we have actually stored in a file.)"]}
+              bottomTxt={["sudoku you can play right now!", <br />, "(And only 500 in an actual file. Cool, right?)"]}
               noteColor="white"
               counterColor={ colorPalette.fancy1 } />
           </Section>

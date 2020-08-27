@@ -7,6 +7,8 @@ import random
 import json
 import copy
 
+from random import randrange
+
 class Creator(Solver):
   def __init__(self, size=9):
     self.size = size
@@ -50,15 +52,60 @@ class Creator(Solver):
       self.board[0][i] = nums[i]
 
     self.solve()
+    self.originalBoard = copy.deepcopy(self.board)
+    
+ 
+  def removeCharacters(self):
+    # Removes some numbers from the board
+    for i in range(randrange(15, 20)):
+      self.removeCounterPart()
+
+    # 50% chance to remove the very center cell's value (set it to 0)
+    if random.random() < 0.5:
+      self.removeCenter()
+
+    # Create a deep copy of the unsolved board
+    unSolvedSeed = copy.deepcopy(self.board)
+
+    # Check if it is solvable
+    solvable = Solver.solve(self)
+
+    # If it is not solvable, start again
+    if not solvable:
+      self.resetBoard()
+      self.removeCharacters()
     
 
-  # Removes some numbers from the board 
-  def removeCharacters(self, percentage_chance=0.4):
-    for i in range(self.size):
-      for j in range(self.size):
-        if random.random() < percentage_chance:
-          self.board[i][j] = self.emptySpace
+  def resetBoard(self):
+    # Fills back the missing values
+    self.board = copy.deepcopy(self.originalBoard)
 
+  def removeCounterPart(self):
+    # Removes pair of values based on their counterpart position.
+    # We pick position of the first one
+    # Then count the position of the next one: row = size of the sudoku - 1 (because we count from 0) - row; col size of the sudoku - 1 (because we count from 0) - col
+    # So for position [0; 2] counterpart position is [8; 6]
+    col = randrange(0, len(self.board))
+    row = randrange(0, len(self.board))
+    
+    # Check if the row or col value is not the middle
+    while (row == len(self.board) // 2) or (col == len(self.board) // 2):
+      col = randrange(0, len(self.board))
+      row = randrange(0, len(self.board))
+
+    # If it has been already removev (set to 0)
+    if self.board[row][col] == 0:
+      self.removeCounterPart()
+
+    # Else remove the values and set it to 0
+    else:
+      self.board[row][col] = 0
+      self.board[len(self.board) - 1 - row][len(self.board) - 1 - col] = 0
+
+
+  def removeCenter(self):
+    # Removed the very center cell's value and set it to 0
+    self.board[len(self.board) // 2][len(self.board) // 2] = 0
 
   @staticmethod
   def setupJSONfile(numberOfLevels=1):
@@ -83,7 +130,7 @@ class Creator(Solver):
       return json.load(f)
 
 
-  def generateSeed(self, lvl=1, howMany=2):
+  def generateSeed(self, lvl=1, howMany=1):
     data = Creator.readJSONFile()
 
     for _ in range(howMany):
@@ -104,6 +151,5 @@ class Creator(Solver):
     
 if __name__ == "__main__":
   creator = Creator()
-  creator.setupJSONfile(5)
-  for i in range(5):
-    creator.generateSeed(i+1, 10)
+  creator.generate()
+  creator.removeCharacters()
