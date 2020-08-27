@@ -98,6 +98,55 @@ class Leveler:
 
     return unused
 
+
+    def removePossibleValuesRow(self, values, row, notSquare):
+    # Remove specific values from possibleValues row.
+    # param values: list of values you want to remove
+    # param row: number of the row
+    # param: notSquare: number of the square in the sense of col (for 9x9 in it 0 (the first square), 1 (the second square), 2 (the third square))
+    for col in range(self.size):
+      if col not in range(notSquare * self.base, notSquare * self.base + 3):
+        for value in values:
+          if value in self.possibleValues[row][col]:
+            self.possibleValues[row][col].pop(self.possibleValues[row][col].index(value))
+
+    
+
+              
+  def removeValueFromDict(self, dict, value):
+    # Check all key-value pairs and remove the value from every pair 
+    for key in dict:
+      if value in dict[key]:
+        dict[key].pop(dict[key].index(value))
+
+    return dict
+
+  def printBoard(self):
+    for i in range(self.size):
+      if i % self.base == 0 and i != 0:
+        print("– – – – – – – – – – – –")
+
+      for j in range(self.size):
+        if j % self.base == 0 and j != 0:
+          print(" | ", end="")
+
+        # When it is at the end, go on new line
+        if j == self.size - 1:
+          print(self.board[i][j]) 
+        # ... Or continue on the same row
+        else:
+          print(str(self.board[i][j]) + " ", end="")
+          
+
+  def getDuplicates(self, arr):
+    # Returns list of duplicates from an arr
+    # param arr: list of elements
+    return [item for item, count in collections.Counter(arr).items() if count > 1]
+
+
+  def printPossibleValues(self):
+    for row in self.possibleValues: print(row)
+
 # ====== methods ======
 
   def singleCandidate(self):
@@ -236,53 +285,6 @@ class Leveler:
     counter += self.singleCandidate() + self.singlePosition()
     return counter  
 
-  def removePossibleValuesRow(self, values, row, notSquare):
-    # Remove specific values from possibleValues row.
-    # param values: list of values you want to remove
-    # param row: number of the row
-    # param: notSquare: number of the square in the sense of col (for 9x9 in it 0 (the first square), 1 (the second square), 2 (the third square))
-    for col in range(self.size):
-      if col not in range(notSquare * self.base, notSquare * self.base + 3):
-        for value in values:
-          if value in self.possibleValues[row][col]:
-            self.possibleValues[row][col].pop(self.possibleValues[row][col].index(value))
-
-    
-
-              
-  def removeValueFromDict(self, dict, value):
-    # Check all key-value pairs and remove the value from every pair 
-    for key in dict:
-      if value in dict[key]:
-        dict[key].pop(dict[key].index(value))
-
-    return dict
-
-  def printBoard(self):
-    for i in range(self.size):
-      if i % self.base == 0 and i != 0:
-        print("– – – – – – – – – – – –")
-
-      for j in range(self.size):
-        if j % self.base == 0 and j != 0:
-          print(" | ", end="")
-
-        # When it is at the end, go on new line
-        if j == self.size - 1:
-          print(self.board[i][j]) 
-        # ... Or continue on the same row
-        else:
-          print(str(self.board[i][j]) + " ", end="")
-          
-
-  def getDuplicates(self, arr):
-    # Returns list of duplicates from an arr
-    # param arr: list of elements
-    return [item for item, count in collections.Counter(arr).items() if count > 1]
-
-
-  def printPossibleValues(self):
-    for row in self.possibleValues: print(row)
 
 if __name__ == "__main__":
   app = Leveler()
@@ -297,8 +299,4 @@ if __name__ == "__main__":
     [0, 9, 0, 7, 1, 0, 6, 0, 8],
     [6, 7, 4, 5, 8, 3, 0, 0, 0]
   ])
-  app.printPossibleValues()
-  app.candidateLines()
-  print("_________________")
-  app.printPossibleValues()
-  app.printBoard()
+  
