@@ -4,13 +4,13 @@ from getter import Getter
 
 class Leveler:
   def __init__(self):
-    # self.possibleValues = self.fillPosibleValuesMap()
     self.board = None
 
   def setBoard(self, board):
     self.board = board
     self.size = len(self.board)
     self.base = round(self.size ** (1 / 2))
+    self.possibleValues = self.fillPosibleValuesMap()
 
   def countMissing(self):
     count = 0
@@ -84,6 +84,8 @@ class Leveler:
               # Append the possible value into the cell's list
               possibleValues[i][j].append(k)
 
+    return possibleValues
+
 
   def getUnusedValuesRow(self, row):
     # Get unused values from a row
@@ -107,6 +109,7 @@ class Leveler:
         if self.board[i][j] == 0 and len(self.possibleValues[i][j]) == 1:
           counter += 1
           self.board[i][j] = self.possibleValues[i][j][0]
+          self.possibleValues[i][j] = []
           
     return counter
 
@@ -136,6 +139,7 @@ class Leveler:
         if n == 1:
           counter += 1
           self.board[i][valid] = num
+          self.possibleValues[i][valid] = []
 
     return counter
 
@@ -279,6 +283,10 @@ if __name__ == "__main__":
     [4, 0, 7, 0, 6, 0, 2, 0, 0]
   ]
   )
+
+  print(app.printPossibleValues()) 
   print(app.board)
   app.singlePosition()
   print(app.board)
+  print("_____________________")
+  print(app.printPossibleValues())
