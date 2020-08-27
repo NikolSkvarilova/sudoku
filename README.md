@@ -17,15 +17,25 @@
 ## App
 ![app design image](app_design.png)
 
-### Sudoku Solving Strategies
+## Sudoku Solving Strategies
 > Values in []: first value is cost for first use, second is cost for subsequent uses.
 
 * **Single Candidate** [100, 100] - Checks for cell **with only one possible value** and fills them with it.
 
 * **Single Position** [100, 100] - Choose a row, column or box, and then go through each of the numbers that hasn’t already been placed.
   * [useful link](https://www.sudokuoftheday.com/techniques/single-position/#:~:text=Solving%20Sudoku%20%3A%20Single%20Position,hasn't%20already%20been%20placed)
-  
-#### Universal Methods
+
+### Naked Pairs/Triples
+This technique is known as “Naked Subset” or “Disjoint Subset” in general, and works by **looking for candidates that can be removed from other cells**. Naked Pairs are when there are just two candidates being looked for, Naked Triple when there are three, and Naked Quads when there are four.
+
+#### Algorithm
+1. Pick a row
+2. Search for cells which have the same possible values (the number of same values should be the same as the number of found duplicates). 
+3. Remove the found duplicates from other cells in that row, except those who has the same possible Values. --> Some values will be canceled, then try to run some easier algorithms again and see if it helped.
+4. Rotate it and do the same for columns - in the end, rotate it back.
+
+
+## Universal Methods
 * `rotateSudoku(lvl)` - rotates sudoku by 90°, 180°, or 270° clockwise(`Getter` class).
   * `lvl`: 1 - 90°, 2 - 180°, 3 - 270°
 

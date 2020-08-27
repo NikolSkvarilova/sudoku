@@ -270,7 +270,6 @@ class Leveler:
     # values = arr of values
     # keepPos = arr of positions (col num)
 
-    # For everry inner cell
     for i in range(len(arr)):
       # For every keep position
       for pos in keepPos:
@@ -290,49 +289,34 @@ class Leveler:
   def nakedPair(self):
     counter = 0
 
-    # Scan row
-    # For each row
-    for row in range(self.size):
-      # Find all duplicates in that row
-      duplicates = self.getDuplicates2DArr(self.possibleValues[row])
-      
-      # Iterate over each duplicate
-      for duplicate in duplicates:
-        # Check if the duplicate is in the squares
+    for rotation in range(2):
+      # When rotation is 0, it stay as it is
+      # When rotation is 1, it rotates by 90°
+      self.rotateSudoku(rotation)
 
-        # Remove the values from the row and boxes
-        # Remove from row
-        # self.possibleValues[row] = self.removeValuesFromRow(self.possibleValues[row], literal_eval(duplicate), duplicates[duplicate]["positions"])
-        pass
-      break
-      # duplicates = self.getDuplicates(arr)
+      # Pick a row (iterate over each row)
+      for row_num in range(self.size):
+        possibleValues = self.getPossibleValuesRow(row_num)
+        duplicates = self.getDuplicates2DArr(copy.deepcopy(possibleValues))
 
-    # Scan column
-    # Scan square
+        # Check if the size of a single duplicate elements is the same as its occurrence
+        for duplicate in duplicates:
+          if duplicates[duplicate]["times"] == len(literal_eval(duplicate)):
+            print("Haha! Naked pairs!")
+            self.removeValuesFromRow(possibleValues, literal_eval(duplicate), duplicates[duplicate]["positions"])
 
-  def getDuplicates2DArr(self, arr):
-    duplicates = {}
+    # Rotate the sudoku back
+    self.rotateSudoku(3)
 
-    for i in range(len(arr)):
-      currentOne = arr[i]
-      howMany = arr.count(currentOne) 
-      if currentOne != []:
-        
-        if howMany > 1:
-          duplicates[repr(currentOne)] = {
-            "times": howMany,
-            "positions": []
-          }
+    counter += self.candidateLines()
 
-      for j in range(len(arr)):
-        if arr[j] == currentOne:
-          if currentOne != [] and howMany > 1:
-            duplicates[repr(currentOne)]["positions"].append(j)
-          arr[j] = []
-      
-    return duplicates
+    return counter
+
 
   # ==== universal methods ====
+
+  def getPossibleValuesRow(self, row):
+    return self.possibleValues[row][0:]
 
   def iterateBoxes(self):
     # iterates over each box and yield their **box-position** (in 9x9 sudoku, it may be either 0, 1, or 2 - position of the whole box) as `[row, col]`.
@@ -403,6 +387,29 @@ class Leveler:
     return checkValues
 
 
+  def getDuplicates2DArr(self, arr):
+    duplicates = {}
+
+    for i in range(len(arr)):
+      currentOne = arr[i]
+      howMany = arr.count(currentOne) 
+      if currentOne != []:
+        
+        if howMany > 1:
+          duplicates[repr(currentOne)] = {
+            "times": howMany,
+            "positions": []
+          }
+
+      for j in range(len(arr)):
+        if arr[j] == currentOne:
+          if currentOne != [] and howMany > 1:
+            duplicates[repr(currentOne)]["positions"].append(j)
+          arr[j] = []
+      
+    return duplicates
+
+
   def removeValuesFromOtherBoxsRows(self, checkValues, col):
     # removes values from the box's other rows defined by `col` and keys in `checkValues` (the keys are the actual number of rows) 
 
@@ -412,21 +419,18 @@ class Leveler:
 
 if __name__ == "__main__":
   app = Leveler()
-  # app.setBoard([
-  #   [0, 0, 1, 9, 5, 7, 0, 6, 3],
-  #   [0, 0, 0, 8, 0, 6, 0, 7, 0],
-  #   [7, 6, 9, 1, 3, 0, 8, 0, 5],
-  #   [0, 0, 7, 2, 6, 1, 3, 5, 0],
-  #   [3, 1, 2, 4, 9, 5, 7, 8, 6],
-  #   [0, 5, 6, 3, 7, 8, 0, 0, 0],
-  #   [1, 0, 8, 6, 0, 9, 5, 0, 7],
-  #   [0, 9, 0, 7, 1, 0, 6, 0, 8],
-  #   [6, 7, 4, 5, 8, 3, 0, 0, 0]
-  # ])
+  app.setBoard([
+    [4, 0, 0, 2, 7, 0, 6, 0, 0],
+    [7, 9, 8, 1, 5, 6, 2, 3, 4],
+    [0, 2, 0, 8, 4, 0, 0, 0, 7],
+    [2, 3, 7, 4, 6, 8, 9, 5, 1],
+    [8, 4, 9, 5, 3, 1, 7, 2, 6],
+    [5, 6, 1, 7, 9, 2, 8, 4, 3],
+    [0, 8, 2, 0, 1, 5, 4, 7, 9],
+    [0, 7, 0, 0, 2, 4, 3, 0, 0],
+    [0, 0, 4, 0, 8, 7, 0, 0, 2]
+  ])
   
   # app.candidateLines()
   # app.printBoard()
-
-  app.size = 9
-  app.possibleValuesMap()
-  print(app.possibleValuesMap())
+  app.nakedPair()
