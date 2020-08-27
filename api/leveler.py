@@ -66,13 +66,15 @@ class Leveler:
   # [IMPORTANT] The code below is not ready to use!
   # ----------------------------------------------------------------
 
-# Creates a list of lists where each number is another list with numbers representing other possible numbers for the position
   def possibleValuesMap(self):
+    # Creates a list of lists where each number is another list with numbers representing other possible numbers for the position
+
     return [[[] for i in range(self.size)] for j in range(self.size)]
 
 
-# Fill the possible-values-map with all the possible values for each cell
+
   def fillPosibleValuesMap(self):
+    # Fill the possible-values-map with all the possible values for each cell
     # Create the "sceleton"
     possibleValues = self.possibleValuesMap()
 
@@ -100,17 +102,17 @@ class Leveler:
     return unused
 
 
-    def removePossibleValuesRow(self, values, row, notSquare):
+  def removePossibleValuesRow(self, values, row, notSquare):
     # Remove specific values from possibleValues row.
     # param values: list of values you want to remove
     # param row: number of the row
     # param: notSquare: number of the square in the sense of col (for 9x9 in it 0 (the first square), 1 (the second square), 2 (the third square))
 
-      for col in range(self.size):
-        if col not in range(notSquare * self.base, notSquare * self.base + 3):
-          for value in values:
-            if value in self.possibleValues[row][col]:
-              self.possibleValues[row][col].pop(self.possibleValues[row][col].index(value))
+    for col in range(self.size):
+      if col not in range(notSquare * self.base, notSquare * self.base + 3):
+        for value in values:
+          if value in self.possibleValues[row][col]:
+            self.possibleValues[row][col].pop(self.possibleValues[row][col].index(value))
               
   def removeValueFromDict(self, dict, value):
     # Check all key-value pairs and remove the value from every pair 
@@ -199,23 +201,6 @@ class Leveler:
     self.possibleValues = Getter.rotateSudoku(self, self.possibleValues, lvl)
 
 
-  def checkSquareValues(self):
-    # Check if the numbers are somewhere else in the square
-          # For each row in the dict with all possible values
-          for key in possibleValuesSquare:
-            # For each row in the dict with duplicate possible values
-            for key_2 in checkValues:
-              # If it is not the same row
-              if key != key_2:
-                # Iterate over every value from the check dict
-                for value in checkValues[key_2]:
-                  # Is the value in the other dict?
-                  for q in range(self.base):
-                    if value in possibleValuesSquare[key][q]:
-                      # The value is in other rows --> we have to delete the value 
-                      checkValues = self.removeValueFromDict(checkValues, value)
-
-
   def candidateLines(self):
     # This is the first technique which doesn’t actually tell you where to place a number, but instead helps you to determine places where you can’t place a number! If you’re using pencilmarks, then this will help you to remove candidates, and from there you should be able to make placements.
     # If you look within a box, and find that all of the places where you can put a particular number lie along a single line, then you can be sure that wherever you put the number in that box, it has to be on the line.
@@ -231,72 +216,44 @@ class Leveler:
       self.rotateSudoku(rotation)
 
       # For each box in the sudoku
-      for row in range(self.base):
-        for col in range(self.base):
+      for [row, col] in self.iterateBoxes(): # <-------------------
 
-          # Dictionary with duplicate values from rows - which we should check if they are in other rows, if so, we delete the key-value pair, if not, we keep it
-          # After scanning, we add data from the current row
-          checkValues = {}
+        # Dictionary with duplicate values from rows - which we should check if they are in other rows, if so, we delete the key-value pair, if not, we keep it
+        # After scanning, we add data from the current row
+        checkValues = {}
 
-          # Go through each row of the box
-          for eachRow in range(self.base):
-            # It goes like this: 0-1-2, 0-1-2, 0-1-2, 3-4-5, 3-4-5, 3-4-5, ... from left to right, row by row
-            row_num = row * 3 + eachRow
+        # Go through each row of the box
+        for row_num in self.iterateOverRowsInBox(row, col):
+          # It goes like this: 0-1-2, 0-1-2, 0-1-2, 3-4-5, 3-4-5, 3-4-5, ... from left to right, row by row
 
-            # List of cell values from the row of the box
-            valuesOfRow = self.board[row_num][col * 3 : col * 3 + self.base]
+          # List of cell values from the row of the box
+          valuesOfRow = self.cellValuesFromRowBox(row_num, col)
 
-            # Check if there are at least 2 empty cells in the row
-            if valuesOfRow.count(0) >= 2:
-              # There are at least 2 empty cells
+          # Check if there are at least 2 empty cells in the row
+          if valuesOfRow.count(0) >= 2:
+            # There are at least 2 empty cells
 
-              # List of lists of possible values for that row
-              possibleValuesRow = []
+            # List of lists of possible values for that row
+            # possibleValuesRow = self.possibleValuesFromRowBox(row_num, col)
+            possibleValuesRow = self.possibleValuesFromRowBox(row_num, col, joined = True)
 
-              # Go through each col of the box
-              for eachCol in range(self.base):
-                # It goes like this 0-1-2, 0-1-2, 0-1-2, 3-4-5, 3-4-5, 3-4-5, 6-7-8, 6-7-8, 6-7-8 and again 0-1-2 ... 
-                col_num = col * 3 + eachCol
+            # Are there any same values in the row?
+            # Values which have occured in the row multiple times
+            duplicateValues = self.getDuplicates(possibleValuesRow)
 
-                # If the cell is empty
-                if self.board[row_num][col_num] == 0:
-                  # Save its possible values into possibleValuesRow
-                  possibleValuesRow += self.possibleValues[row_num][col_num]
+            # If there are any
+            if len(duplicateValues) > 0:
+              # Save the duplicateValues into the dict 
+              checkValues[row_num] = duplicateValues
 
-              # Are there any same values in the row?
-              # Values which have occured in the row multiple times
-              sameValues = self.getDuplicates(possibleValuesRow)
+        # Dict containing all the possible values for the square
+        possibleValuesSquare = self.dictWithPossibleValuesSquare(row, col)
 
-              # If there are any
-              if len(sameValues) > 0:
-                # Save the sameValues into the dict 
-                checkValues[row_num] = sameValues
+        # Check if the numbers are somewhere else in the square
+        checkValues = self.checkIfNumbersInSquare(possibleValuesSquare, checkValues)
 
-
-          # Dict containing all the possible values for the square
-          possibleValuesSquare = {}
-          
-          for p in range(self.base):
-            possibleValuesSquare[row * 3 + p] = self.possibleValues[row * 3 + p][col * 3 : col * 3 + 3]
-
-          # Check if the numbers are somewhere else in the square
-          # For each row in the dict with all possible values
-          for key in possibleValuesSquare:
-            # For each row in the dict with duplicate possible values
-            for key_2 in checkValues:
-              # If it is not the same row
-              if key != key_2:
-                # Iterate over every value from the check dict
-                for value in checkValues[key_2]:
-                  # Is the value in the other dict?
-                  for q in range(self.base):
-                    if value in possibleValuesSquare[key][q]:
-                      # The value is in other rows --> we have to delete the value 
-                      checkValues = self.removeValueFromDict(checkValues, value)
-
-          # Remove values from other boxes's row
-          for key in checkValues:
-            self.removePossibleValuesRow(checkValues[key], key, col)
+        # Remove values from other boxes's row
+        self.removeValuesFromOtherBoxsRows(checkValues, col)
 
     # Rotate the sudoku back
     self.rotateSudoku(3)
@@ -306,6 +263,7 @@ class Leveler:
     return counter  
 
 
+  # <----------------------
   def removeValuesFromRow(self, arr, values, keepPos):
     # Remove values from arr, but not from keepPos
     # arr = 2D arr
@@ -327,6 +285,7 @@ class Leveler:
 
     return arr
       
+  # <----------------------
 
   def nakedPair(self):
     counter = 0
@@ -373,19 +332,101 @@ class Leveler:
       
     return duplicates
 
+  # ==== universal methods ====
+
+  def iterateBoxes(self):
+    # iterates over each box and yield their **box-position** (in 9x9 sudoku, it may be either 0, 1, or 2 - position of the whole box) as `[row, col]`.
+
+    for row in range(self.base):
+      for col in range(self.base):
+        yield [row, col]
+
+  def iterateOverRowsInBox(self, row, col):
+    # iterates over each row in the box and yields real position of the row (0-9 for example).
+    # `row`, `col` - **box-position** (0-2)
+
+    for eachRow in range(self.base):
+      # Yields the real position of the row (0-8)
+      yield row * self.base + eachRow
+
+
+  def cellValuesFromRowBox(self, specific_row, col):
+    # return an array of cell-values
+    # `specific_row` - number of the row (0-8)
+    # `col` - **box-position**
+
+    return self.board[specific_row][col * self.base : col * self.base + self.base]
+
+  def possibleValuesFromRowBox(self, specific_row, col, joined = False):
+    # If `joined = True` - return list of possible values from a row (only 1D list). Else returns 2D list of possible values from a row in a box (`[[2, 3, 4], [5]]`).
+    # `row`, `col` - **box-position**
+
+    if not joined:
+      return self.possibleValues[specific_row][col * self.base : col * self.base + self.base]
+
+    possibleValues = []
+
+    for eachCol in range(self.base):
+      col_num = col * 3 + eachCol
+
+      if self.board[specific_row][col_num] == 0:
+        possibleValues += self.possibleValues[specific_row][col_num]
+
+    return possibleValues
+
+
+  def dictWithPossibleValuesSquare(self, row, col):
+    # Generates a dict containing all the possible values for the square
+    values = {}
+
+    for i in range(self.base):
+      values[row * self.base + i] = self.possibleValues[row * self.base + i][col * self.base : col * self.base + self.base]
+
+    return values
+
+  def checkIfNumbersInSquare(self, possibleValuesSquare, checkValues):
+    # it checks if the numbers in `checkValues` are somewhere else in the square (`possibleValuesSquare`) and if so, it removes them from `checkValues`. It returns `checkValue` dictionary with values unique for that row
+
+    for key in possibleValuesSquare:
+      # For each row in the dict with duplicate possible values
+      for key_2 in checkValues:
+        # If it is not the same row
+        if key != key_2:
+          # Iterate over every value from the check dict
+          for value in checkValues[key_2]:
+            # Is the value in the other dict?
+            for i in range(self.base):
+              if value in possibleValuesSquare[key][i]:
+                # The value is in other rows --> we have to delete the value from checkValues
+                checkValues = self.removeValueFromDict(checkValues, value)
+
+    return checkValues
+
+
+  def removeValuesFromOtherBoxsRows(self, checkValues, col):
+    # removes values from the box's other rows defined by `col` and keys in `checkValues` (the keys are the actual number of rows) 
+
+    for key in checkValues:
+      self.removePossibleValuesRow(checkValues[key], key, col)
+
 
 if __name__ == "__main__":
   app = Leveler()
-  app.setBoard([
-    [0, 0, 1, 9, 5, 7, 0, 6, 3],
-    [0, 0, 0, 8, 0, 6, 0, 7, 0],
-    [7, 6, 9, 1, 3, 0, 8, 0, 5],
-    [0, 0, 7, 2, 6, 1, 3, 5, 0],
-    [3, 1, 2, 4, 9, 5, 7, 8, 6],
-    [0, 5, 6, 3, 7, 8, 0, 0, 0],
-    [1, 0, 8, 6, 0, 9, 5, 0, 7],
-    [0, 9, 0, 7, 1, 0, 6, 0, 8],
-    [6, 7, 4, 5, 8, 3, 0, 0, 0]
-  ])
+  # app.setBoard([
+  #   [0, 0, 1, 9, 5, 7, 0, 6, 3],
+  #   [0, 0, 0, 8, 0, 6, 0, 7, 0],
+  #   [7, 6, 9, 1, 3, 0, 8, 0, 5],
+  #   [0, 0, 7, 2, 6, 1, 3, 5, 0],
+  #   [3, 1, 2, 4, 9, 5, 7, 8, 6],
+  #   [0, 5, 6, 3, 7, 8, 0, 0, 0],
+  #   [1, 0, 8, 6, 0, 9, 5, 0, 7],
+  #   [0, 9, 0, 7, 1, 0, 6, 0, 8],
+  #   [6, 7, 4, 5, 8, 3, 0, 0, 0]
+  # ])
   
-  app.nakedPair()
+  # app.candidateLines()
+  # app.printBoard()
+
+  app.size = 9
+  app.possibleValuesMap()
+  print(app.possibleValuesMap())
