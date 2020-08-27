@@ -1,8 +1,9 @@
 
 
 from getter import Getter
-
+import copy
 import collections
+from ast import literal_eval
 
 class Leveler:
   def __init__(self):
@@ -104,14 +105,12 @@ class Leveler:
     # param values: list of values you want to remove
     # param row: number of the row
     # param: notSquare: number of the square in the sense of col (for 9x9 in it 0 (the first square), 1 (the second square), 2 (the third square))
-    for col in range(self.size):
-      if col not in range(notSquare * self.base, notSquare * self.base + 3):
-        for value in values:
-          if value in self.possibleValues[row][col]:
-            self.possibleValues[row][col].pop(self.possibleValues[row][col].index(value))
 
-    
-
+      for col in range(self.size):
+        if col not in range(notSquare * self.base, notSquare * self.base + 3):
+          for value in values:
+            if value in self.possibleValues[row][col]:
+              self.possibleValues[row][col].pop(self.possibleValues[row][col].index(value))
               
   def removeValueFromDict(self, dict, value):
     # Check all key-value pairs and remove the value from every pair 
@@ -194,6 +193,29 @@ class Leveler:
     return counter
 
 
+  def rotateSudoku(self, lvl):
+    # Method which rotates board and the possible values arr
+    self.board = Getter.rotateSudoku(self, self.board, lvl)
+    self.possibleValues = Getter.rotateSudoku(self, self.possibleValues, lvl)
+
+
+  def checkSquareValues(self):
+    # Check if the numbers are somewhere else in the square
+          # For each row in the dict with all possible values
+          for key in possibleValuesSquare:
+            # For each row in the dict with duplicate possible values
+            for key_2 in checkValues:
+              # If it is not the same row
+              if key != key_2:
+                # Iterate over every value from the check dict
+                for value in checkValues[key_2]:
+                  # Is the value in the other dict?
+                  for q in range(self.base):
+                    if value in possibleValuesSquare[key][q]:
+                      # The value is in other rows --> we have to delete the value 
+                      checkValues = self.removeValueFromDict(checkValues, value)
+
+
   def candidateLines(self):
     # This is the first technique which doesn’t actually tell you where to place a number, but instead helps you to determine places where you can’t place a number! If you’re using pencilmarks, then this will help you to remove candidates, and from there you should be able to make placements.
     # If you look within a box, and find that all of the places where you can put a particular number lie along a single line, then you can be sure that wherever you put the number in that box, it has to be on the line.
@@ -206,8 +228,7 @@ class Leveler:
     for rotation in range(2):
       # When rotation is 0, it stay as it is
       # When rotation is 1, it rotates by 90°
-      self.board = Getter.rotateSudoku(self, self.board, rotation)
-      self.possibleValues = Getter.rotateSudoku(self, self.possibleValues, rotation)
+      self.rotateSudoku(rotation)
 
       # For each box in the sudoku
       for row in range(self.base):
@@ -278,12 +299,79 @@ class Leveler:
             self.removePossibleValuesRow(checkValues[key], key, col)
 
     # Rotate the sudoku back
-    self.board = Getter.rotateSudoku(self, self.board, 3) 
-    self.possibleValues = Getter.rotateSudoku(self, self.possibleValues, 3)
+    self.rotateSudoku(3)
 
     # Run Single Candidate method and Single Position method to see if it was useful
     counter += self.singleCandidate() + self.singlePosition()
     return counter  
+
+
+  def removeValuesFromRow(self, arr, values, keepPos):
+    # Remove values from arr, but not from keepPos
+    # arr = 2D arr
+    # values = arr of values
+    # keepPos = arr of positions (col num)
+
+    # For everry inner cell
+    for i in range(len(arr)):
+      # For every keep position
+      for pos in keepPos:
+        # If the position is not the keepPos
+        if i != pos:
+          # For every value which should be deleted
+          for value in values:
+            # If the value is in the inner array
+            if value in arr[i]:
+              # Remove it
+              arr[i].pop(arr[i].index(value))
+
+    return arr
+      
+
+  def nakedPair(self):
+    counter = 0
+
+    # Scan row
+    # For each row
+    for row in range(self.size):
+      # Find all duplicates in that row
+      duplicates = self.getDuplicates2DArr(self.possibleValues[row])
+      
+      # Iterate over each duplicate
+      for duplicate in duplicates:
+        # Check if the duplicate is in the squares
+
+        # Remove the values from the row and boxes
+        # Remove from row
+        # self.possibleValues[row] = self.removeValuesFromRow(self.possibleValues[row], literal_eval(duplicate), duplicates[duplicate]["positions"])
+        pass
+      break
+      # duplicates = self.getDuplicates(arr)
+
+    # Scan column
+    # Scan square
+
+  def getDuplicates2DArr(self, arr):
+    duplicates = {}
+
+    for i in range(len(arr)):
+      currentOne = arr[i]
+      howMany = arr.count(currentOne) 
+      if currentOne != []:
+        
+        if howMany > 1:
+          duplicates[repr(currentOne)] = {
+            "times": howMany,
+            "positions": []
+          }
+
+      for j in range(len(arr)):
+        if arr[j] == currentOne:
+          if currentOne != [] and howMany > 1:
+            duplicates[repr(currentOne)]["positions"].append(j)
+          arr[j] = []
+      
+    return duplicates
 
 
 if __name__ == "__main__":
@@ -300,3 +388,4 @@ if __name__ == "__main__":
     [6, 7, 4, 5, 8, 3, 0, 0, 0]
   ])
   
+  app.nakedPair()
