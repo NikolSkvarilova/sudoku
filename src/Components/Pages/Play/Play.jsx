@@ -135,6 +135,8 @@ class Play extends React.Component {
       })
     };
 
+    console.log(requestOptions)
+
     fetch('/api/play/check_sudoku', requestOptions)
       .then(response => response.json())
       .then(data => this.solved(data.solved_correctly))
