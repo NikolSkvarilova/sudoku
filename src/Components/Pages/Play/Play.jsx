@@ -563,10 +563,10 @@ class Play extends React.Component {
       </div>,
 
       <div className="btn-section">
-        <Button class="play_btn" margin="10px" onClick={ () => { this.resetSudoku() }}>Reset Sudoku</Button>
-        <Button class="play_btn" margin="10px" onClick={ () => { this.checkSudoku() }}>Check the Sudoku</Button>
-        <Button class="play_btn" margin="10px" onClick={ () => { this.getSudoku() }}>Get New Sudoku</Button>
-        <Button margin="10px" onClick={ () => { this.changeMode() }} class={ !! this.state.noting ? "noting play_btn" : "play_btn" }>Change Mode</Button>
+        <Button class="play_btn" onClick={ () => { this.resetSudoku() }}>Reset Sudoku</Button>
+        <Button class="play_btn" onClick={ () => { this.checkSudoku() }}>Check the Sudoku</Button>
+        <Button class="play_btn" onClick={ () => { this.getSudoku() }}>Get New Sudoku</Button>
+        <Button onClick={ () => { this.changeMode() }} class={ !! this.state.noting ? "noting play_btn" : "play_btn" }>Change Mode</Button>
       </div>
     ])
   }
