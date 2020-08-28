@@ -7,6 +7,7 @@ class Getter:
   def __init__(self):
     # Dictionary containing all the seeds
     self.sudokuFile = Getter.readJSON()
+    self.dailySudoku = []
 
   @staticmethod
   def readJSON():

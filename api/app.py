@@ -19,7 +19,7 @@ app = Flask(__name__, static_folder='../build', static_url_path='')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db_sudoku.db'
 db = SQLAlchemy(app)
 
-getter = Getter()
+my_getter = Getter()
 
 # Database models
 class DailySudoku(db.Model):
@@ -45,20 +45,21 @@ def index():
 # Serving index.html when going to /play/some_level.
 @app.route('/play/<int:lvl>', methods=["GET"])
 def play_page(lvl):
+  generateDailySudoku()
   return app.send_static_file('index.html')
 
 
 # Get number of sudokus user can play.
 @app.route('/api/numOfSudokus', methods=["GET"])
 def getNumOfSudokus():
-  numOfSudokus = getter.getNumOfSudokus()
+  numOfSudokus = my_getter.getNumOfSudokus()
   return {"numOfSudokus": numOfSudokus}
 
 
 # Returns a sudoku based on the level from url.
 @app.route('/api/play/get_sudoku/<int:lvl>', methods=["GET"])
 def get_sudoku(lvl):
-  return {"sudoku": getter.generateFromSeed("level" + str(lvl))}
+  return {"sudoku": my_getter.generateFromSeed("level" + str(lvl))}
 
 
 # Accepts a POST request with this data:
@@ -83,7 +84,7 @@ def check_sudoku():
     # Check if the sudoku is daily sudoku
     dailySudoku = False
 
-    if originalSudoku == getter.getDailySudoku():
+    if originalSudoku == my_getter.getDailySudoku():
       dailySudoku = True
 
     # Solving the original sudoku
@@ -119,13 +120,14 @@ def check_sudoku():
 @app.route('/api/play/getDailySudoku', methods=["GET"])
 def get_daily_sudoku():
   generateDailySudoku()
-  return {"sudoku": getter.getDailySudoku()}
+  return {"sudoku": my_getter.getDailySudoku()}
 
 
 # Returns list of Daily Sudoku solvers
 @app.route('/api/play/getDailySudokuSolvers', methods=["GET"])
 def get_daily_sudoku_solvers():
-  data = DailySudokuSolver.query.filter_by(sudokuID=getSudokuID(getter.dailySudoku))
+  generateDailySudoku()
+  data = DailySudokuSolver.query.filter_by(sudokuID=getSudokuID(my_getter.dailySudoku))
   data = solversToArrOfObjects(data)
 
   # Sort the data by time
@@ -155,7 +157,7 @@ def getSudokuID(board):
 
 # Adds Daily Sudoku to the database of Daily Sudokus
 def addDailySudokuToDatabase():
-  sudoku = DailySudoku(board=str(getter.dailySudoku), date=datetime.now().date())
+  sudoku = DailySudoku(board=str(my_getter.dailySudoku), date=datetime.now().date())
   db.session.add(sudoku)
   db.session.commit()
 
@@ -168,15 +170,15 @@ def generateDailySudoku():
   if lastSudoku:
     # Converting '["element1", "element2"]' string into ["element1", "element2"] array
     # Setting the last daily sudoku as the current sudoku
-    getter.dailySudoku = literal_eval(lastSudoku.board)
+    my_getter.dailySudoku = literal_eval(lastSudoku.board)
 
   else:
     # Generate new sudoku
-    getter.generateDailySudoku()
+    my_getter.generateDailySudoku()
     addDailySudokuToDatabase()
 
 
 if __name__ == "__main__": 
   # Run app on port 5000 for local purposes
-  # app.run(debug=True, port=5000)
-  app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
+  app.run(debug=True, port=5000)
+  # app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
