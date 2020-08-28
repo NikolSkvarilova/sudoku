@@ -15,6 +15,10 @@ $color4b:   #741FFF;
 $color5a:   #C51FFF;
 $color5b:   #FF1FF6;
 
+body {
+  overflow-x: hidden;
+}
+
 nav {
   display: flex;
   justify-content: center;
