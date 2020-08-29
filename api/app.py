@@ -9,8 +9,6 @@ import copy
 from ast import literal_eval
 
 import time
-import atexit
-from apscheduler.schedulers.background import BackgroundScheduler
 
 from getter import Getter
 from solver import Solver
