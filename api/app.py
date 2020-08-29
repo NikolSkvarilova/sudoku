@@ -15,7 +15,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from getter import Getter
 from solver import Solver
 
-app = Flask(__name__, static_folder='../build', static_url_path='')
+app = Flask(__name__, static_folder='./build', static_url_path='')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db_sudoku.db'
 db = SQLAlchemy(app)
 
@@ -181,4 +181,4 @@ def generateDailySudoku():
 if __name__ == "__main__": 
   # Run app on port 5000 for local purposes
   # app.run(debug=True, port=5000)
-  app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
+  app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 60))
