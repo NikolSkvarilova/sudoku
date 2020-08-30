@@ -26,7 +26,6 @@ class App extends React.Component {
 
   toggleNavActive() {
     this.setState({ navActive: !this.state.navActive })
-    console.log(this.state.navActive)
   }
 
   render() {
