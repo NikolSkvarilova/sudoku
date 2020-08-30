@@ -59,7 +59,7 @@ class Play extends React.Component {
         seconds: seconds,
         minutes: minutes
       })
-      console.log(this.state.seconds, this.state.minutes)
+
     }, 1000)
   }
 
