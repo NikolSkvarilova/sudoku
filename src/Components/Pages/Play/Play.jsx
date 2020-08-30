@@ -45,11 +45,21 @@ class Play extends React.Component {
     // Stopwatch thingy
     // 'cause I do not know how to make it a component lol
     this.state.intervalID = setInterval(() => {
-      console.log(this.state.seconds, this.state.minutes)
-      return this.setState({
-        seconds: this.state.seconds === 59 ? 0 : this.state.seconds++,
-        minutes: this.state.seconds === 59 ? this.state.minutes++ : this.state.minutes
+      let seconds = this.state.seconds;
+      let minutes = this.state.minutes;
+      
+      if (seconds === 59) {
+        seconds = 0;
+        minutes++;
+      } else {
+        seconds++;
+      }
+
+      this.setState({
+        seconds: seconds,
+        minutes: minutes
       })
+      console.log(this.state.seconds, this.state.minutes)
     }, 1000)
   }
 
