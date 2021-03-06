@@ -13,6 +13,3 @@
 * `npm run` will run the react (frontend) server.
 * `yarn start-api` will run the backend server (see more in `package.json`).
   * Or just `cd api` and `python app.py`. 
-
-## App
-![app design image](app_design.png)
