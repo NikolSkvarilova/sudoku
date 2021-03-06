@@ -207,7 +207,7 @@ class Home extends React.Component {
                 
                 <p>We will not keep our sudoku and statistics to ourselves. We offer you our API, thanks to which you too can draw on our generated sudoku, use it for your own sites and applications, etc.</p>
                 <p>See **the documentation** for more information.</p>
-                <Button class="home-page-btn" borderColor="white" txtColor="white"  margin="0" link="#">See More</Button>
+                <Button class="home-page-btn" borderColor="white" txtColor="white"  margin="0" link="https://github.com/NikolSkvarilova/sudoku">See More</Button>
               </TextSection>
           </Section>
         </Section>
