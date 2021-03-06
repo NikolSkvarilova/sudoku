@@ -1,8 +1,7 @@
 # Sudoku
-[![LoC](https://tokei.rs/b1/github/NikolSkvarilova/sudoku?category=code)](https://github.com/NikolSkvarilova/sudoku)
-![GitHub last commit](https://img.shields.io/github/last-commit/NikolSkvarilova/sudoku?color=%23ff006e&logo=git&logoColor=%20%20%23ffffff)
-![GitHub repo size](https://img.shields.io/github/repo-size/NikolSkvarilova/sudoku?color=%23741FFF&label=repo%20size&logo=Github)
-
+![Lines of code](https://img.shields.io/tokei/lines/github/NikolSkvarilova/Sudoku?color=7f6afc&style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/NikolSkvarilova/sudoku?color=6ac4fc&style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/NikolSkvarilova/sudoku?color=fc6a95&style=for-the-badge)
 ## Project is online!
 [Web Link](http://sudoku.infero.site/)
 
