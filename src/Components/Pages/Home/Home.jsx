@@ -206,8 +206,8 @@ class Home extends React.Component {
                 img_align_mobile="bot">
                 
                 <p>We will not keep our sudoku and statistics to ourselves. We offer you our API, thanks to which you too can draw on our generated sudoku, use it for your own sites and applications, etc.</p>
-                <p>See the documentation for more information</p>
-                <Button class="home-page-btn" borderColor="white" txtColor="white" link="#">See More</Button>
+                <p>See **the documentation** for more information.</p>
+                <Button class="home-page-btn" borderColor="white" txtColor="white"  margin="0" link="#">See More</Button>
               </TextSection>
           </Section>
         </Section>
