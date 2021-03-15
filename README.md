@@ -11,7 +11,7 @@
 `GET /api/play/get_sudoku/<int:lvl>`
 
 Returns a sudoku based on `lvl` (1-5) as a json, where 0 represents an empty field.
-```json
+```
 {
   "sudoku": [
     [5, 2, 9, 6, 0, 0, 0 ,0, 0],
@@ -25,7 +25,7 @@ Returns a sudoku based on `lvl` (1-5) as a json, where 0 represents an empty fie
 
 Returns the number of sudokus available from this API.
 
-```json
+```
 {
   "numOfSudokus": 586845
 }
@@ -42,8 +42,8 @@ Checks sent sudoku if it is correct.
   * `originalSudoku : arr<arr<int>>` is a 2D array representing the original sudoku with empty fields.
   * `minutes : int`, `seconds : int` is number of minutes + seconds (max value of `seconds` is 59) it took you to solve the sudoku (this is only neccesary if the original sudoku is daily sudoku).
 
-```json
-{
+```
+
   "name": <your-name>,
   "solvedSudoku": <solved-sudoku>,
   "originalSudoku": <original-sudoku>,
@@ -55,7 +55,7 @@ Checks sent sudoku if it is correct.
 ```
 
 **Response**
-```json
+```
 {
   "solved_correctly": <bool>
 }
@@ -71,7 +71,7 @@ Returns a sudoku generated for this day. The format is same as for sending a reg
 
 Returns a list of solvers (name + time) for the current daily sudoku. The solvers are sorted by the time it took to solve them.
 
-```json
+```
 {
   "solvers": [
     {"name": <str:name>, "time": <str:HH:MM:SS>},
