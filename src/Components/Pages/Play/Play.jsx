@@ -476,7 +476,7 @@ class Play extends React.Component {
 
         <TextSection
         title="How to play"
-        img={ require('../../../images/help.png') }
+        img={ require('../../../images/help.png').default }
         img_align_mobile="top"
         img_align="left">
 
@@ -504,23 +504,23 @@ class Play extends React.Component {
         <Categories 
           categories={[
             {
-              img: require('./../../../images/beginner.png'),
+              img: require('./../../../images/beginner.png').default,
               content: [<a className="lvl-link" href="/play/1"><h1>Easy</h1></a>, <p>You have never ever played sudoku?</p>]
             },
             {
-              img: require('./../../../images/normal.png'),
+              img: require('./../../../images/normal.png').default,
               content: [<a className="lvl-link" href="/play/2"><h1>Normal</h1></a>, <p>You know some basic tricks, maybe played few times.</p>]
             },
             {
-              img: require('./../../../images/advanced.png'),
+              img: require('./../../../images/advanced.png').default,
               content: [<a className="lvl-link" href="/play/3"><h1>Advanced</h1></a>, <p>You are quite good at solving sudoku, but sometimes it takes way too long.</p>]
             },
             {
-              img: require('./../../../images/master.png'),
+              img: require('./../../../images/master.png').default,
               content: [<a className="lvl-link" href="/play/4"><h1>Master</h1></a>, <p>Dude, you know what you are doing.</p>]
             },
             {
-              img: require('./../../../images/pro.png'),
+              img: require('./../../../images/pro.png').default,
               content: [
               <a className="lvl-link" href="/play/5"><h1>Pro</h1></a>, 
               <p>I think you have dropped your <span><img src={crown} alt="crown" style={{ height: "16px", display: "inline-block" }}></img></span>, king.</p>]
@@ -536,7 +536,7 @@ class Play extends React.Component {
 
         <TextSection
         title="Try daily sudoku!"
-        img={ require('../../../images/daily.png') }
+        img={ require('../../../images/daily.png').default }
         img_align_mobile="top">
 
           <p>Daily sudoku is exactly what it sounds like. A new sudoku is generated every day, which is the same throughout the day and everyone can try to solve it.</p>

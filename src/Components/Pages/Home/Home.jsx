@@ -54,7 +54,7 @@ class Home extends React.Component {
             <LandingPage 
               sub_text="We have taken sudoku to a new level."
               sub_text_color={ colorPalette.txtPrimaryLight }
-              bg_img={ require('../../../images/background_landing_page.png') }
+              bg_img={ require('../../../images/background_landing_page.png').default }
               bg_color={ colorPalette.bgDark }
               icon
               btn_bg_color="rgba(219, 219, 219, 0.3)"
@@ -82,15 +82,15 @@ class Home extends React.Component {
             <Categories 
               categories={[
                 {
-                  img: require('./../../../images/about_us.png'),
+                  img: require('./../../../images/about_us.png').default,
                   content: [<h1>About Us</h1>, <p>Learn more about <a href="https://github.com/NikolSkvarilova/sudoku">our team and our work.</a></p>]
                 },
                 {
-                  img: require('./../../../images/code.png'),
+                  img: require('./../../../images/code.png').default,
                   content: [<h1>We love open source</h1>, <p><a href="https://github.com/NikolSkvarilova/sudoku">View source code</a> and check out used technologies.</p>]
                 },
                 {
-                  img: require('./../../../images/documentation.png'),
+                  img: require('./../../../images/documentation.png').default,
                   content: [<h1>Documentation</h1>, <p>Read the <a href="https://github.com/NikolSkvarilova/sudoku">documentation</a> and <a href="https://github.com/NikolSkvarilova/sudoku">join the development process!</a></p>]
                 },
               ]}
@@ -108,7 +108,7 @@ class Home extends React.Component {
               sub_title_color={ colorPalette.txtSecondary }
               txt_color={ colorPalette.txtPrimaryLight }
               line_color={ colorPalette.fancy1 }
-              img={ require('../../../images/about_img.png') }
+              img={ require('../../../images/about_img.png').default }
               alt="Designer Image"
               img_align_mobile="top"
               img_align="left"
@@ -138,7 +138,7 @@ class Home extends React.Component {
               title_color={ colorPalette.txtPrimaryLight }
               sub_title_color={ colorPalette.txtSecondary }
               txt_color={ colorPalette.txtPrimaryLight }
-              img={ require('../../../images/sudoku_light.png') }
+              img={ require('../../../images/sudoku_light.png').default }
               alt="Designer Image"
               img_align="right"
               img_align_mobile="bot">
@@ -200,7 +200,7 @@ class Home extends React.Component {
                 title="API"
                 title_color={ colorPalette.txtPrimaryLight }
                 txt_color={ colorPalette.txtPrimaryLight }
-                img={ require('../../../images/API.png') }
+                img={ require('../../../images/API.png').default }
                 alt="API img"
                 img_align="left"
                 img_align_mobile="bot">
