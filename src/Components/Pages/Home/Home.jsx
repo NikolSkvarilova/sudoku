@@ -62,7 +62,7 @@ class Home extends React.Component {
               link="quote"
               shadow="0px 0px 55px -2px rgba(0,0,0,0.63)">
   
-              <h1 style={{ color: colorPalette.txtPrimaryLight }}>It's not just <br /> sudoku.</h1>
+              <h1 style={{ color: colorPalette.txtPrimaryLight }}>It's literally just <br /> sudoku.</h1>
               <p style={{ color: colorPalette.txtPrimaryLight }}>Have you heard of sudoku? Do you play sudoku occasionally, or are you a professional player? Maybe we'll interest you.</p>
             </LandingPage>
           </Section>
